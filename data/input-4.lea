@@ -1,0 +1,12 @@
+class main {
+
+	main(args: list<string>) {
+		i: integer;
+		switch (i) {
+			case 32: writeln(6);
+			case 33: writeln(7);
+			default : writeln(8);
+		}
+	}
+ 
+}

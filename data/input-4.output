@@ -1,0 +1,8 @@
+*** begin compilation
+*** Push a new environment
+*** Put main => (args:list<string>) -> void into STACK(0) environment
+*** Push a new environment
+*** Put args => list<string> into STACK(1) environment
+*** Put i => integer into STACK(1) environment
+*** Get i from STACK(1) environment <= integer
+*** end compilation

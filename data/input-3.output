@@ -1,0 +1,7 @@
+*** begin compilation
+*** Push a new environment
+*** Put succ => (n:integer) -> integer into STACK(0) environment
+*** Push a new environment
+*** Put n => integer into STACK(1) environment
+*** Get n from STACK(1) environment <= integer
+*** end compilation

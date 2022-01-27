@@ -8,8 +8,8 @@ public class MapEnvironment<T> implements Environment<T> {
 
 	private static final String NL = "\n";
 	private Map<String, T> map;
-	private String name;
 	private boolean verbose;
+	private String name;
 
 	public MapEnvironment(String name, boolean verbose) {
 		map = new HashMap<String, T>();
@@ -30,7 +30,7 @@ public class MapEnvironment<T> implements Environment<T> {
 	public T get(String key) {
 		T t = map.get(key);
 		if (verbose)
-			System.out.println ("*** Get " + key + " => " + t + " from " + name + " environment");
+			System.out.println ("*** Get " + key + " from " + name + " environment <= " + t);
 		return t;
 	}
 

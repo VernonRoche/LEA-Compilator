@@ -6,6 +6,7 @@ import java.io.IOException;
 import fr.ubordeaux.deptinfo.compilation.lea.environment.EnvironmentException;
 import fr.ubordeaux.deptinfo.compilation.lea.parser.Parser;
 import fr.ubordeaux.deptinfo.compilation.lea.parser.ParserLexer;
+import fr.ubordeaux.deptinfo.compilation.lea.stree.StreeException;
 import fr.ubordeaux.deptinfo.compilation.lea.type.TypeException;
 
 public class Main {
@@ -25,12 +26,15 @@ public class Main {
 			parser.parse();
 		} 
 		catch (IOException e) {
-			e.printStackTrace();
+			System.err.println(e.getMessage());
 		}
 		catch (EnvironmentException e) {
 			System.err.println(e.getMessage());
 		}
 		catch (TypeException e) {
+			System.err.println(e.getMessage());
+		}
+		catch (StreeException e) {
 			System.err.println(e.getMessage());
 		}
 	    finally {

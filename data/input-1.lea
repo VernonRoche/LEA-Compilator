@@ -1,0 +1,12 @@
+class main {
+	private m: integer;
+	private s: string;
+	
+	main(args: list<string>) {
+		m := 36;
+		s := "36";
+		j: integer := 1;
+		writeln(m + j);
+	}
+ 
+}

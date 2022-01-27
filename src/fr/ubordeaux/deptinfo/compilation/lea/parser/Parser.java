@@ -40,20 +40,16 @@ package fr.ubordeaux.deptinfo.compilation.lea.parser;
 
 import java.text.MessageFormat;
 /* "%code imports" blocks.  */
-/* "/home/altyriss/MEGAsync/Informatique/L3/Compilation/MiniProjet/miniprojet/parser/Parser.y":18  */
+/* "/home/fnoury/L3/Compilation/projet-20210420/parser/Parser.y":17  */
 
-	import fr.ubordeaux.deptinfo.compilation.lea.type.TType;
-	import fr.ubordeaux.deptinfo.compilation.lea.type.Type;
-	import fr.ubordeaux.deptinfo.compilation.lea.type.TypeExpr;
-	import fr.ubordeaux.deptinfo.compilation.lea.type.TypeException;
-	import fr.ubordeaux.deptinfo.compilation.lea.environment.Environment;
-	import fr.ubordeaux.deptinfo.compilation.lea.environment.MapEnvironment;
-	import fr.ubordeaux.deptinfo.compilation.lea.environment.EnvironmentException;
+	import fr.ubordeaux.deptinfo.compilation.lea.type.*;
+	import fr.ubordeaux.deptinfo.compilation.lea.environment.*;
+	import fr.ubordeaux.deptinfo.compilation.lea.stree.*;
 
-/* "/home/altyriss/MEGAsync/Informatique/L3/Compilation/MiniProjet/miniprojet/src/fr/ubordeaux/deptinfo/compilation/lea/parser/Parser.java":54  */
+/* "/home/fnoury/L3/Compilation/projet-20210420/src/fr/ubordeaux/deptinfo/compilation/lea/parser/Parser.java":50  */
 
 /**
- * A Bison parser, automatically generated from <tt>/home/altyriss/MEGAsync/Informatique/L3/Compilation/MiniProjet/miniprojet/parser/Parser.y</tt>.
+ * A Bison parser, automatically generated from <tt>/home/fnoury/L3/Compilation/projet-20210420/parser/Parser.y</tt>.
  *
  * @author LALR (1) parser skeleton written by Paolo Bonzini.
  */
@@ -132,153 +128,166 @@ public class Parser
     S_YYerror(1),                  /* error  */
     S_YYUNDEF(2),                  /* "invalid token"  */
     S_ASSIGN(3),                   /* ":="  */
-    S_PLUS_ASSIGN(4),              /* "+="  */
-    S_MINUS_ASSIGN(5),             /* "-="  */
-    S_TIMES_ASSIGN(6),             /* "*="  */
-    S_DIV_ASSIGN(7),               /* "/="  */
-    S_PERC_ASSIGN(8),              /* "%="  */
-    S_PIPE_PIPE_ASSIGN(9),         /* "||="  */
-    S_AMP_AMP_ASSIGN(10),          /* "&&="  */
-    S_AMP_ASSIGN(11),              /* "&="  */
-    S_PIPE_ASSIGN(12),             /* "|="  */
-    S_LT_LT_ASSIGN(13),            /* "<<="  */
-    S_GT_GT_ASSIGN(14),            /* ">>="  */
-    S_PLUS_PLUS(15),               /* "++"  */
-    S_MINUS_MINUS(16),             /* "--"  */
-    S_AMP_AMP(17),                 /* "&&"  */
-    S_PIPE_PIPE(18),               /* "||"  */
-    S_LT_LT(19),                   /* "<<"  */
-    S_GT_GT(20),                   /* ">>"  */
+    S_PLUSE(4),                    /* "+="  */
+    S_MINUSE(5),                   /* "-="  */
+    S_TIMESE(6),                   /* "*="  */
+    S_DIVE(7),                     /* "/="  */
+    S_PERCE(8),                    /* "%="  */
+    S_ORE(9),                      /* "||="  */
+    S_ANDE(10),                    /* "&&="  */
+    S_AMPE(11),                    /* "&="  */
+    S_PIPEE(12),                   /* "|="  */
+    S_LSHIFTE(13),                 /* "<<="  */
+    S_RSHIFTE(14),                 /* ">>="  */
+    S_SUCC(15),                    /* "++"  */
+    S_DEC(16),                     /* "--"  */
+    S_AND(17),                     /* "&&"  */
+    S_OR(18),                      /* "||"  */
+    S_LSHIFT(19),                  /* "<<"  */
+    S_RSHIFT(20),                  /* ">>"  */
     S_DOTS(21),                    /* ".."  */
-    S_EQ_EQ(22),                   /* "=="  */
-    S_LT_EQ(23),                   /* "<="  */
-    S_GT_EQ(24),                   /* ">="  */
-    S_BANG_EQ(25),                 /* "!="  */
+    S_EQ(22),                      /* "=="  */
+    S_LE(23),                      /* "<="  */
+    S_GE(24),                      /* ">="  */
+    S_NE(25),                      /* "!="  */
     S_BOOLEAN(26),                 /* "boolean"  */
     S_BREAK(27),                   /* "break"  */
-    S_CHAR(28),                    /* "char"  */
-    S_CLASS(29),                   /* "class"  */
-    S_COMPARABLE(30),              /* "comparable"  */
-    S_CONST(31),                   /* "const"  */
-    S_CONTINUE(32),                /* "continue"  */
-    S_DO(33),                      /* "do"  */
-    S_ELSE(34),                    /* "else"  */
-    S_ENUM(35),                    /* "enum"  */
-    S_EQUIVALENT(36),              /* "equivalent"  */
-    S_EXTENDS(37),                 /* "extends"  */
-    S_FINAL(38),                   /* "final"  */
-    S_FLOAT(39),                   /* "float"  */
-    S_FOR(40),                     /* "for"  */
-    S_FOREACH(41),                 /* "foreach"  */
-    S_FUNCTION(42),                /* "function"  */
-    S_IF(43),                      /* "if"  */
-    S_IMPLEMENTS(44),              /* "implements"  */
-    S_IMPORT(45),                  /* "import"  */
-    S_IN(46),                      /* "in"  */
-    S_INTEGER(47),                 /* "integer"  */
-    S_INTERFACE(48),               /* "interface"  */
-    S_LIST(49),                    /* "list"  */
-    S_MAP(50),                     /* "map"  */
-    S_MAIN(51),                    /* "main"  */
-    S_NEW(52),                     /* "new"  */
-    S_NULL(53),                    /* "null"  */
-    S_OPERATOR(54),                /* "operator"  */
-    S_PRIVATE(55),                 /* "private"  */
-    S_PROTECTED(56),               /* "protected"  */
-    S_PUBLIC(57),                  /* "public"  */
-    S_PROCEDURE(58),               /* "procedure"  */
-    S_RANGE(59),                   /* "range"  */
-    S_READLN(60),                  /* "readln"  */
-    S_RETURN(61),                  /* "return"  */
-    S_SET(62),                     /* "set"  */
-    S_STRING(63),                  /* "string"  */
-    S_THIS(64),                    /* "this"  */
-    S_TYPE(65),                    /* "type"  */
-    S_VIRTUAL(66),                 /* "virtual"  */
-    S_WRITE(67),                   /* "write"  */
-    S_WRITELN(68),                 /* "writeln"  */
-    S_WHILE(69),                   /* "while"  */
-    S_IDENTIFIER(70),              /* IDENTIFIER  */
-    S_LITTERAL_STRING(71),         /* LITTERAL_STRING  */
-    S_NUMBER_INTEGER(72),          /* NUMBER_INTEGER  */
-    S_LITTERAL_CHAR(73),           /* LITTERAL_CHAR  */
-    S_NUMBER_FLOAT(74),            /* NUMBER_FLOAT  */
-    S_WITHOUT_ELSE(75),            /* WITHOUT_ELSE  */
-    S_DETERMINER(76),              /* DETERMINER  */
-    S_SPECIFIER(77),               /* SPECIFIER  */
-    S_78_(78),                     /* '!'  */
-    S_79_(79),                     /* '<'  */
-    S_80_(80),                     /* '>'  */
-    S_81_(81),                     /* '+'  */
-    S_82_(82),                     /* '-'  */
-    S_83_(83),                     /* '*'  */
-    S_84_(84),                     /* '/'  */
-    S_85_(85),                     /* '%'  */
-    S_LEFTPLUSPLUS(86),            /* LEFTPLUSPLUS  */
-    S_LEFTMINUSMINUS(87),          /* LEFTMINUSMINUS  */
-    S_UMINUS(88),                  /* UMINUS  */
-    S_89_(89),                     /* '|'  */
-    S_90_(90),                     /* '&'  */
-    S_91_(91),                     /* '{'  */
-    S_92_(92),                     /* '}'  */
-    S_93_(93),                     /* ','  */
-    S_94_(94),                     /* ':'  */
-    S_95_(95),                     /* ';'  */
-    S_96_(96),                     /* '('  */
-    S_97_(97),                     /* ')'  */
-    S_98_(98),                     /* "[]"  */
-    S_99_(99),                     /* '['  */
-    S_100_(100),                   /* ']'  */
-    S_101_(101),                   /* '.'  */
-    S_YYACCEPT(102),               /* $accept  */
-    S_S(103),                      /* S  */
-    S_imports(104),                /* imports  */
-    S_import(105),                 /* import  */
-    S_declarations(106),           /* declarations  */
-    S_declaration(107),            /* declaration  */
-    S_implements(108),             /* implements  */
-    S_extends(109),                /* extends  */
-    S_extends_public(110),         /* extends_public  */
-    S_classNames(111),             /* classNames  */
-    S_className(112),              /* className  */
-    S_classDefinition(113),        /* classDefinition  */
-    S_classDefinitionContent(114), /* classDefinitionContent  */
-    S_typeDefinition(115),         /* typeDefinition  */
-    S_constDefinition(116),        /* constDefinition  */
-    S_attributeDefinition(117),    /* attributeDefinition  */
-    S_methodDefinition(118),       /* methodDefinition  */
-    S_119_1(119),                  /* $@1  */
-    S_120_2(120),                  /* $@2  */
-    S_121_3(121),                  /* $@3  */
-    S_122_4(122),                  /* $@4  */
-    S_123_5(123),                  /* $@5  */
-    S_124_6(124),                  /* $@6  */
-    S_125_7(125),                  /* $@7  */
-    S_126_8(126),                  /* $@8  */
-    S_determiner(127),             /* determiner  */
-    S_specifier(128),              /* specifier  */
-    S_user_defined_operators(129), /* user_defined_operators  */
-    S_interfaceDefinition(130),    /* interfaceDefinition  */
-    S_typeExpr(131),               /* typeExpr  */
-    S_typePtrExpr(132),            /* typePtrExpr  */
-    S_typeExprs(133),              /* typeExprs  */
-    S_typeNames(134),              /* typeNames  */
-    S_typeName(135),               /* typeName  */
-    S_argsDefinition(136),         /* argsDefinition  */
-    S_argDefinition(137),          /* argDefinition  */
-    S_block(138),                  /* block  */
-    S_varDefinitions(139),         /* varDefinitions  */
-    S_varDefinition(140),          /* varDefinition  */
-    S_stms(141),                   /* stms  */
-    S_stm(142),                    /* stm  */
-    S_for_stm(143),                /* for_stm  */
-    S_simple_stm(144),             /* simple_stm  */
-    S_assignedVariable(145),       /* assignedVariable  */
-    S_methodName(146),             /* methodName  */
-    S_args(147),                   /* args  */
-    S_constExpr(148),              /* constExpr  */
-    S_expr(149),                   /* expr  */
-    S_args_opt(150);               /* args_opt  */
+    S_CASE(28),                    /* "case"  */
+    S_CHAR(29),                    /* "char"  */
+    S_CLASS(30),                   /* "class"  */
+    S_COMPARABLE(31),              /* "comparable"  */
+    S_CONST(32),                   /* "const"  */
+    S_CONTINUE(33),                /* "continue"  */
+    S_DEFAULT(34),                 /* "default"  */
+    S_DO(35),                      /* "do"  */
+    S_ELSE(36),                    /* "else"  */
+    S_ENUM(37),                    /* "enum"  */
+    S_EQUIVALENT(38),              /* "equivalent"  */
+    S_EXTENDS(39),                 /* "extends"  */
+    S_FINAL(40),                   /* "final"  */
+    S_FLOAT(41),                   /* "float"  */
+    S_FOR(42),                     /* "for"  */
+    S_FOREACH(43),                 /* "foreach"  */
+    S_FUNCTION(44),                /* "function"  */
+    S_IF(45),                      /* "if"  */
+    S_IMPLEMENTS(46),              /* "implements"  */
+    S_IMPORT(47),                  /* "import"  */
+    S_IN(48),                      /* "in"  */
+    S_INTEGER(49),                 /* "integer"  */
+    S_INTERFACE(50),               /* "interface"  */
+    S_LIST(51),                    /* "list"  */
+    S_MAP(52),                     /* "map"  */
+    S_MAIN(53),                    /* "main"  */
+    S_NEW(54),                     /* "new"  */
+    S_NULL(55),                    /* "null"  */
+    S_PRIVATE(56),                 /* "private"  */
+    S_PROTECTED(57),               /* "protected"  */
+    S_PUBLIC(58),                  /* "public"  */
+    S_PROCEDURE(59),               /* "procedure"  */
+    S_RANGE(60),                   /* "range"  */
+    S_READLN(61),                  /* "readln"  */
+    S_RETURN(62),                  /* "return"  */
+    S_SET(63),                     /* "set"  */
+    S_STRING(64),                  /* "string"  */
+    S_SWITCH(65),                  /* "switch"  */
+    S_THIS(66),                    /* "this"  */
+    S_TYPE(67),                    /* "type"  */
+    S_VIRTUAL(68),                 /* "virtual"  */
+    S_WRITE(69),                   /* "write"  */
+    S_WRITELN(70),                 /* "writeln"  */
+    S_WHILE(71),                   /* "while"  */
+    S_IDENTIFIER(72),              /* IDENTIFIER  */
+    S_CONSTANT_STRING(73),         /* CONSTANT_STRING  */
+    S_CONSTANT_INTEGER(74),        /* CONSTANT_INTEGER  */
+    S_CONSTANT_CHAR(75),           /* CONSTANT_CHAR  */
+    S_CONSTANT_FLOAT(76),          /* CONSTANT_FLOAT  */
+    S_ASSIGNED_VARIABLE(77),       /* ASSIGNED_VARIABLE  */
+    S_78_(78),                     /* ':'  */
+    S_WITHOUT_ELSE(79),            /* WITHOUT_ELSE  */
+    S_DETERMINER(80),              /* DETERMINER  */
+    S_SPECIFIER(81),               /* SPECIFIER  */
+    S_82_(82),                     /* '!'  */
+    S_83_(83),                     /* '<'  */
+    S_84_(84),                     /* '>'  */
+    S_85_(85),                     /* '+'  */
+    S_86_(86),                     /* '-'  */
+    S_87_(87),                     /* '*'  */
+    S_88_(88),                     /* '/'  */
+    S_89_(89),                     /* '%'  */
+    S_LEFTPLUSPLUS(90),            /* LEFTPLUSPLUS  */
+    S_LEFTMINUSMINUS(91),          /* LEFTMINUSMINUS  */
+    S_UMINUS(92),                  /* UMINUS  */
+    S_93_(93),                     /* '|'  */
+    S_94_(94),                     /* '&'  */
+    S_95_(95),                     /* '{'  */
+    S_96_(96),                     /* '}'  */
+    S_97_(97),                     /* ','  */
+    S_98_(98),                     /* ';'  */
+    S_99_(99),                     /* '('  */
+    S_100_(100),                   /* ')'  */
+    S_101_(101),                   /* '['  */
+    S_102_(102),                   /* ']'  */
+    S_103_(103),                   /* '.'  */
+    S_YYACCEPT(104),               /* $accept  */
+    S_S(105),                      /* S  */
+    S_imports(106),                /* imports  */
+    S_import(107),                 /* import  */
+    S_declarations(108),           /* declarations  */
+    S_declaration(109),            /* declaration  */
+    S_implements(110),             /* implements  */
+    S_extends(111),                /* extends  */
+    S_extends_public(112),         /* extends_public  */
+    S_class_names(113),            /* class_names  */
+    S_class_name(114),             /* class_name  */
+    S_class_definition(115),       /* class_definition  */
+    S_class_definition_head(116),  /* class_definition_head  */
+    S_type_definition(117),        /* type_definition  */
+    S_const_definition(118),       /* const_definition  */
+    S_attribute_definition(119),   /* attribute_definition  */
+    S_push_environment(120),       /* push_environment  */
+    S_pop_environment(121),        /* pop_environment  */
+    S_method_definition(122),      /* method_definition  */
+    S_123_1(123),                  /* $@1  */
+    S_124_2(124),                  /* $@2  */
+    S_125_3(125),                  /* $@3  */
+    S_126_4(126),                  /* $@4  */
+    S_127_5(127),                  /* $@5  */
+    S_128_6(128),                  /* $@6  */
+    S_129_7(129),                  /* $@7  */
+    S_130_8(130),                  /* $@8  */
+    S_131_9(131),                  /* $@9  */
+    S_132_10(132),                 /* $@10  */
+    S_133_11(133),                 /* $@11  */
+    S_134_12(134),                 /* $@12  */
+    S_135_13(135),                 /* $@13  */
+    S_136_14(136),                 /* $@14  */
+    S_determiner(137),             /* determiner  */
+    S_specifier(138),              /* specifier  */
+    S_interface_definition(139),   /* interface_definition  */
+    S_interface_definition_head(140), /* interface_definition_head  */
+    S_type_expression(141),        /* type_expression  */
+    S_type_expression_class(142),  /* type_expression_class  */
+    S_type_expressions(143),       /* type_expressions  */
+    S_type_names(144),             /* type_names  */
+    S_type_name(145),              /* type_name  */
+    S_args_definition(146),        /* args_definition  */
+    S_arg_definition(147),         /* arg_definition  */
+    S_block(148),                  /* block  */
+    S_var_definitions(149),        /* var_definitions  */
+    S_var_definition(150),         /* var_definition  */
+    S_stms(151),                   /* stms  */
+    S_stm(152),                    /* stm  */
+    S_case_stms(153),              /* case_stms  */
+    S_case_stm(154),               /* case_stm  */
+    S_default_stm(155),            /* default_stm  */
+    S_assignment_stm(156),         /* assignment_stm  */
+    S_simple_stm(157),             /* simple_stm  */
+    S_assigned_variable(158),      /* assigned_variable  */
+    S_method_name(159),            /* method_name  */
+    S_args(160),                   /* args  */
+    S_const_expression(161),       /* const_expression  */
+    S_expression(162),             /* expression  */
+    S_args_opt(163);               /* args_opt  */
 
 
     private final int yycode_;
@@ -292,35 +301,37 @@ public class Parser
       SymbolKind.S_YYerror,
       SymbolKind.S_YYUNDEF,
       SymbolKind.S_ASSIGN,
-      SymbolKind.S_PLUS_ASSIGN,
-      SymbolKind.S_MINUS_ASSIGN,
-      SymbolKind.S_TIMES_ASSIGN,
-      SymbolKind.S_DIV_ASSIGN,
-      SymbolKind.S_PERC_ASSIGN,
-      SymbolKind.S_PIPE_PIPE_ASSIGN,
-      SymbolKind.S_AMP_AMP_ASSIGN,
-      SymbolKind.S_AMP_ASSIGN,
-      SymbolKind.S_PIPE_ASSIGN,
-      SymbolKind.S_LT_LT_ASSIGN,
-      SymbolKind.S_GT_GT_ASSIGN,
-      SymbolKind.S_PLUS_PLUS,
-      SymbolKind.S_MINUS_MINUS,
-      SymbolKind.S_AMP_AMP,
-      SymbolKind.S_PIPE_PIPE,
-      SymbolKind.S_LT_LT,
-      SymbolKind.S_GT_GT,
+      SymbolKind.S_PLUSE,
+      SymbolKind.S_MINUSE,
+      SymbolKind.S_TIMESE,
+      SymbolKind.S_DIVE,
+      SymbolKind.S_PERCE,
+      SymbolKind.S_ORE,
+      SymbolKind.S_ANDE,
+      SymbolKind.S_AMPE,
+      SymbolKind.S_PIPEE,
+      SymbolKind.S_LSHIFTE,
+      SymbolKind.S_RSHIFTE,
+      SymbolKind.S_SUCC,
+      SymbolKind.S_DEC,
+      SymbolKind.S_AND,
+      SymbolKind.S_OR,
+      SymbolKind.S_LSHIFT,
+      SymbolKind.S_RSHIFT,
       SymbolKind.S_DOTS,
-      SymbolKind.S_EQ_EQ,
-      SymbolKind.S_LT_EQ,
-      SymbolKind.S_GT_EQ,
-      SymbolKind.S_BANG_EQ,
+      SymbolKind.S_EQ,
+      SymbolKind.S_LE,
+      SymbolKind.S_GE,
+      SymbolKind.S_NE,
       SymbolKind.S_BOOLEAN,
       SymbolKind.S_BREAK,
+      SymbolKind.S_CASE,
       SymbolKind.S_CHAR,
       SymbolKind.S_CLASS,
       SymbolKind.S_COMPARABLE,
       SymbolKind.S_CONST,
       SymbolKind.S_CONTINUE,
+      SymbolKind.S_DEFAULT,
       SymbolKind.S_DO,
       SymbolKind.S_ELSE,
       SymbolKind.S_ENUM,
@@ -342,7 +353,6 @@ public class Parser
       SymbolKind.S_MAIN,
       SymbolKind.S_NEW,
       SymbolKind.S_NULL,
-      SymbolKind.S_OPERATOR,
       SymbolKind.S_PRIVATE,
       SymbolKind.S_PROTECTED,
       SymbolKind.S_PUBLIC,
@@ -352,6 +362,7 @@ public class Parser
       SymbolKind.S_RETURN,
       SymbolKind.S_SET,
       SymbolKind.S_STRING,
+      SymbolKind.S_SWITCH,
       SymbolKind.S_THIS,
       SymbolKind.S_TYPE,
       SymbolKind.S_VIRTUAL,
@@ -359,28 +370,26 @@ public class Parser
       SymbolKind.S_WRITELN,
       SymbolKind.S_WHILE,
       SymbolKind.S_IDENTIFIER,
-      SymbolKind.S_LITTERAL_STRING,
-      SymbolKind.S_NUMBER_INTEGER,
-      SymbolKind.S_LITTERAL_CHAR,
-      SymbolKind.S_NUMBER_FLOAT,
+      SymbolKind.S_CONSTANT_STRING,
+      SymbolKind.S_CONSTANT_INTEGER,
+      SymbolKind.S_CONSTANT_CHAR,
+      SymbolKind.S_CONSTANT_FLOAT,
+      SymbolKind.S_ASSIGNED_VARIABLE,
+      SymbolKind.S_78_,
       SymbolKind.S_WITHOUT_ELSE,
       SymbolKind.S_DETERMINER,
       SymbolKind.S_SPECIFIER,
-      SymbolKind.S_78_,
-      SymbolKind.S_79_,
-      SymbolKind.S_80_,
-      SymbolKind.S_81_,
       SymbolKind.S_82_,
       SymbolKind.S_83_,
       SymbolKind.S_84_,
       SymbolKind.S_85_,
+      SymbolKind.S_86_,
+      SymbolKind.S_87_,
+      SymbolKind.S_88_,
+      SymbolKind.S_89_,
       SymbolKind.S_LEFTPLUSPLUS,
       SymbolKind.S_LEFTMINUSMINUS,
       SymbolKind.S_UMINUS,
-      SymbolKind.S_89_,
-      SymbolKind.S_90_,
-      SymbolKind.S_91_,
-      SymbolKind.S_92_,
       SymbolKind.S_93_,
       SymbolKind.S_94_,
       SymbolKind.S_95_,
@@ -390,6 +399,8 @@ public class Parser
       SymbolKind.S_99_,
       SymbolKind.S_100_,
       SymbolKind.S_101_,
+      SymbolKind.S_102_,
+      SymbolKind.S_103_,
       SymbolKind.S_YYACCEPT,
       SymbolKind.S_S,
       SymbolKind.S_imports,
@@ -399,45 +410,56 @@ public class Parser
       SymbolKind.S_implements,
       SymbolKind.S_extends,
       SymbolKind.S_extends_public,
-      SymbolKind.S_classNames,
-      SymbolKind.S_className,
-      SymbolKind.S_classDefinition,
-      SymbolKind.S_classDefinitionContent,
-      SymbolKind.S_typeDefinition,
-      SymbolKind.S_constDefinition,
-      SymbolKind.S_attributeDefinition,
-      SymbolKind.S_methodDefinition,
-      SymbolKind.S_119_1,
-      SymbolKind.S_120_2,
-      SymbolKind.S_121_3,
-      SymbolKind.S_122_4,
-      SymbolKind.S_123_5,
-      SymbolKind.S_124_6,
-      SymbolKind.S_125_7,
-      SymbolKind.S_126_8,
+      SymbolKind.S_class_names,
+      SymbolKind.S_class_name,
+      SymbolKind.S_class_definition,
+      SymbolKind.S_class_definition_head,
+      SymbolKind.S_type_definition,
+      SymbolKind.S_const_definition,
+      SymbolKind.S_attribute_definition,
+      SymbolKind.S_push_environment,
+      SymbolKind.S_pop_environment,
+      SymbolKind.S_method_definition,
+      SymbolKind.S_123_1,
+      SymbolKind.S_124_2,
+      SymbolKind.S_125_3,
+      SymbolKind.S_126_4,
+      SymbolKind.S_127_5,
+      SymbolKind.S_128_6,
+      SymbolKind.S_129_7,
+      SymbolKind.S_130_8,
+      SymbolKind.S_131_9,
+      SymbolKind.S_132_10,
+      SymbolKind.S_133_11,
+      SymbolKind.S_134_12,
+      SymbolKind.S_135_13,
+      SymbolKind.S_136_14,
       SymbolKind.S_determiner,
       SymbolKind.S_specifier,
-      SymbolKind.S_user_defined_operators,
-      SymbolKind.S_interfaceDefinition,
-      SymbolKind.S_typeExpr,
-      SymbolKind.S_typePtrExpr,
-      SymbolKind.S_typeExprs,
-      SymbolKind.S_typeNames,
-      SymbolKind.S_typeName,
-      SymbolKind.S_argsDefinition,
-      SymbolKind.S_argDefinition,
+      SymbolKind.S_interface_definition,
+      SymbolKind.S_interface_definition_head,
+      SymbolKind.S_type_expression,
+      SymbolKind.S_type_expression_class,
+      SymbolKind.S_type_expressions,
+      SymbolKind.S_type_names,
+      SymbolKind.S_type_name,
+      SymbolKind.S_args_definition,
+      SymbolKind.S_arg_definition,
       SymbolKind.S_block,
-      SymbolKind.S_varDefinitions,
-      SymbolKind.S_varDefinition,
+      SymbolKind.S_var_definitions,
+      SymbolKind.S_var_definition,
       SymbolKind.S_stms,
       SymbolKind.S_stm,
-      SymbolKind.S_for_stm,
+      SymbolKind.S_case_stms,
+      SymbolKind.S_case_stm,
+      SymbolKind.S_default_stm,
+      SymbolKind.S_assignment_stm,
       SymbolKind.S_simple_stm,
-      SymbolKind.S_assignedVariable,
-      SymbolKind.S_methodName,
+      SymbolKind.S_assigned_variable,
+      SymbolKind.S_method_name,
       SymbolKind.S_args,
-      SymbolKind.S_constExpr,
-      SymbolKind.S_expr,
+      SymbolKind.S_const_expression,
+      SymbolKind.S_expression,
       SymbolKind.S_args_opt
     };
 
@@ -458,28 +480,31 @@ public class Parser
     {
   "end of file", "error", "invalid token", ":=", "+=", "-=", "*=", "/=",
   "%=", "||=", "&&=", "&=", "|=", "<<=", ">>=", "++", "--", "&&", "||",
-  "<<", ">>", "..", "==", "<=", ">=", "!=", "boolean", "break", "char",
-  "class", "comparable", "const", "continue", "do", "else", "enum",
-  "equivalent", "extends", "final", "float", "for", "foreach", "function",
-  "if", "implements", "import", "in", "integer", "interface", "list",
-  "map", "main", "new", "null", "operator", "private", "protected",
-  "public", "procedure", "range", "readln", "return", "set", "string",
-  "this", "type", "virtual", "write", "writeln", "while", "IDENTIFIER",
-  "LITTERAL_STRING", "NUMBER_INTEGER", "LITTERAL_CHAR", "NUMBER_FLOAT",
+  "<<", ">>", "..", "==", "<=", ">=", "!=", "boolean", "break", "case",
+  "char", "class", "comparable", "const", "continue", "default", "do",
+  "else", "enum", "equivalent", "extends", "final", "float", "for",
+  "foreach", "function", "if", "implements", "import", "in", "integer",
+  "interface", "list", "map", "main", "new", "null", "private",
+  "protected", "public", "procedure", "range", "readln", "return", "set",
+  "string", "switch", "this", "type", "virtual", "write", "writeln",
+  "while", "IDENTIFIER", "CONSTANT_STRING", "CONSTANT_INTEGER",
+  "CONSTANT_CHAR", "CONSTANT_FLOAT", "ASSIGNED_VARIABLE", "':'",
   "WITHOUT_ELSE", "DETERMINER", "SPECIFIER", "'!'", "'<'", "'>'", "'+'",
   "'-'", "'*'", "'/'", "'%'", "LEFTPLUSPLUS", "LEFTMINUSMINUS", "UMINUS",
-  "'|'", "'&'", "'{'", "'}'", "','", "':'", "';'", "'('", "')'", "[]",
-  "'['", "']'", "'.'", "$accept", "S", "imports", "import", "declarations",
-  "declaration", "implements", "extends", "extends_public", "classNames",
-  "className", "classDefinition", "classDefinitionContent",
-  "typeDefinition", "constDefinition", "attributeDefinition",
-  "methodDefinition", "$@1", "$@2", "$@3", "$@4", "$@5", "$@6", "$@7",
-  "$@8", "determiner", "specifier", "user_defined_operators",
-  "interfaceDefinition", "typeExpr", "typePtrExpr", "typeExprs",
-  "typeNames", "typeName", "argsDefinition", "argDefinition", "block",
-  "varDefinitions", "varDefinition", "stms", "stm", "for_stm",
-  "simple_stm", "assignedVariable", "methodName", "args", "constExpr",
-  "expr", "args_opt", null
+  "'|'", "'&'", "'{'", "'}'", "','", "';'", "'('", "')'", "'['", "']'",
+  "'.'", "$accept", "S", "imports", "import", "declarations",
+  "declaration", "implements", "extends", "extends_public", "class_names",
+  "class_name", "class_definition", "class_definition_head",
+  "type_definition", "const_definition", "attribute_definition",
+  "push_environment", "pop_environment", "method_definition", "$@1", "$@2",
+  "$@3", "$@4", "$@5", "$@6", "$@7", "$@8", "$@9", "$@10", "$@11", "$@12",
+  "$@13", "$@14", "determiner", "specifier", "interface_definition",
+  "interface_definition_head", "type_expression", "type_expression_class",
+  "type_expressions", "type_names", "type_name", "args_definition",
+  "arg_definition", "block", "var_definitions", "var_definition", "stms",
+  "stm", "case_stms", "case_stm", "default_stm", "assignment_stm",
+  "simple_stm", "assigned_variable", "method_name", "args",
+  "const_expression", "expression", "args_opt", null
     };
   }
 
@@ -505,159 +530,165 @@ public class Parser
     /** Token ":=", to be returned by the scanner.  */
     static final int ASSIGN = 258;
     /** Token "+=", to be returned by the scanner.  */
-    static final int PLUS_ASSIGN = 259;
+    static final int PLUSE = 259;
     /** Token "-=", to be returned by the scanner.  */
-    static final int MINUS_ASSIGN = 260;
+    static final int MINUSE = 260;
     /** Token "*=", to be returned by the scanner.  */
-    static final int TIMES_ASSIGN = 261;
+    static final int TIMESE = 261;
     /** Token "/=", to be returned by the scanner.  */
-    static final int DIV_ASSIGN = 262;
+    static final int DIVE = 262;
     /** Token "%=", to be returned by the scanner.  */
-    static final int PERC_ASSIGN = 263;
+    static final int PERCE = 263;
     /** Token "||=", to be returned by the scanner.  */
-    static final int PIPE_PIPE_ASSIGN = 264;
+    static final int ORE = 264;
     /** Token "&&=", to be returned by the scanner.  */
-    static final int AMP_AMP_ASSIGN = 265;
+    static final int ANDE = 265;
     /** Token "&=", to be returned by the scanner.  */
-    static final int AMP_ASSIGN = 266;
+    static final int AMPE = 266;
     /** Token "|=", to be returned by the scanner.  */
-    static final int PIPE_ASSIGN = 267;
+    static final int PIPEE = 267;
     /** Token "<<=", to be returned by the scanner.  */
-    static final int LT_LT_ASSIGN = 268;
+    static final int LSHIFTE = 268;
     /** Token ">>=", to be returned by the scanner.  */
-    static final int GT_GT_ASSIGN = 269;
+    static final int RSHIFTE = 269;
     /** Token "++", to be returned by the scanner.  */
-    static final int PLUS_PLUS = 270;
+    static final int SUCC = 270;
     /** Token "--", to be returned by the scanner.  */
-    static final int MINUS_MINUS = 271;
+    static final int DEC = 271;
     /** Token "&&", to be returned by the scanner.  */
-    static final int AMP_AMP = 272;
+    static final int AND = 272;
     /** Token "||", to be returned by the scanner.  */
-    static final int PIPE_PIPE = 273;
+    static final int OR = 273;
     /** Token "<<", to be returned by the scanner.  */
-    static final int LT_LT = 274;
+    static final int LSHIFT = 274;
     /** Token ">>", to be returned by the scanner.  */
-    static final int GT_GT = 275;
+    static final int RSHIFT = 275;
     /** Token "..", to be returned by the scanner.  */
     static final int DOTS = 276;
     /** Token "==", to be returned by the scanner.  */
-    static final int EQ_EQ = 277;
+    static final int EQ = 277;
     /** Token "<=", to be returned by the scanner.  */
-    static final int LT_EQ = 278;
+    static final int LE = 278;
     /** Token ">=", to be returned by the scanner.  */
-    static final int GT_EQ = 279;
+    static final int GE = 279;
     /** Token "!=", to be returned by the scanner.  */
-    static final int BANG_EQ = 280;
+    static final int NE = 280;
     /** Token "boolean", to be returned by the scanner.  */
     static final int BOOLEAN = 281;
     /** Token "break", to be returned by the scanner.  */
     static final int BREAK = 282;
+    /** Token "case", to be returned by the scanner.  */
+    static final int CASE = 283;
     /** Token "char", to be returned by the scanner.  */
-    static final int CHAR = 283;
+    static final int CHAR = 284;
     /** Token "class", to be returned by the scanner.  */
-    static final int CLASS = 284;
+    static final int CLASS = 285;
     /** Token "comparable", to be returned by the scanner.  */
-    static final int COMPARABLE = 285;
+    static final int COMPARABLE = 286;
     /** Token "const", to be returned by the scanner.  */
-    static final int CONST = 286;
+    static final int CONST = 287;
     /** Token "continue", to be returned by the scanner.  */
-    static final int CONTINUE = 287;
+    static final int CONTINUE = 288;
+    /** Token "default", to be returned by the scanner.  */
+    static final int DEFAULT = 289;
     /** Token "do", to be returned by the scanner.  */
-    static final int DO = 288;
+    static final int DO = 290;
     /** Token "else", to be returned by the scanner.  */
-    static final int ELSE = 289;
+    static final int ELSE = 291;
     /** Token "enum", to be returned by the scanner.  */
-    static final int ENUM = 290;
+    static final int ENUM = 292;
     /** Token "equivalent", to be returned by the scanner.  */
-    static final int EQUIVALENT = 291;
+    static final int EQUIVALENT = 293;
     /** Token "extends", to be returned by the scanner.  */
-    static final int EXTENDS = 292;
+    static final int EXTENDS = 294;
     /** Token "final", to be returned by the scanner.  */
-    static final int FINAL = 293;
+    static final int FINAL = 295;
     /** Token "float", to be returned by the scanner.  */
-    static final int FLOAT = 294;
+    static final int FLOAT = 296;
     /** Token "for", to be returned by the scanner.  */
-    static final int FOR = 295;
+    static final int FOR = 297;
     /** Token "foreach", to be returned by the scanner.  */
-    static final int FOREACH = 296;
+    static final int FOREACH = 298;
     /** Token "function", to be returned by the scanner.  */
-    static final int FUNCTION = 297;
+    static final int FUNCTION = 299;
     /** Token "if", to be returned by the scanner.  */
-    static final int IF = 298;
+    static final int IF = 300;
     /** Token "implements", to be returned by the scanner.  */
-    static final int IMPLEMENTS = 299;
+    static final int IMPLEMENTS = 301;
     /** Token "import", to be returned by the scanner.  */
-    static final int IMPORT = 300;
+    static final int IMPORT = 302;
     /** Token "in", to be returned by the scanner.  */
-    static final int IN = 301;
+    static final int IN = 303;
     /** Token "integer", to be returned by the scanner.  */
-    static final int INTEGER = 302;
+    static final int INTEGER = 304;
     /** Token "interface", to be returned by the scanner.  */
-    static final int INTERFACE = 303;
+    static final int INTERFACE = 305;
     /** Token "list", to be returned by the scanner.  */
-    static final int LIST = 304;
+    static final int LIST = 306;
     /** Token "map", to be returned by the scanner.  */
-    static final int MAP = 305;
+    static final int MAP = 307;
     /** Token "main", to be returned by the scanner.  */
-    static final int MAIN = 306;
+    static final int MAIN = 308;
     /** Token "new", to be returned by the scanner.  */
-    static final int NEW = 307;
+    static final int NEW = 309;
     /** Token "null", to be returned by the scanner.  */
-    static final int NULL = 308;
-    /** Token "operator", to be returned by the scanner.  */
-    static final int OPERATOR = 309;
+    static final int NULL = 310;
     /** Token "private", to be returned by the scanner.  */
-    static final int PRIVATE = 310;
+    static final int PRIVATE = 311;
     /** Token "protected", to be returned by the scanner.  */
-    static final int PROTECTED = 311;
+    static final int PROTECTED = 312;
     /** Token "public", to be returned by the scanner.  */
-    static final int PUBLIC = 312;
+    static final int PUBLIC = 313;
     /** Token "procedure", to be returned by the scanner.  */
-    static final int PROCEDURE = 313;
+    static final int PROCEDURE = 314;
     /** Token "range", to be returned by the scanner.  */
-    static final int RANGE = 314;
+    static final int RANGE = 315;
     /** Token "readln", to be returned by the scanner.  */
-    static final int READLN = 315;
+    static final int READLN = 316;
     /** Token "return", to be returned by the scanner.  */
-    static final int RETURN = 316;
+    static final int RETURN = 317;
     /** Token "set", to be returned by the scanner.  */
-    static final int SET = 317;
+    static final int SET = 318;
     /** Token "string", to be returned by the scanner.  */
-    static final int STRING = 318;
+    static final int STRING = 319;
+    /** Token "switch", to be returned by the scanner.  */
+    static final int SWITCH = 320;
     /** Token "this", to be returned by the scanner.  */
-    static final int THIS = 319;
+    static final int THIS = 321;
     /** Token "type", to be returned by the scanner.  */
-    static final int TYPE = 320;
+    static final int TYPE = 322;
     /** Token "virtual", to be returned by the scanner.  */
-    static final int VIRTUAL = 321;
+    static final int VIRTUAL = 323;
     /** Token "write", to be returned by the scanner.  */
-    static final int WRITE = 322;
+    static final int WRITE = 324;
     /** Token "writeln", to be returned by the scanner.  */
-    static final int WRITELN = 323;
+    static final int WRITELN = 325;
     /** Token "while", to be returned by the scanner.  */
-    static final int WHILE = 324;
+    static final int WHILE = 326;
     /** Token IDENTIFIER, to be returned by the scanner.  */
-    static final int IDENTIFIER = 325;
-    /** Token LITTERAL_STRING, to be returned by the scanner.  */
-    static final int LITTERAL_STRING = 326;
-    /** Token NUMBER_INTEGER, to be returned by the scanner.  */
-    static final int NUMBER_INTEGER = 327;
-    /** Token LITTERAL_CHAR, to be returned by the scanner.  */
-    static final int LITTERAL_CHAR = 328;
-    /** Token NUMBER_FLOAT, to be returned by the scanner.  */
-    static final int NUMBER_FLOAT = 329;
+    static final int IDENTIFIER = 327;
+    /** Token CONSTANT_STRING, to be returned by the scanner.  */
+    static final int CONSTANT_STRING = 328;
+    /** Token CONSTANT_INTEGER, to be returned by the scanner.  */
+    static final int CONSTANT_INTEGER = 329;
+    /** Token CONSTANT_CHAR, to be returned by the scanner.  */
+    static final int CONSTANT_CHAR = 330;
+    /** Token CONSTANT_FLOAT, to be returned by the scanner.  */
+    static final int CONSTANT_FLOAT = 331;
+    /** Token ASSIGNED_VARIABLE, to be returned by the scanner.  */
+    static final int ASSIGNED_VARIABLE = 332;
     /** Token WITHOUT_ELSE, to be returned by the scanner.  */
-    static final int WITHOUT_ELSE = 330;
+    static final int WITHOUT_ELSE = 333;
     /** Token DETERMINER, to be returned by the scanner.  */
-    static final int DETERMINER = 331;
+    static final int DETERMINER = 334;
     /** Token SPECIFIER, to be returned by the scanner.  */
-    static final int SPECIFIER = 332;
+    static final int SPECIFIER = 335;
     /** Token LEFTPLUSPLUS, to be returned by the scanner.  */
-    static final int LEFTPLUSPLUS = 333;
+    static final int LEFTPLUSPLUS = 336;
     /** Token LEFTMINUSMINUS, to be returned by the scanner.  */
-    static final int LEFTMINUSMINUS = 334;
+    static final int LEFTMINUSMINUS = 337;
     /** Token UMINUS, to be returned by the scanner.  */
-    static final int UMINUS = 335;
+    static final int UMINUS = 338;
 
     /** Deprecated, use YYEOF instead.  */
     public static final int EOF = YYEOF;
@@ -925,7 +956,7 @@ public class Parser
       return yydefgoto_[yysym - YYNTOKENS_];
   }
 
-  private int yyaction(int yyn, YYStack yystack, int yylen) throws EnvironmentException, TypeException
+  private int yyaction(int yyn, YYStack yystack, int yylen) throws EnvironmentException, TypeException, StreeException
   {
     /* If YYLEN is nonzero, implement the default value of the action:
        '$$ = $1'.  Otherwise, use the top of the stack.
@@ -940,875 +971,1134 @@ public class Parser
 
     switch (yyn)
       {
-          case 28: /* typeDefinition: "type" IDENTIFIER ":=" typeExpr  */
-  if (yyn == 28)
-    /* "/home/altyriss/MEGAsync/Informatique/L3/Compilation/MiniProjet/miniprojet/parser/Parser.y":211  */
+          case 8: /* declaration: "class" IDENTIFIER implements extends '{' push_environment class_definition pop_environment '}'  */
+  if (yyn == 8)
+    /* "/home/fnoury/L3/Compilation/projet-20210420/parser/Parser.y":170  */
+                                                                                                        { classEnvironment.put(((String)(yystack.valueAt (7))), ((Type)(yystack.valueAt (2)))); };
+  break;
+
+
+  case 9: /* declaration: "class" "main" '{' push_environment class_definition pop_environment '}'  */
+  if (yyn == 9)
+    /* "/home/fnoury/L3/Compilation/projet-20210420/parser/Parser.y":171  */
+                                                                                   { classEnvironment.put("main", ((Type)(yystack.valueAt (2)))); };
+  break;
+
+
+  case 10: /* declaration: "interface" IDENTIFIER extends_public '{' push_environment interface_definition pop_environment '}'  */
+  if (yyn == 10)
+    /* "/home/fnoury/L3/Compilation/projet-20210420/parser/Parser.y":172  */
+                                                                                                              { interfaceEnvironment.put(((String)(yystack.valueAt (6))), ((Type)(yystack.valueAt (2)))); };
+  break;
+
+
+  case 21: /* class_definition: %empty  */
+  if (yyn == 21)
+    /* "/home/fnoury/L3/Compilation/projet-20210420/parser/Parser.y":201  */
+               {yyval = null;};
+  break;
+
+
+  case 22: /* class_definition: class_definition_head class_definition  */
+  if (yyn == 22)
+    /* "/home/fnoury/L3/Compilation/projet-20210420/parser/Parser.y":203  */
+        {
+		if (((Type)(yystack.valueAt (1))) == null)
+			yyval = ((Type)(yystack.valueAt (0)));
+		else {
+			if (((Type)(yystack.valueAt (0))) == null) 
+				yyval = ((Type)(yystack.valueAt (1))); 
+			else 
+				yyval = new TypeExpression(Tag.PRODUCT, ((Type)(yystack.valueAt (1))), ((Type)(yystack.valueAt (0)))); 
+		}
+	};
+  break;
+
+
+  case 23: /* class_definition_head: type_definition  */
+  if (yyn == 23)
+    /* "/home/fnoury/L3/Compilation/projet-20210420/parser/Parser.y":216  */
+                        {yyval = null;};
+  break;
+
+
+  case 24: /* class_definition_head: const_definition  */
+  if (yyn == 24)
+    /* "/home/fnoury/L3/Compilation/projet-20210420/parser/Parser.y":217  */
+                           {yyval = ((Type)(yystack.valueAt (0)));};
+  break;
+
+
+  case 25: /* class_definition_head: attribute_definition  */
+  if (yyn == 25)
+    /* "/home/fnoury/L3/Compilation/projet-20210420/parser/Parser.y":218  */
+                               {yyval = ((Type)(yystack.valueAt (0)));};
+  break;
+
+
+  case 26: /* class_definition_head: method_definition  */
+  if (yyn == 26)
+    /* "/home/fnoury/L3/Compilation/projet-20210420/parser/Parser.y":219  */
+                            {yyval = ((Type)(yystack.valueAt (0)));};
+  break;
+
+
+  case 27: /* type_definition: "type" IDENTIFIER ":=" type_expression  */
+  if (yyn == 27)
+    /* "/home/fnoury/L3/Compilation/projet-20210420/parser/Parser.y":224  */
         {
 		typeEnvironment.put(((String)(yystack.valueAt (2))), ((Type)(yystack.valueAt (0))));
 	};
   break;
 
 
-  case 29: /* constDefinition: "const" IDENTIFIER ":=" constExpr  */
-  if (yyn == 29)
-    /* "/home/altyriss/MEGAsync/Informatique/L3/Compilation/MiniProjet/miniprojet/parser/Parser.y":218  */
+  case 28: /* const_definition: "const" IDENTIFIER ":=" const_expression  */
+  if (yyn == 28)
+    /* "/home/fnoury/L3/Compilation/projet-20210420/parser/Parser.y":231  */
         {
-		constEnvironment.put(((String)(yystack.valueAt (2))), ((Type)(yystack.valueAt (0))));
 	};
   break;
 
 
-  case 30: /* attributeDefinition: determiner IDENTIFIER ':' typeExpr ';'  */
-  if (yyn == 30)
-    /* "/home/altyriss/MEGAsync/Informatique/L3/Compilation/MiniProjet/miniprojet/parser/Parser.y":225  */
+  case 29: /* attribute_definition: determiner IDENTIFIER ':' type_expression ';'  */
+  if (yyn == 29)
+    /* "/home/fnoury/L3/Compilation/projet-20210420/parser/Parser.y":237  */
         {
-		varEnvironment.put(((String)(yystack.valueAt (3))), ((Type)(yystack.valueAt (1))));
+		localVarEnvironment.put(((String)(yystack.valueAt (3))), ((Type)(yystack.valueAt (1))));
+		yyval = new TypeExpression(Tag.FIELD, ((Type)(yystack.valueAt (1))), ((String)(yystack.valueAt (3))));
 	};
+  break;
+
+
+  case 30: /* push_environment: %empty  */
+  if (yyn == 30)
+    /* "/home/fnoury/L3/Compilation/projet-20210420/parser/Parser.y":244  */
+               { 
+		localVarEnvironment.push(new MapEnvironment<Type>(localVarEnvironment.getName() + '(' + localVarEnvironment.size() + ')', true)); };
+  break;
+
+
+  case 31: /* pop_environment: %empty  */
+  if (yyn == 31)
+    /* "/home/fnoury/L3/Compilation/projet-20210420/parser/Parser.y":249  */
+               { localVarEnvironment.pop(); };
   break;
 
 
   case 32: /* $@1: %empty  */
   if (yyn == 32)
-    /* "/home/altyriss/MEGAsync/Informatique/L3/Compilation/MiniProjet/miniprojet/parser/Parser.y":233  */
-        {
-		varEnvironment.put(((String)(yystack.valueAt (3))), new TypeExpr(TType.FUNCTION, ((Type)(yystack.valueAt (1))), new TypeExpr(TType.VOID)));
+    /* "/home/fnoury/L3/Compilation/projet-20210420/parser/Parser.y":255  */
+        { 
+		type = new TypeExpression(Tag.FUNCTION, ((Type)(yystack.valueAt (1))), new TypeExpression(Tag.VOID));
+		localVarEnvironment.put("main", type);
 	};
   break;
 
 
-  case 34: /* $@2: %empty  */
+  case 33: /* $@2: %empty  */
+  if (yyn == 33)
+    /* "/home/fnoury/L3/Compilation/projet-20210420/parser/Parser.y":259  */
+                         {localVarEnvironment.put(((Type)(yystack.valueAt (3))));};
+  break;
+
+
+  case 34: /* method_definition: "main" '(' args_definition ')' $@1 push_environment $@2 block pop_environment  */
   if (yyn == 34)
-    /* "/home/altyriss/MEGAsync/Informatique/L3/Compilation/MiniProjet/miniprojet/parser/Parser.y":238  */
-        {
-		varEnvironment.put(((String)(yystack.valueAt (3))), new TypeExpr(TType.FUNCTION, ((Type)(yystack.valueAt (1))), new TypeExpr(TType.VOID)));
+    /* "/home/fnoury/L3/Compilation/projet-20210420/parser/Parser.y":260  */
+        { 
+		yyval = new TypeExpression(Tag.FIELD, type, "main"); 
+		try {
+			System.out.println(((Stree)(yystack.valueAt (1))).getStm());
+			((Stree)(yystack.valueAt (1))).getStm().toDotFile("data/" + yystack.locationAt (8).toString() + "_main.dot");
+		}
+		catch (StreeException e) {
+			yyerror(yystack.locationAt (8), e.getMessage());
+		}
+		//yyerror(@8, $8.toString());
 	};
   break;
 
 
-  case 36: /* $@3: %empty  */
+  case 35: /* $@3: %empty  */
+  if (yyn == 35)
+    /* "/home/fnoury/L3/Compilation/projet-20210420/parser/Parser.y":274  */
+        {
+		type = new TypeExpression(Tag.FUNCTION, ((Type)(yystack.valueAt (1))), new TypeExpression(Tag.VOID));
+		localVarEnvironment.put(((String)(yystack.valueAt (3))), type);
+	};
+  break;
+
+
+  case 36: /* $@4: %empty  */
   if (yyn == 36)
-    /* "/home/altyriss/MEGAsync/Informatique/L3/Compilation/MiniProjet/miniprojet/parser/Parser.y":243  */
-        {
-		varEnvironment.put(((String)(yystack.valueAt (3))), new TypeExpr(TType.FUNCTION, ((Type)(yystack.valueAt (1))), new TypeExpr(TType.VOID)));
+    /* "/home/fnoury/L3/Compilation/projet-20210420/parser/Parser.y":278  */
+                         {localVarEnvironment.put(((Type)(yystack.valueAt (3))));};
+  break;
+
+
+  case 37: /* method_definition: determiner IDENTIFIER '(' args_definition ')' $@3 push_environment $@4 block pop_environment  */
+  if (yyn == 37)
+    /* "/home/fnoury/L3/Compilation/projet-20210420/parser/Parser.y":279  */
+        { 
+		yyval = new TypeExpression(Tag.FIELD, type, ((String)(yystack.valueAt (8)))); 
+		try {
+			System.out.println(((Stree)(yystack.valueAt (1))).getStm());
+			((Stree)(yystack.valueAt (1))).getStm().toDotFile("data/" + yystack.locationAt (8).toString() + '_' + ((String)(yystack.valueAt (8))) + ".dot");
+		}
+		catch (StreeException e) {
+			yyerror(yystack.locationAt (9), e.getMessage());
+		}
+		//yyerror(@9, $9.toString());
 	};
   break;
 
 
-  case 38: /* $@4: %empty  */
+  case 38: /* $@5: %empty  */
   if (yyn == 38)
-    /* "/home/altyriss/MEGAsync/Informatique/L3/Compilation/MiniProjet/miniprojet/parser/Parser.y":248  */
+    /* "/home/fnoury/L3/Compilation/projet-20210420/parser/Parser.y":293  */
         {
-		varEnvironment.put(((String)(yystack.valueAt (3))), new TypeExpr(TType.FUNCTION, ((Type)(yystack.valueAt (1))), new TypeExpr(TType.VOID)));
+		type = new TypeExpression(Tag.FUNCTION, ((Type)(yystack.valueAt (1))), new TypeExpression(Tag.VOID));
+		localVarEnvironment.put(((String)(yystack.valueAt (3))), type);
 	};
   break;
 
 
-  case 40: /* $@5: %empty  */
+  case 39: /* $@6: %empty  */
+  if (yyn == 39)
+    /* "/home/fnoury/L3/Compilation/projet-20210420/parser/Parser.y":297  */
+                         {};
+  break;
+
+
+  case 40: /* method_definition: determiner IDENTIFIER '(' args_definition ')' $@5 push_environment $@6 ';' pop_environment  */
   if (yyn == 40)
-    /* "/home/altyriss/MEGAsync/Informatique/L3/Compilation/MiniProjet/miniprojet/parser/Parser.y":253  */
-        {
-		varEnvironment.put(((String)(yystack.valueAt (5))), new TypeExpr(TType.FUNCTION, ((Type)(yystack.valueAt (3))), ((Type)(yystack.valueAt (0)))));
+    /* "/home/fnoury/L3/Compilation/projet-20210420/parser/Parser.y":298  */
+        { 
+		yyval = new TypeExpression(Tag.FIELD, type, ((String)(yystack.valueAt (8)))); 
 	};
   break;
 
 
-  case 42: /* $@6: %empty  */
+  case 41: /* $@7: %empty  */
+  if (yyn == 41)
+    /* "/home/fnoury/L3/Compilation/projet-20210420/parser/Parser.y":304  */
+        {
+		type = new TypeExpression(Tag.FUNCTION, ((Type)(yystack.valueAt (1))), new TypeExpression(Tag.VOID));
+		localVarEnvironment.put(((String)(yystack.valueAt (3))), type);
+	};
+  break;
+
+
+  case 42: /* $@8: %empty  */
   if (yyn == 42)
-    /* "/home/altyriss/MEGAsync/Informatique/L3/Compilation/MiniProjet/miniprojet/parser/Parser.y":258  */
-        {
-		varEnvironment.put(((String)(yystack.valueAt (5))), new TypeExpr(TType.FUNCTION, ((Type)(yystack.valueAt (3))), ((Type)(yystack.valueAt (0)))));
+    /* "/home/fnoury/L3/Compilation/projet-20210420/parser/Parser.y":308  */
+                         {localVarEnvironment.put(((Type)(yystack.valueAt (3))));};
+  break;
+
+
+  case 43: /* method_definition: determiner specifier "procedure" IDENTIFIER '(' args_definition ')' $@7 push_environment $@8 block pop_environment  */
+  if (yyn == 43)
+    /* "/home/fnoury/L3/Compilation/projet-20210420/parser/Parser.y":309  */
+        { 
+		yyval = new TypeExpression(Tag.PRODUCT, type, ((String)(yystack.valueAt (8)))); 
+		try {
+			System.out.println(((Stree)(yystack.valueAt (1))).getStm());
+			((Stree)(yystack.valueAt (1))).getStm().toDotFile("data/" + yystack.locationAt (8).toString() + '_' + ((String)(yystack.valueAt (8))) + ".dot");
+		}
+		catch (StreeException e) {
+			yyerror(yystack.locationAt (11), e.getMessage());
+		}
+		//yyerror(@11, $11.toString());
 	};
   break;
 
 
-  case 44: /* $@7: %empty  */
+  case 44: /* $@9: %empty  */
   if (yyn == 44)
-    /* "/home/altyriss/MEGAsync/Informatique/L3/Compilation/MiniProjet/miniprojet/parser/Parser.y":263  */
+    /* "/home/fnoury/L3/Compilation/projet-20210420/parser/Parser.y":323  */
         {
-		varEnvironment.put(((String)(yystack.valueAt (5))), new TypeExpr(TType.FUNCTION, ((Type)(yystack.valueAt (3))), ((Type)(yystack.valueAt (0)))));
+		type = new TypeExpression(Tag.FUNCTION, ((Type)(yystack.valueAt (1))), new TypeExpression(Tag.VOID));
+		localVarEnvironment.put(((String)(yystack.valueAt (3))), type);
 	};
   break;
 
 
-  case 46: /* $@8: %empty  */
+  case 45: /* $@10: %empty  */
+  if (yyn == 45)
+    /* "/home/fnoury/L3/Compilation/projet-20210420/parser/Parser.y":327  */
+                         {};
+  break;
+
+
+  case 46: /* method_definition: determiner specifier "procedure" IDENTIFIER '(' args_definition ')' $@9 push_environment $@10 ';' pop_environment  */
   if (yyn == 46)
-    /* "/home/altyriss/MEGAsync/Informatique/L3/Compilation/MiniProjet/miniprojet/parser/Parser.y":268  */
-        {
-		varEnvironment.put(((String)(yystack.valueAt (5))), new TypeExpr(TType.FUNCTION, ((Type)(yystack.valueAt (3))), ((Type)(yystack.valueAt (0)))));
+    /* "/home/fnoury/L3/Compilation/projet-20210420/parser/Parser.y":328  */
+        { 
+		yyval = new TypeExpression(Tag.FIELD, type, ((String)(yystack.valueAt (8)))); 
 	};
   break;
 
 
-  case 55: /* user_defined_operators: "&&"  */
-  if (yyn == 55)
-    /* "/home/altyriss/MEGAsync/Informatique/L3/Compilation/MiniProjet/miniprojet/parser/Parser.y":288  */
-                                {yyval = "&&";};
+  case 47: /* $@11: %empty  */
+  if (yyn == 47)
+    /* "/home/fnoury/L3/Compilation/projet-20210420/parser/Parser.y":334  */
+        {
+		type = new TypeExpression(Tag.FUNCTION, ((Type)(yystack.valueAt (3))), ((Type)(yystack.valueAt (0))));
+		localVarEnvironment.put(((String)(yystack.valueAt (5))), type);
+	};
   break;
 
 
-  case 56: /* user_defined_operators: "||"  */
-  if (yyn == 56)
-    /* "/home/altyriss/MEGAsync/Informatique/L3/Compilation/MiniProjet/miniprojet/parser/Parser.y":289  */
-                                {yyval = "||";};
+  case 48: /* $@12: %empty  */
+  if (yyn == 48)
+    /* "/home/fnoury/L3/Compilation/projet-20210420/parser/Parser.y":338  */
+                         {localVarEnvironment.put(((Type)(yystack.valueAt (5))));};
   break;
 
 
-  case 57: /* user_defined_operators: '!'  */
-  if (yyn == 57)
-    /* "/home/altyriss/MEGAsync/Informatique/L3/Compilation/MiniProjet/miniprojet/parser/Parser.y":290  */
-                                {yyval = "!";};
+  case 49: /* method_definition: determiner specifier "function" IDENTIFIER '(' args_definition ')' ':' type_expression $@11 push_environment $@12 block pop_environment  */
+  if (yyn == 49)
+    /* "/home/fnoury/L3/Compilation/projet-20210420/parser/Parser.y":339  */
+        { 
+		yyval = new TypeExpression(Tag.FIELD, type, ((String)(yystack.valueAt (10)))); 
+		try {
+			System.out.println(((Stree)(yystack.valueAt (1))).getStm());
+			((Stree)(yystack.valueAt (1))).getStm().toDotFile("data/" + yystack.locationAt (10).toString() + '_' + ((String)(yystack.valueAt (10))) + ".dot");
+		}
+		catch (StreeException e) {
+			yyerror(yystack.locationAt (13), e.getMessage());
+		}
+		//yyerror(@13, $13.toString());
+	};
   break;
 
 
-  case 58: /* user_defined_operators: '<'  */
-  if (yyn == 58)
-    /* "/home/altyriss/MEGAsync/Informatique/L3/Compilation/MiniProjet/miniprojet/parser/Parser.y":291  */
-                                {yyval = "<";};
+  case 50: /* $@13: %empty  */
+  if (yyn == 50)
+    /* "/home/fnoury/L3/Compilation/projet-20210420/parser/Parser.y":353  */
+        {
+		type = new TypeExpression(Tag.FUNCTION, ((Type)(yystack.valueAt (3))), ((Type)(yystack.valueAt (0))));
+		localVarEnvironment.put(((String)(yystack.valueAt (5))), type);
+	};
   break;
 
 
-  case 59: /* user_defined_operators: "<="  */
-  if (yyn == 59)
-    /* "/home/altyriss/MEGAsync/Informatique/L3/Compilation/MiniProjet/miniprojet/parser/Parser.y":292  */
-                                {yyval = "<=";};
+  case 51: /* $@14: %empty  */
+  if (yyn == 51)
+    /* "/home/fnoury/L3/Compilation/projet-20210420/parser/Parser.y":357  */
+                         {};
   break;
 
 
-  case 60: /* user_defined_operators: '>'  */
+  case 52: /* method_definition: determiner specifier "function" IDENTIFIER '(' args_definition ')' ':' type_expression $@13 push_environment $@14 ';' pop_environment  */
+  if (yyn == 52)
+    /* "/home/fnoury/L3/Compilation/projet-20210420/parser/Parser.y":358  */
+        { 
+		yyval = new TypeExpression(Tag.FIELD, type, ((String)(yystack.valueAt (10)))); 
+	};
+  break;
+
+
+  case 60: /* interface_definition: %empty  */
   if (yyn == 60)
-    /* "/home/altyriss/MEGAsync/Informatique/L3/Compilation/MiniProjet/miniprojet/parser/Parser.y":293  */
-                                {yyval = ">";};
-  break;
-
-
-  case 61: /* user_defined_operators: ">="  */
-  if (yyn == 61)
-    /* "/home/altyriss/MEGAsync/Informatique/L3/Compilation/MiniProjet/miniprojet/parser/Parser.y":294  */
-                                {yyval = ">=";};
-  break;
-
-
-  case 62: /* user_defined_operators: "=="  */
-  if (yyn == 62)
-    /* "/home/altyriss/MEGAsync/Informatique/L3/Compilation/MiniProjet/miniprojet/parser/Parser.y":295  */
-                                {yyval = "==";};
-  break;
-
-
-  case 63: /* user_defined_operators: "!="  */
-  if (yyn == 63)
-    /* "/home/altyriss/MEGAsync/Informatique/L3/Compilation/MiniProjet/miniprojet/parser/Parser.y":296  */
-                                {yyval = "!=";};
-  break;
-
-
-  case 64: /* user_defined_operators: '+'  */
-  if (yyn == 64)
-    /* "/home/altyriss/MEGAsync/Informatique/L3/Compilation/MiniProjet/miniprojet/parser/Parser.y":297  */
-                                {yyval = "+";};
-  break;
-
-
-  case 65: /* user_defined_operators: '-'  */
-  if (yyn == 65)
-    /* "/home/altyriss/MEGAsync/Informatique/L3/Compilation/MiniProjet/miniprojet/parser/Parser.y":298  */
-                                {yyval = "-";};
-  break;
-
-
-  case 66: /* user_defined_operators: '*'  */
-  if (yyn == 66)
-    /* "/home/altyriss/MEGAsync/Informatique/L3/Compilation/MiniProjet/miniprojet/parser/Parser.y":299  */
-                                {yyval = "*";};
-  break;
-
-
-  case 67: /* user_defined_operators: '/'  */
-  if (yyn == 67)
-    /* "/home/altyriss/MEGAsync/Informatique/L3/Compilation/MiniProjet/miniprojet/parser/Parser.y":300  */
-                                {yyval = "/";};
-  break;
-
-
-  case 68: /* user_defined_operators: '%'  */
-  if (yyn == 68)
-    /* "/home/altyriss/MEGAsync/Informatique/L3/Compilation/MiniProjet/miniprojet/parser/Parser.y":301  */
-                                {yyval = "%";};
-  break;
-
-
-  case 69: /* user_defined_operators: "++"  */
-  if (yyn == 69)
-    /* "/home/altyriss/MEGAsync/Informatique/L3/Compilation/MiniProjet/miniprojet/parser/Parser.y":302  */
-                                {yyval = "++";};
-  break;
-
-
-  case 70: /* user_defined_operators: "--"  */
-  if (yyn == 70)
-    /* "/home/altyriss/MEGAsync/Informatique/L3/Compilation/MiniProjet/miniprojet/parser/Parser.y":303  */
-                                {yyval = "--";};
-  break;
-
-
-  case 71: /* user_defined_operators: '&'  */
-  if (yyn == 71)
-    /* "/home/altyriss/MEGAsync/Informatique/L3/Compilation/MiniProjet/miniprojet/parser/Parser.y":304  */
-                                {yyval = "&";};
-  break;
-
-
-  case 72: /* user_defined_operators: '|'  */
-  if (yyn == 72)
-    /* "/home/altyriss/MEGAsync/Informatique/L3/Compilation/MiniProjet/miniprojet/parser/Parser.y":305  */
-                                {yyval = "|";};
-  break;
-
-
-  case 73: /* user_defined_operators: "<<"  */
-  if (yyn == 73)
-    /* "/home/altyriss/MEGAsync/Informatique/L3/Compilation/MiniProjet/miniprojet/parser/Parser.y":306  */
-                                {yyval = "<<";};
-  break;
-
-
-  case 74: /* user_defined_operators: ">>"  */
-  if (yyn == 74)
-    /* "/home/altyriss/MEGAsync/Informatique/L3/Compilation/MiniProjet/miniprojet/parser/Parser.y":307  */
-                                {yyval = ">>";};
-  break;
-
-
-  case 75: /* user_defined_operators: ":="  */
-  if (yyn == 75)
-    /* "/home/altyriss/MEGAsync/Informatique/L3/Compilation/MiniProjet/miniprojet/parser/Parser.y":308  */
-                                {yyval = ":=";};
-  break;
-
-
-  case 76: /* user_defined_operators: "+="  */
-  if (yyn == 76)
-    /* "/home/altyriss/MEGAsync/Informatique/L3/Compilation/MiniProjet/miniprojet/parser/Parser.y":309  */
-                                {yyval = "+=";};
-  break;
-
-
-  case 77: /* user_defined_operators: "-="  */
-  if (yyn == 77)
-    /* "/home/altyriss/MEGAsync/Informatique/L3/Compilation/MiniProjet/miniprojet/parser/Parser.y":310  */
-                                {yyval = "-=";};
-  break;
-
-
-  case 78: /* user_defined_operators: "*="  */
-  if (yyn == 78)
-    /* "/home/altyriss/MEGAsync/Informatique/L3/Compilation/MiniProjet/miniprojet/parser/Parser.y":311  */
-                                {yyval = "*=";};
-  break;
-
-
-  case 79: /* user_defined_operators: "/="  */
-  if (yyn == 79)
-    /* "/home/altyriss/MEGAsync/Informatique/L3/Compilation/MiniProjet/miniprojet/parser/Parser.y":312  */
-                                {yyval = "/=";};
-  break;
-
-
-  case 80: /* user_defined_operators: "%="  */
-  if (yyn == 80)
-    /* "/home/altyriss/MEGAsync/Informatique/L3/Compilation/MiniProjet/miniprojet/parser/Parser.y":313  */
-                                {yyval = "%=";};
-  break;
-
-
-  case 81: /* user_defined_operators: "||="  */
-  if (yyn == 81)
-    /* "/home/altyriss/MEGAsync/Informatique/L3/Compilation/MiniProjet/miniprojet/parser/Parser.y":314  */
-                                        {yyval = "||=";};
-  break;
-
-
-  case 82: /* user_defined_operators: "&&="  */
-  if (yyn == 82)
-    /* "/home/altyriss/MEGAsync/Informatique/L3/Compilation/MiniProjet/miniprojet/parser/Parser.y":315  */
-                                        {yyval = "&&=";};
-  break;
-
-
-  case 83: /* user_defined_operators: "&="  */
-  if (yyn == 83)
-    /* "/home/altyriss/MEGAsync/Informatique/L3/Compilation/MiniProjet/miniprojet/parser/Parser.y":316  */
-                                {yyval = "&=";};
-  break;
-
-
-  case 84: /* user_defined_operators: "|="  */
-  if (yyn == 84)
-    /* "/home/altyriss/MEGAsync/Informatique/L3/Compilation/MiniProjet/miniprojet/parser/Parser.y":317  */
-                                {yyval = "|=";};
-  break;
-
-
-  case 85: /* user_defined_operators: "<<="  */
-  if (yyn == 85)
-    /* "/home/altyriss/MEGAsync/Informatique/L3/Compilation/MiniProjet/miniprojet/parser/Parser.y":318  */
-                                        {yyval = "<<=";};
-  break;
-
-
-  case 86: /* user_defined_operators: ">>="  */
-  if (yyn == 86)
-    /* "/home/altyriss/MEGAsync/Informatique/L3/Compilation/MiniProjet/miniprojet/parser/Parser.y":319  */
-                                        {yyval = ">>=";};
-  break;
-
-
-  case 87: /* user_defined_operators: "[]"  */
-  if (yyn == 87)
-    /* "/home/altyriss/MEGAsync/Informatique/L3/Compilation/MiniProjet/miniprojet/parser/Parser.y":320  */
-                                {yyval = "[]";};
-  break;
-
-
-  case 90: /* typeExpr: "char"  */
-  if (yyn == 90)
-    /* "/home/altyriss/MEGAsync/Informatique/L3/Compilation/MiniProjet/miniprojet/parser/Parser.y":329  */
-                                                                                                {yyval = new TypeExpr(TType.CHAR);};
-  break;
-
-
-  case 91: /* typeExpr: "integer"  */
-  if (yyn == 91)
-    /* "/home/altyriss/MEGAsync/Informatique/L3/Compilation/MiniProjet/miniprojet/parser/Parser.y":330  */
-                                                                                        {yyval = new TypeExpr(TType.INTEGER);};
-  break;
-
-
-  case 92: /* typeExpr: "float"  */
-  if (yyn == 92)
-    /* "/home/altyriss/MEGAsync/Informatique/L3/Compilation/MiniProjet/miniprojet/parser/Parser.y":331  */
-                                                                                                {yyval = new TypeExpr(TType.FLOAT);};
-  break;
-
-
-  case 93: /* typeExpr: "boolean"  */
-  if (yyn == 93)
-    /* "/home/altyriss/MEGAsync/Informatique/L3/Compilation/MiniProjet/miniprojet/parser/Parser.y":332  */
-                                                                                        {yyval = new TypeExpr(TType.BOOLEAN);};
-  break;
-
-
-  case 94: /* typeExpr: "string"  */
-  if (yyn == 94)
-    /* "/home/altyriss/MEGAsync/Informatique/L3/Compilation/MiniProjet/miniprojet/parser/Parser.y":333  */
-                                                                                                {yyval = new TypeExpr(TType.STRING);};
-  break;
-
-
-  case 95: /* typeExpr: "enum" '<' typeNames '>'  */
-  if (yyn == 95)
-    /* "/home/altyriss/MEGAsync/Informatique/L3/Compilation/MiniProjet/miniprojet/parser/Parser.y":334  */
-                                                                                {yyval = new TypeExpr(TType.ENUM, ((Type)(yystack.valueAt (1))));};
-  break;
-
-
-  case 96: /* typeExpr: "range" '<' typeExpr '>'  */
-  if (yyn == 96)
-    /* "/home/altyriss/MEGAsync/Informatique/L3/Compilation/MiniProjet/miniprojet/parser/Parser.y":335  */
-                                                                                {yyval = new TypeExpr(TType.RANGE, ((Type)(yystack.valueAt (1))));};
-  break;
-
-
-  case 97: /* typeExpr: "list" '<' typeExpr '>'  */
-  if (yyn == 97)
-    /* "/home/altyriss/MEGAsync/Informatique/L3/Compilation/MiniProjet/miniprojet/parser/Parser.y":336  */
-                                                                {yyval = new TypeExpr(TType.LIST, ((Type)(yystack.valueAt (1))));};
-  break;
-
-
-  case 98: /* typeExpr: "set" '<' typeExpr '>'  */
-  if (yyn == 98)
-    /* "/home/altyriss/MEGAsync/Informatique/L3/Compilation/MiniProjet/miniprojet/parser/Parser.y":337  */
-                                                                {yyval = new TypeExpr(TType.SET, ((Type)(yystack.valueAt (1))));};
-  break;
-
-
-  case 99: /* typeExpr: "map" '<' typeExpr ',' typeExpr '>'  */
-  if (yyn == 99)
-    /* "/home/altyriss/MEGAsync/Informatique/L3/Compilation/MiniProjet/miniprojet/parser/Parser.y":338  */
-                                                {yyval = new TypeExpr(TType.MAP, ((Type)(yystack.valueAt (3))), ((Type)(yystack.valueAt (1))));};
-  break;
-
-
-  case 100: /* typeExpr: typePtrExpr  */
-  if (yyn == 100)
-    /* "/home/altyriss/MEGAsync/Informatique/L3/Compilation/MiniProjet/miniprojet/parser/Parser.y":339  */
-                                                                                {yyval = ((Type)(yystack.valueAt (0)));};
-  break;
-
-
-  case 101: /* typePtrExpr: IDENTIFIER '<' typeExprs '>'  */
-  if (yyn == 101)
-    /* "/home/altyriss/MEGAsync/Informatique/L3/Compilation/MiniProjet/miniprojet/parser/Parser.y":343  */
-                                                {yyval = new TypeExpr(TType.CLASS, ((String)(yystack.valueAt (3))), ((Type)(yystack.valueAt (1))));};
-  break;
-
-
-  case 102: /* typePtrExpr: IDENTIFIER  */
-  if (yyn == 102)
-    /* "/home/altyriss/MEGAsync/Informatique/L3/Compilation/MiniProjet/miniprojet/parser/Parser.y":344  */
-                                                                        {yyval = new TypeExpr(TType.CLASS, ((String)(yystack.valueAt (0))), null);};
-  break;
-
-
-  case 103: /* typeExprs: typeExprs ',' typeExpr  */
-  if (yyn == 103)
-    /* "/home/altyriss/MEGAsync/Informatique/L3/Compilation/MiniProjet/miniprojet/parser/Parser.y":348  */
-                                                                        {yyval = new TypeExpr(TType.PRODUCT, ((Type)(yystack.valueAt (2))), ((Type)(yystack.valueAt (0))));};
-  break;
-
-
-  case 104: /* typeExprs: typeExpr  */
-  if (yyn == 104)
-    /* "/home/altyriss/MEGAsync/Informatique/L3/Compilation/MiniProjet/miniprojet/parser/Parser.y":349  */
-                                                                                        {yyval = ((Type)(yystack.valueAt (0)));};
-  break;
-
-
-  case 105: /* typeNames: typeNames ',' typeName  */
-  if (yyn == 105)
-    /* "/home/altyriss/MEGAsync/Informatique/L3/Compilation/MiniProjet/miniprojet/parser/Parser.y":353  */
-                                                                        {yyval = new TypeExpr(TType.PRODUCT, ((Type)(yystack.valueAt (2))), ((Type)(yystack.valueAt (0))));};
-  break;
-
-
-  case 106: /* typeNames: typeName  */
-  if (yyn == 106)
-    /* "/home/altyriss/MEGAsync/Informatique/L3/Compilation/MiniProjet/miniprojet/parser/Parser.y":354  */
-                                                                                        {yyval = ((Type)(yystack.valueAt (0)));};
-  break;
-
-
-  case 107: /* typeName: IDENTIFIER  */
-  if (yyn == 107)
-    /* "/home/altyriss/MEGAsync/Informatique/L3/Compilation/MiniProjet/miniprojet/parser/Parser.y":358  */
-                                                                                        {yyval = new TypeExpr(TType.NAME, ((String)(yystack.valueAt (0))));};
-  break;
-
-
-  case 108: /* argsDefinition: argsDefinition ',' argDefinition  */
-  if (yyn == 108)
-    /* "/home/altyriss/MEGAsync/Informatique/L3/Compilation/MiniProjet/miniprojet/parser/Parser.y":362  */
-                                         {yyval = new TypeExpr(TType.PRODUCT, ((Type)(yystack.valueAt (2))), ((Type)(yystack.valueAt (0))));};
-  break;
-
-
-  case 109: /* argsDefinition: argDefinition  */
-  if (yyn == 109)
-    /* "/home/altyriss/MEGAsync/Informatique/L3/Compilation/MiniProjet/miniprojet/parser/Parser.y":363  */
-                        {yyval = ((Type)(yystack.valueAt (0)));};
-  break;
-
-
-  case 110: /* argDefinition: IDENTIFIER ':' typeExpr  */
-  if (yyn == 110)
-    /* "/home/altyriss/MEGAsync/Informatique/L3/Compilation/MiniProjet/miniprojet/parser/Parser.y":368  */
-        {
-		localVarEnvironment.put(((String)(yystack.valueAt (2))), ((Type)(yystack.valueAt (0))));
-		yyval = new TypeExpr(TType.FEATURE, ((String)(yystack.valueAt (2))), ((Type)(yystack.valueAt (0))));
-	};
-  break;
-
-
-  case 114: /* varDefinition: IDENTIFIER ':' typeExpr ';'  */
-  if (yyn == 114)
-    /* "/home/altyriss/MEGAsync/Informatique/L3/Compilation/MiniProjet/miniprojet/parser/Parser.y":384  */
-                                    {localVarEnvironment.put(((String)(yystack.valueAt (3))), ((Type)(yystack.valueAt (1))));};
-  break;
-
-
-  case 126: /* for_stm: "for" '(' assignedVariable ';' expr ';' expr ')' block  */
-  if (yyn == 126)
-    /* "/home/altyriss/MEGAsync/Informatique/L3/Compilation/MiniProjet/miniprojet/parser/Parser.y":405  */
-                                                              {
-		try{
-			Type type=((Type)(yystack.valueAt (4)));
-			Type booltype=new TypeExpr(TType.BOOLEAN);
-			type.assertEqual(booltype);
-		}catch(TypeException e){
-			yyerror(yystack.locationAt (8),e.getMessage());
-		}
-	};
-  break;
-
-
-  case 127: /* for_stm: "for" '(' assignedVariable ":=" constExpr ';' expr ';' expr ')' block  */
-  if (yyn == 127)
-    /* "/home/altyriss/MEGAsync/Informatique/L3/Compilation/MiniProjet/miniprojet/parser/Parser.y":414  */
-                                                                               {
-		try{
-        		Type type=((Type)(yystack.valueAt (4)));
-        		Type booltype=new TypeExpr(TType.BOOLEAN);
-        		type.assertEqual(booltype);
-        	}catch(TypeException e){
-        		yyerror(yystack.locationAt (10),e.getMessage());
-        	}
-	};
-  break;
-
-
-  case 128: /* for_stm: "for" '(' IDENTIFIER ':' typeExpr ';' expr ';' expr ')' block  */
-  if (yyn == 128)
-    /* "/home/altyriss/MEGAsync/Informatique/L3/Compilation/MiniProjet/miniprojet/parser/Parser.y":423  */
-                                                                       {
-		try{
-                        		Type type=((Type)(yystack.valueAt (4)));
-                        		Type booltype=new TypeExpr(TType.BOOLEAN);
-                        		type.assertEqual(booltype);
-                        		Environment<Type> forVarEnvironment = new MapEnvironment<Type>("for", true);
-                        		forVarEnvironment.put(((String)(yystack.valueAt (8))), ((Type)(yystack.valueAt (6))));
-                        	}catch(TypeException e){
-                        		yyerror(yystack.locationAt (10),e.getMessage());
-                        	}
-	};
-  break;
-
-
-  case 131: /* simple_stm: assignedVariable ":=" expr  */
-  if (yyn == 131)
-    /* "/home/altyriss/MEGAsync/Informatique/L3/Compilation/MiniProjet/miniprojet/parser/Parser.y":439  */
-                                   {((Type)(yystack.valueAt (2))).assertEqual(((Type)(yystack.valueAt (0))));};
-  break;
-
-
-  case 152: /* assignedVariable: IDENTIFIER  */
-  if (yyn == 152)
-    /* "/home/altyriss/MEGAsync/Informatique/L3/Compilation/MiniProjet/miniprojet/parser/Parser.y":464  */
-        {
-		yyval = forVarEnvironment.get(((String)(yystack.valueAt (0))));
-		if (yyval == null)
-			yyval = localVarEnvironment.get(((String)(yystack.valueAt (0))));
-		if (yyval == null)
-			yyval = varEnvironment.get(((String)(yystack.valueAt (0))));
-		if (yyval == null){
-			yyerror(yystack.locationAt (0),"unknown variable");
-			throw new EnvironmentException("unknown variable " + yyval);
-		}
-	};
-  break;
-
-
-  case 153: /* assignedVariable: IDENTIFIER '[' args ']'  */
-  if (yyn == 153)
-    /* "/home/altyriss/MEGAsync/Informatique/L3/Compilation/MiniProjet/miniprojet/parser/Parser.y":475  */
-                                  {yyval = null;};
-  break;
-
-
-  case 154: /* assignedVariable: assignedVariable '.' IDENTIFIER  */
-  if (yyn == 154)
-    /* "/home/altyriss/MEGAsync/Informatique/L3/Compilation/MiniProjet/miniprojet/parser/Parser.y":476  */
-                                          {yyval = null;};
-  break;
-
-
-  case 155: /* assignedVariable: "this"  */
-  if (yyn == 155)
-    /* "/home/altyriss/MEGAsync/Informatique/L3/Compilation/MiniProjet/miniprojet/parser/Parser.y":477  */
-                 {yyval = null;};
-  break;
-
-
-  case 156: /* methodName: IDENTIFIER  */
-  if (yyn == 156)
-    /* "/home/altyriss/MEGAsync/Informatique/L3/Compilation/MiniProjet/miniprojet/parser/Parser.y":482  */
-        {
-		yyval = localVarEnvironment.get(((String)(yystack.valueAt (0))));
-		if (yyval == null)
-			yyval = varEnvironment.get(((String)(yystack.valueAt (0))));
-		if (yyval == null){
-			yyerror(yystack.locationAt (0),"unknown method name");
-			throw new EnvironmentException("unknown method name " + yyval);
-		}
-	};
-  break;
-
-
-  case 157: /* methodName: assignedVariable '.' IDENTIFIER  */
-  if (yyn == 157)
-    /* "/home/altyriss/MEGAsync/Informatique/L3/Compilation/MiniProjet/miniprojet/parser/Parser.y":491  */
-                                          {Type type = ((Type)(yystack.valueAt (2))); yyval = null; /*to be completed*/};
-  break;
-
-
-  case 158: /* args: args ',' expr  */
-  if (yyn == 158)
-    /* "/home/altyriss/MEGAsync/Informatique/L3/Compilation/MiniProjet/miniprojet/parser/Parser.y":495  */
-                      {yyval = new TypeExpr(TType.PRODUCT, ((Type)(yystack.valueAt (2))), ((Type)(yystack.valueAt (0))));};
-  break;
-
-
-  case 159: /* args: expr  */
-  if (yyn == 159)
-    /* "/home/altyriss/MEGAsync/Informatique/L3/Compilation/MiniProjet/miniprojet/parser/Parser.y":496  */
-               {yyval = ((Type)(yystack.valueAt (0)));};
-  break;
-
-
-  case 160: /* constExpr: "null"  */
-  if (yyn == 160)
-    /* "/home/altyriss/MEGAsync/Informatique/L3/Compilation/MiniProjet/miniprojet/parser/Parser.y":500  */
-                                                                                        {yyval = new TypeExpr(TType.INTEGER);};
-  break;
-
-
-  case 161: /* constExpr: NUMBER_INTEGER  */
-  if (yyn == 161)
-    /* "/home/altyriss/MEGAsync/Informatique/L3/Compilation/MiniProjet/miniprojet/parser/Parser.y":501  */
-                                                                                {yyval = new TypeExpr(TType.INTEGER);};
-  break;
-
-
-  case 162: /* constExpr: NUMBER_FLOAT  */
-  if (yyn == 162)
-    /* "/home/altyriss/MEGAsync/Informatique/L3/Compilation/MiniProjet/miniprojet/parser/Parser.y":502  */
-                                                                                {yyval = new TypeExpr(TType.FLOAT);};
-  break;
-
-
-  case 163: /* constExpr: LITTERAL_CHAR  */
-  if (yyn == 163)
-    /* "/home/altyriss/MEGAsync/Informatique/L3/Compilation/MiniProjet/miniprojet/parser/Parser.y":503  */
-                                                                                {yyval = new TypeExpr(TType.CHAR);};
-  break;
-
-
-  case 164: /* constExpr: LITTERAL_STRING  */
-  if (yyn == 164)
-    /* "/home/altyriss/MEGAsync/Informatique/L3/Compilation/MiniProjet/miniprojet/parser/Parser.y":504  */
-                                                                                {yyval = new TypeExpr(TType.STRING);};
-  break;
-
-
-  case 165: /* constExpr: '[' NUMBER_INTEGER ".." NUMBER_INTEGER ']'  */
-  if (yyn == 165)
-    /* "/home/altyriss/MEGAsync/Informatique/L3/Compilation/MiniProjet/miniprojet/parser/Parser.y":505  */
-                                                        {yyval = new TypeExpr(TType.RANGE);};
-  break;
-
-
-  case 166: /* expr: constExpr  */
-  if (yyn == 166)
-    /* "/home/altyriss/MEGAsync/Informatique/L3/Compilation/MiniProjet/miniprojet/parser/Parser.y":509  */
-                                                        {yyval = ((Type)(yystack.valueAt (0)));};
-  break;
-
-
-  case 167: /* expr: assignedVariable  */
-  if (yyn == 167)
-    /* "/home/altyriss/MEGAsync/Informatique/L3/Compilation/MiniProjet/miniprojet/parser/Parser.y":510  */
-                                                {yyval = ((Type)(yystack.valueAt (0)));};
-  break;
-
-
-  case 168: /* expr: methodName '(' args ')'  */
-  if (yyn == 168)
-    /* "/home/altyriss/MEGAsync/Informatique/L3/Compilation/MiniProjet/miniprojet/parser/Parser.y":511  */
-                                        {Type type = ((Type)(yystack.valueAt (3))); if (type != null) yyval = type.getRight(); else yyval = null;};
-  break;
-
-
-  case 169: /* expr: "new" typePtrExpr '(' args_opt ')'  */
-  if (yyn == 169)
-    /* "/home/altyriss/MEGAsync/Informatique/L3/Compilation/MiniProjet/miniprojet/parser/Parser.y":512  */
-                                                                {yyval = ((Type)(yystack.valueAt (3)));};
-  break;
-
-
-  case 170: /* expr: expr "&&" expr  */
-  if (yyn == 170)
-    /* "/home/altyriss/MEGAsync/Informatique/L3/Compilation/MiniProjet/miniprojet/parser/Parser.y":513  */
-                                                        {yyval = ((Type)(yystack.valueAt (2)));};
-  break;
-
-
-  case 171: /* expr: expr "||" expr  */
-  if (yyn == 171)
-    /* "/home/altyriss/MEGAsync/Informatique/L3/Compilation/MiniProjet/miniprojet/parser/Parser.y":514  */
-                                                        {yyval = ((Type)(yystack.valueAt (2)));};
-  break;
-
-
-  case 172: /* expr: '!' expr  */
-  if (yyn == 172)
-    /* "/home/altyriss/MEGAsync/Informatique/L3/Compilation/MiniProjet/miniprojet/parser/Parser.y":515  */
-                                                        {yyval = ((Type)(yystack.valueAt (0)));};
-  break;
-
-
-  case 173: /* expr: expr '<' expr  */
-  if (yyn == 173)
-    /* "/home/altyriss/MEGAsync/Informatique/L3/Compilation/MiniProjet/miniprojet/parser/Parser.y":516  */
-                                                {yyval = new TypeExpr(TType.BOOLEAN);};
-  break;
-
-
-  case 174: /* expr: expr "<=" expr  */
-  if (yyn == 174)
-    /* "/home/altyriss/MEGAsync/Informatique/L3/Compilation/MiniProjet/miniprojet/parser/Parser.y":517  */
-                                                        {yyval = new TypeExpr(TType.BOOLEAN);};
-  break;
-
-
-  case 175: /* expr: expr '>' expr  */
-  if (yyn == 175)
-    /* "/home/altyriss/MEGAsync/Informatique/L3/Compilation/MiniProjet/miniprojet/parser/Parser.y":518  */
-                                                {yyval = new TypeExpr(TType.BOOLEAN);};
-  break;
-
-
-  case 176: /* expr: expr ">=" expr  */
-  if (yyn == 176)
-    /* "/home/altyriss/MEGAsync/Informatique/L3/Compilation/MiniProjet/miniprojet/parser/Parser.y":519  */
-                                                        {yyval = new TypeExpr(TType.BOOLEAN);};
-  break;
-
-
-  case 177: /* expr: expr "==" expr  */
-  if (yyn == 177)
-    /* "/home/altyriss/MEGAsync/Informatique/L3/Compilation/MiniProjet/miniprojet/parser/Parser.y":520  */
-                                                        {yyval = new TypeExpr(TType.BOOLEAN);};
-  break;
-
-
-  case 178: /* expr: expr "!=" expr  */
-  if (yyn == 178)
-    /* "/home/altyriss/MEGAsync/Informatique/L3/Compilation/MiniProjet/miniprojet/parser/Parser.y":521  */
-                                                        {yyval = new TypeExpr(TType.BOOLEAN);};
-  break;
-
-
-  case 179: /* expr: expr '+' expr  */
-  if (yyn == 179)
-    /* "/home/altyriss/MEGAsync/Informatique/L3/Compilation/MiniProjet/miniprojet/parser/Parser.y":522  */
-                                                {yyval = ((Type)(yystack.valueAt (2)));};
-  break;
-
-
-  case 180: /* expr: expr '-' expr  */
-  if (yyn == 180)
-    /* "/home/altyriss/MEGAsync/Informatique/L3/Compilation/MiniProjet/miniprojet/parser/Parser.y":523  */
-                                        {yyval = ((Type)(yystack.valueAt (2)));};
-  break;
-
-
-  case 181: /* expr: '-' expr  */
-  if (yyn == 181)
-    /* "/home/altyriss/MEGAsync/Informatique/L3/Compilation/MiniProjet/miniprojet/parser/Parser.y":524  */
-                                                {yyval = ((Type)(yystack.valueAt (0)));};
-  break;
-
-
-  case 182: /* expr: expr '*' expr  */
-  if (yyn == 182)
-    /* "/home/altyriss/MEGAsync/Informatique/L3/Compilation/MiniProjet/miniprojet/parser/Parser.y":525  */
-                                                {yyval = ((Type)(yystack.valueAt (2)));};
-  break;
-
-
-  case 183: /* expr: expr '/' expr  */
-  if (yyn == 183)
-    /* "/home/altyriss/MEGAsync/Informatique/L3/Compilation/MiniProjet/miniprojet/parser/Parser.y":526  */
-                                        {yyval = ((Type)(yystack.valueAt (2)));};
-  break;
-
-
-  case 184: /* expr: expr '%' expr  */
-  if (yyn == 184)
-    /* "/home/altyriss/MEGAsync/Informatique/L3/Compilation/MiniProjet/miniprojet/parser/Parser.y":527  */
-                                        {yyval = ((Type)(yystack.valueAt (2)));};
-  break;
-
-
-  case 185: /* expr: expr "++"  */
-  if (yyn == 185)
-    /* "/home/altyriss/MEGAsync/Informatique/L3/Compilation/MiniProjet/miniprojet/parser/Parser.y":528  */
-                                        {yyval = ((Type)(yystack.valueAt (1)));};
-  break;
-
-
-  case 186: /* expr: expr "--"  */
-  if (yyn == 186)
-    /* "/home/altyriss/MEGAsync/Informatique/L3/Compilation/MiniProjet/miniprojet/parser/Parser.y":529  */
-                                        {yyval = ((Type)(yystack.valueAt (1)));};
-  break;
-
-
-  case 187: /* expr: "++" expr  */
-  if (yyn == 187)
-    /* "/home/altyriss/MEGAsync/Informatique/L3/Compilation/MiniProjet/miniprojet/parser/Parser.y":530  */
-                                                        {yyval = ((Type)(yystack.valueAt (0)));};
-  break;
-
-
-  case 188: /* expr: "--" expr  */
-  if (yyn == 188)
-    /* "/home/altyriss/MEGAsync/Informatique/L3/Compilation/MiniProjet/miniprojet/parser/Parser.y":531  */
-                                                                {yyval = ((Type)(yystack.valueAt (0)));};
-  break;
-
-
-  case 189: /* expr: expr '&' expr  */
-  if (yyn == 189)
-    /* "/home/altyriss/MEGAsync/Informatique/L3/Compilation/MiniProjet/miniprojet/parser/Parser.y":532  */
-                                        {yyval = ((Type)(yystack.valueAt (2)));};
-  break;
-
-
-  case 190: /* expr: expr '|' expr  */
-  if (yyn == 190)
-    /* "/home/altyriss/MEGAsync/Informatique/L3/Compilation/MiniProjet/miniprojet/parser/Parser.y":533  */
-                                        {yyval = ((Type)(yystack.valueAt (2)));};
-  break;
-
-
-  case 191: /* expr: expr "<<" expr  */
-  if (yyn == 191)
-    /* "/home/altyriss/MEGAsync/Informatique/L3/Compilation/MiniProjet/miniprojet/parser/Parser.y":534  */
-                                                {yyval = ((Type)(yystack.valueAt (2)));};
-  break;
-
-
-  case 192: /* expr: expr ">>" expr  */
-  if (yyn == 192)
-    /* "/home/altyriss/MEGAsync/Informatique/L3/Compilation/MiniProjet/miniprojet/parser/Parser.y":535  */
-                                                {yyval = ((Type)(yystack.valueAt (2)));};
-  break;
-
-
-  case 193: /* expr: '(' expr ')'  */
-  if (yyn == 193)
-    /* "/home/altyriss/MEGAsync/Informatique/L3/Compilation/MiniProjet/miniprojet/parser/Parser.y":536  */
-                                        {yyval = ((Type)(yystack.valueAt (1)));};
-  break;
-
-
-  case 194: /* args_opt: %empty  */
-  if (yyn == 194)
-    /* "/home/altyriss/MEGAsync/Informatique/L3/Compilation/MiniProjet/miniprojet/parser/Parser.y":540  */
+    /* "/home/fnoury/L3/Compilation/projet-20210420/parser/Parser.y":377  */
                {yyval = null;};
   break;
 
 
-  case 195: /* args_opt: args  */
-  if (yyn == 195)
-    /* "/home/altyriss/MEGAsync/Informatique/L3/Compilation/MiniProjet/miniprojet/parser/Parser.y":541  */
-               {yyval = ((Type)(yystack.valueAt (0)));};
+  case 61: /* interface_definition: interface_definition_head interface_definition  */
+  if (yyn == 61)
+    /* "/home/fnoury/L3/Compilation/projet-20210420/parser/Parser.y":379  */
+        {
+		if (((Type)(yystack.valueAt (0))) == null) 
+			yyval = ((Type)(yystack.valueAt (1))); 
+		else 
+			yyval = new TypeExpression(Tag.PRODUCT, ((Type)(yystack.valueAt (1))), ((Type)(yystack.valueAt (0)))); };
+  break;
+
+
+  case 62: /* interface_definition_head: "procedure" IDENTIFIER '(' args_definition ')' ';'  */
+  if (yyn == 62)
+    /* "/home/fnoury/L3/Compilation/projet-20210420/parser/Parser.y":387  */
+                                                           { yyval = new TypeExpression(Tag.FUNCTION); };
+  break;
+
+
+  case 63: /* interface_definition_head: "function" IDENTIFIER '(' args_definition ')' ':' type_expression ';'  */
+  if (yyn == 63)
+    /* "/home/fnoury/L3/Compilation/projet-20210420/parser/Parser.y":388  */
+                                                                                { yyval = new TypeExpression(Tag.FUNCTION); };
+  break;
+
+
+  case 64: /* type_expression: "char"  */
+  if (yyn == 64)
+    /* "/home/fnoury/L3/Compilation/projet-20210420/parser/Parser.y":392  */
+                                                                                                {yyval = new TypeExpression(Tag.CHAR);};
+  break;
+
+
+  case 65: /* type_expression: "integer"  */
+  if (yyn == 65)
+    /* "/home/fnoury/L3/Compilation/projet-20210420/parser/Parser.y":393  */
+                                                                                        {yyval = new TypeExpression(Tag.INTEGER);};
+  break;
+
+
+  case 66: /* type_expression: "float"  */
+  if (yyn == 66)
+    /* "/home/fnoury/L3/Compilation/projet-20210420/parser/Parser.y":394  */
+                                                                                                {yyval = new TypeExpression(Tag.FLOAT);};
+  break;
+
+
+  case 67: /* type_expression: "boolean"  */
+  if (yyn == 67)
+    /* "/home/fnoury/L3/Compilation/projet-20210420/parser/Parser.y":395  */
+                                                                                        {yyval = new TypeExpression(Tag.BOOLEAN);};
+  break;
+
+
+  case 68: /* type_expression: "string"  */
+  if (yyn == 68)
+    /* "/home/fnoury/L3/Compilation/projet-20210420/parser/Parser.y":396  */
+                                                                                                {yyval = new TypeExpression(Tag.STRING);};
+  break;
+
+
+  case 69: /* type_expression: "enum" '<' type_names '>'  */
+  if (yyn == 69)
+    /* "/home/fnoury/L3/Compilation/projet-20210420/parser/Parser.y":397  */
+                                                                                {yyval = new TypeExpression(Tag.ENUM, ((Type)(yystack.valueAt (1))));};
+  break;
+
+
+  case 70: /* type_expression: "range" '<' type_expression '>'  */
+  if (yyn == 70)
+    /* "/home/fnoury/L3/Compilation/projet-20210420/parser/Parser.y":398  */
+                                                                                        {yyval = new TypeExpression(Tag.RANGE, ((Type)(yystack.valueAt (1))));};
+  break;
+
+
+  case 71: /* type_expression: "list" '<' type_expression '>'  */
+  if (yyn == 71)
+    /* "/home/fnoury/L3/Compilation/projet-20210420/parser/Parser.y":399  */
+                                                                        {yyval = new TypeExpression(Tag.LIST, ((Type)(yystack.valueAt (1))));};
+  break;
+
+
+  case 72: /* type_expression: "set" '<' type_expression '>'  */
+  if (yyn == 72)
+    /* "/home/fnoury/L3/Compilation/projet-20210420/parser/Parser.y":400  */
+                                                                {yyval = new TypeExpression(Tag.SET, ((Type)(yystack.valueAt (1))));};
+  break;
+
+
+  case 73: /* type_expression: "map" '<' type_expression ',' type_expression '>'  */
+  if (yyn == 73)
+    /* "/home/fnoury/L3/Compilation/projet-20210420/parser/Parser.y":401  */
+                                                                {yyval = new TypeExpression(Tag.MAP, ((Type)(yystack.valueAt (3))), ((Type)(yystack.valueAt (1))));};
+  break;
+
+
+  case 74: /* type_expression: type_expression_class  */
+  if (yyn == 74)
+    /* "/home/fnoury/L3/Compilation/projet-20210420/parser/Parser.y":402  */
+                                                                                        {yyval = ((Type)(yystack.valueAt (0)));};
+  break;
+
+
+  case 75: /* type_expression_class: IDENTIFIER '<' type_expressions '>'  */
+  if (yyn == 75)
+    /* "/home/fnoury/L3/Compilation/projet-20210420/parser/Parser.y":406  */
+                                                        {yyval = new TypeExpression(Tag.CLASS, ((Type)(yystack.valueAt (1))), ((String)(yystack.valueAt (3))));};
+  break;
+
+
+  case 76: /* type_expression_class: IDENTIFIER  */
+  if (yyn == 76)
+    /* "/home/fnoury/L3/Compilation/projet-20210420/parser/Parser.y":407  */
+                                                                        {yyval = new TypeExpression(Tag.CLASS, ((String)(yystack.valueAt (0))));};
+  break;
+
+
+  case 77: /* type_expressions: type_expressions ',' type_expression  */
+  if (yyn == 77)
+    /* "/home/fnoury/L3/Compilation/projet-20210420/parser/Parser.y":411  */
+                                                                                        {yyval = new TypeExpression(Tag.PRODUCT, ((Type)(yystack.valueAt (2))), ((Type)(yystack.valueAt (0))));};
+  break;
+
+
+  case 78: /* type_expressions: type_expression  */
+  if (yyn == 78)
+    /* "/home/fnoury/L3/Compilation/projet-20210420/parser/Parser.y":412  */
+                                                                                                {yyval = ((Type)(yystack.valueAt (0)));};
+  break;
+
+
+  case 79: /* type_names: type_names ',' type_name  */
+  if (yyn == 79)
+    /* "/home/fnoury/L3/Compilation/projet-20210420/parser/Parser.y":416  */
+                                                                                {yyval = new TypeExpression(Tag.PRODUCT, ((Type)(yystack.valueAt (2))), ((Type)(yystack.valueAt (0))));};
+  break;
+
+
+  case 80: /* type_names: type_name  */
+  if (yyn == 80)
+    /* "/home/fnoury/L3/Compilation/projet-20210420/parser/Parser.y":417  */
+                                                                                        {yyval = ((Type)(yystack.valueAt (0)));};
+  break;
+
+
+  case 81: /* type_name: IDENTIFIER  */
+  if (yyn == 81)
+    /* "/home/fnoury/L3/Compilation/projet-20210420/parser/Parser.y":421  */
+                                                                                        {yyval = new TypeExpression(Tag.NAME, ((String)(yystack.valueAt (0))));};
+  break;
+
+
+  case 82: /* args_definition: args_definition ',' arg_definition  */
+  if (yyn == 82)
+    /* "/home/fnoury/L3/Compilation/projet-20210420/parser/Parser.y":425  */
+                                           {yyval = new TypeExpression(Tag.PRODUCT, ((Type)(yystack.valueAt (2))), ((Type)(yystack.valueAt (0))));};
+  break;
+
+
+  case 83: /* args_definition: arg_definition  */
+  if (yyn == 83)
+    /* "/home/fnoury/L3/Compilation/projet-20210420/parser/Parser.y":426  */
+                         {yyval = ((Type)(yystack.valueAt (0)));};
+  break;
+
+
+  case 84: /* arg_definition: IDENTIFIER ':' type_expression  */
+  if (yyn == 84)
+    /* "/home/fnoury/L3/Compilation/projet-20210420/parser/Parser.y":431  */
+        {
+		yyval = new TypeExpression(Tag.FIELD, ((Type)(yystack.valueAt (0))), ((String)(yystack.valueAt (2))));
+	};
+  break;
+
+
+  case 85: /* block: '{' var_definitions stms '}'  */
+  if (yyn == 85)
+    /* "/home/fnoury/L3/Compilation/projet-20210420/parser/Parser.y":437  */
+                                     { yyval = ((Stree)(yystack.valueAt (1))); };
+  break;
+
+
+  case 88: /* var_definition: IDENTIFIER ':' type_expression ';'  */
+  if (yyn == 88)
+    /* "/home/fnoury/L3/Compilation/projet-20210420/parser/Parser.y":446  */
+                                           { localVarEnvironment.put(((String)(yystack.valueAt (3))), ((Type)(yystack.valueAt (1)))); };
+  break;
+
+
+  case 89: /* stms: stms stm  */
+  if (yyn == 89)
+    /* "/home/fnoury/L3/Compilation/projet-20210420/parser/Parser.y":450  */
+                 { yyval = new StreeSEQ(((Stree)(yystack.valueAt (1))), ((Stree)(yystack.valueAt (0)))); };
+  break;
+
+
+  case 90: /* stms: stm  */
+  if (yyn == 90)
+    /* "/home/fnoury/L3/Compilation/projet-20210420/parser/Parser.y":451  */
+              { yyval = ((Stree)(yystack.valueAt (0))); };
+  break;
+
+
+  case 91: /* stm: simple_stm ';'  */
+  if (yyn == 91)
+    /* "/home/fnoury/L3/Compilation/projet-20210420/parser/Parser.y":455  */
+                       { yyval = ((Stree)(yystack.valueAt (1))); };
+  break;
+
+
+  case 92: /* stm: "if" '(' expression ')' stm  */
+  if (yyn == 92)
+    /* "/home/fnoury/L3/Compilation/projet-20210420/parser/Parser.y":456  */
+                                                         { yyval = new StreeIF(((Stree)(yystack.valueAt (2))), new StreeTHENELSE(((Stree)(yystack.valueAt (0))))); };
+  break;
+
+
+  case 93: /* stm: "if" '(' expression ')' stm "else" stm  */
+  if (yyn == 93)
+    /* "/home/fnoury/L3/Compilation/projet-20210420/parser/Parser.y":457  */
+                                                 { yyval = new StreeIF(((Stree)(yystack.valueAt (4))), new StreeTHENELSE(((Stree)(yystack.valueAt (2))), ((Stree)(yystack.valueAt (0))))); };
+  break;
+
+
+  case 94: /* stm: "while" '(' expression ')' stm  */
+  if (yyn == 94)
+    /* "/home/fnoury/L3/Compilation/projet-20210420/parser/Parser.y":458  */
+                                         { yyval = new StreeWHILE(((Stree)(yystack.valueAt (2))), ((Stree)(yystack.valueAt (0)))); };
+  break;
+
+
+  case 95: /* stm: "do" stm "while" '(' expression ')' ';'  */
+  if (yyn == 95)
+    /* "/home/fnoury/L3/Compilation/projet-20210420/parser/Parser.y":459  */
+                                                { yyval = new StreeDO(((Stree)(yystack.valueAt (5))), ((Stree)(yystack.valueAt (2)))); };
+  break;
+
+
+  case 96: /* stm: "for" '(' assigned_variable ':' expression ')' stm  */
+  if (yyn == 96)
+    /* "/home/fnoury/L3/Compilation/projet-20210420/parser/Parser.y":460  */
+                                                             { yyval = new StreeFOR(((Stree)(yystack.valueAt (4))), ((Stree)(yystack.valueAt (2)))); };
+  break;
+
+
+  case 97: /* stm: "for" '(' assignment_stm ';' expression ';' simple_stm ')' stm  */
+  if (yyn == 97)
+    /* "/home/fnoury/L3/Compilation/projet-20210420/parser/Parser.y":461  */
+                                                                         { yyval = new StreeFOR(((Stree)(yystack.valueAt (6))), new StreeFORCONT(((Stree)(yystack.valueAt (4))), ((Stree)(yystack.valueAt (2))))); };
+  break;
+
+
+  case 98: /* stm: "foreach" assigned_variable "in" expression stm  */
+  if (yyn == 98)
+    /* "/home/fnoury/L3/Compilation/projet-20210420/parser/Parser.y":462  */
+                                                          { yyval = new StreeFOREACH(((Stree)(yystack.valueAt (3))), new StreeFOREACHCONT(((Stree)(yystack.valueAt (1))), ((Stree)(yystack.valueAt (0))))); };
+  break;
+
+
+  case 99: /* stm: "switch" '(' expression ')' '{' case_stms '}'  */
+  if (yyn == 99)
+    /* "/home/fnoury/L3/Compilation/projet-20210420/parser/Parser.y":463  */
+                                                        { yyval = new StreeSWITCH(((Stree)(yystack.valueAt (4))), ((Stree)(yystack.valueAt (1)))); };
+  break;
+
+
+  case 100: /* stm: block  */
+  if (yyn == 100)
+    /* "/home/fnoury/L3/Compilation/projet-20210420/parser/Parser.y":464  */
+                { yyval = ((Stree)(yystack.valueAt (0))); };
+  break;
+
+
+  case 101: /* case_stms: case_stm case_stms  */
+  if (yyn == 101)
+    /* "/home/fnoury/L3/Compilation/projet-20210420/parser/Parser.y":468  */
+                            { yyval = new StreePRODUCT(((Stree)(yystack.valueAt (1))), ((Stree)(yystack.valueAt (0)))); };
+  break;
+
+
+  case 102: /* case_stms: case_stm  */
+  if (yyn == 102)
+    /* "/home/fnoury/L3/Compilation/projet-20210420/parser/Parser.y":469  */
+                   { yyval = ((Stree)(yystack.valueAt (0))); };
+  break;
+
+
+  case 103: /* case_stms: default_stm  */
+  if (yyn == 103)
+    /* "/home/fnoury/L3/Compilation/projet-20210420/parser/Parser.y":470  */
+                      { yyval = ((Stree)(yystack.valueAt (0))); };
+  break;
+
+
+  case 104: /* case_stm: "case" expression ':' stm  */
+  if (yyn == 104)
+    /* "/home/fnoury/L3/Compilation/projet-20210420/parser/Parser.y":474  */
+                                   { yyval = new StreeCASE(((Stree)(yystack.valueAt (2))), ((Stree)(yystack.valueAt (0))));  };
+  break;
+
+
+  case 105: /* default_stm: "default" ':' stm  */
+  if (yyn == 105)
+    /* "/home/fnoury/L3/Compilation/projet-20210420/parser/Parser.y":478  */
+                           { yyval = new StreeDEFAULT(((Stree)(yystack.valueAt (0))));  };
+  break;
+
+
+  case 106: /* assignment_stm: assigned_variable ":=" expression  */
+  if (yyn == 106)
+    /* "/home/fnoury/L3/Compilation/projet-20210420/parser/Parser.y":482  */
+                                          { yyval = new StreeAFF(((Stree)(yystack.valueAt (2))), ((Stree)(yystack.valueAt (0)))); };
+  break;
+
+
+  case 107: /* assignment_stm: IDENTIFIER ':' type_expression ":=" expression  */
+  if (yyn == 107)
+    /* "/home/fnoury/L3/Compilation/projet-20210420/parser/Parser.y":483  */
+                                                         { localVarEnvironment.put(((String)(yystack.valueAt (4))), ((Type)(yystack.valueAt (2)))); yyval = new StreeAFF(new StreeVARIABLE(((String)(yystack.valueAt (4))), ((Type)(yystack.valueAt (2)))), ((Stree)(yystack.valueAt (0)))); };
+  break;
+
+
+  case 108: /* simple_stm: assignment_stm  */
+  if (yyn == 108)
+    /* "/home/fnoury/L3/Compilation/projet-20210420/parser/Parser.y":487  */
+                       { yyval = ((Stree)(yystack.valueAt (0))); };
+  break;
+
+
+  case 109: /* simple_stm: assigned_variable "++"  */
+  if (yyn == 109)
+    /* "/home/fnoury/L3/Compilation/projet-20210420/parser/Parser.y":488  */
+                                 { yyval = new StreeSUCC(((Stree)(yystack.valueAt (1))), StreeSUCC.RIGHT); };
+  break;
+
+
+  case 110: /* simple_stm: assigned_variable "--"  */
+  if (yyn == 110)
+    /* "/home/fnoury/L3/Compilation/projet-20210420/parser/Parser.y":489  */
+                                 { yyval = new StreeDEC(((Stree)(yystack.valueAt (1))), StreeDEC.RIGHT); };
+  break;
+
+
+  case 111: /* simple_stm: assigned_variable "+=" expression  */
+  if (yyn == 111)
+    /* "/home/fnoury/L3/Compilation/projet-20210420/parser/Parser.y":490  */
+                                            { yyval = new StreePLUSAFF(((Stree)(yystack.valueAt (2))), ((Stree)(yystack.valueAt (0)))); };
+  break;
+
+
+  case 112: /* simple_stm: assigned_variable "-=" expression  */
+  if (yyn == 112)
+    /* "/home/fnoury/L3/Compilation/projet-20210420/parser/Parser.y":491  */
+                                            { yyval = new StreeMINUSAFF(((Stree)(yystack.valueAt (2))), ((Stree)(yystack.valueAt (0)))); };
+  break;
+
+
+  case 113: /* simple_stm: assigned_variable "*=" expression  */
+  if (yyn == 113)
+    /* "/home/fnoury/L3/Compilation/projet-20210420/parser/Parser.y":492  */
+                                            { yyval = new StreeTIMESAFF(((Stree)(yystack.valueAt (2))), ((Stree)(yystack.valueAt (0)))); };
+  break;
+
+
+  case 114: /* simple_stm: assigned_variable "/=" expression  */
+  if (yyn == 114)
+    /* "/home/fnoury/L3/Compilation/projet-20210420/parser/Parser.y":493  */
+                                            { yyval = new StreeDIVAFF(((Stree)(yystack.valueAt (2))), ((Stree)(yystack.valueAt (0)))); };
+  break;
+
+
+  case 115: /* simple_stm: assigned_variable "||=" expression  */
+  if (yyn == 115)
+    /* "/home/fnoury/L3/Compilation/projet-20210420/parser/Parser.y":494  */
+                                             { yyval = new StreeORAFF(((Stree)(yystack.valueAt (2))), ((Stree)(yystack.valueAt (0)))); };
+  break;
+
+
+  case 116: /* simple_stm: assigned_variable "&&=" expression  */
+  if (yyn == 116)
+    /* "/home/fnoury/L3/Compilation/projet-20210420/parser/Parser.y":495  */
+                                             { yyval = new StreeANDAFF(((Stree)(yystack.valueAt (2))), ((Stree)(yystack.valueAt (0)))); };
+  break;
+
+
+  case 117: /* simple_stm: assigned_variable "&=" expression  */
+  if (yyn == 117)
+    /* "/home/fnoury/L3/Compilation/projet-20210420/parser/Parser.y":496  */
+                                            { yyval = new StreeBANDAFF(((Stree)(yystack.valueAt (2))), ((Stree)(yystack.valueAt (0)))); };
+  break;
+
+
+  case 118: /* simple_stm: assigned_variable "|=" expression  */
+  if (yyn == 118)
+    /* "/home/fnoury/L3/Compilation/projet-20210420/parser/Parser.y":497  */
+                                            { yyval = new StreeBORAFF(((Stree)(yystack.valueAt (2))), ((Stree)(yystack.valueAt (0)))); };
+  break;
+
+
+  case 119: /* simple_stm: assigned_variable "<<=" expression  */
+  if (yyn == 119)
+    /* "/home/fnoury/L3/Compilation/projet-20210420/parser/Parser.y":498  */
+                                             { yyval = new StreeLSHIFTAFF(((Stree)(yystack.valueAt (2))), ((Stree)(yystack.valueAt (0)))); };
+  break;
+
+
+  case 120: /* simple_stm: assigned_variable ">>=" expression  */
+  if (yyn == 120)
+    /* "/home/fnoury/L3/Compilation/projet-20210420/parser/Parser.y":499  */
+                                             { yyval = new StreeRSHIFTAFF(((Stree)(yystack.valueAt (2))), ((Stree)(yystack.valueAt (0)))); };
+  break;
+
+
+  case 121: /* simple_stm: method_name '(' args ')'  */
+  if (yyn == 121)
+    /* "/home/fnoury/L3/Compilation/projet-20210420/parser/Parser.y":500  */
+                                   { yyval = new StreeCALL(((Stree)(yystack.valueAt (3))), ((Stree)(yystack.valueAt (1)))); };
+  break;
+
+
+  case 122: /* simple_stm: "readln" '(' expression ')'  */
+  if (yyn == 122)
+    /* "/home/fnoury/L3/Compilation/projet-20210420/parser/Parser.y":501  */
+                                      { yyval = new StreeCALL(new StreeMETHOD("readln"), new StreeARGS(((Stree)(yystack.valueAt (1))))); };
+  break;
+
+
+  case 123: /* simple_stm: "write" '(' expression ')'  */
+  if (yyn == 123)
+    /* "/home/fnoury/L3/Compilation/projet-20210420/parser/Parser.y":502  */
+                                     { yyval = new StreeCALL(new StreeMETHOD("write"), new StreeARGS(((Stree)(yystack.valueAt (1))))); };
+  break;
+
+
+  case 124: /* simple_stm: "writeln" '(' expression ')'  */
+  if (yyn == 124)
+    /* "/home/fnoury/L3/Compilation/projet-20210420/parser/Parser.y":503  */
+                                       { yyval = new StreeCALL(new StreeMETHOD("writeln"), new StreeARGS(((Stree)(yystack.valueAt (1))))); };
+  break;
+
+
+  case 125: /* simple_stm: "break"  */
+  if (yyn == 125)
+    /* "/home/fnoury/L3/Compilation/projet-20210420/parser/Parser.y":504  */
+                  { yyval = new StreeBREAK(); };
+  break;
+
+
+  case 126: /* simple_stm: "continue"  */
+  if (yyn == 126)
+    /* "/home/fnoury/L3/Compilation/projet-20210420/parser/Parser.y":505  */
+                     { yyval = new StreeCONTINUE(); };
+  break;
+
+
+  case 127: /* simple_stm: "return" expression  */
+  if (yyn == 127)
+    /* "/home/fnoury/L3/Compilation/projet-20210420/parser/Parser.y":506  */
+                              { yyval = new StreeRETURN(((Stree)(yystack.valueAt (0)))); };
+  break;
+
+
+  case 128: /* assigned_variable: IDENTIFIER  */
+  if (yyn == 128)
+    /* "/home/fnoury/L3/Compilation/projet-20210420/parser/Parser.y":513  */
+        {
+		try {
+			Type localType = localVarEnvironment.get(((String)(yystack.valueAt (0))));
+			if (localType == null)
+				localType = varEnvironment.get(((String)(yystack.valueAt (0))));
+			if (localType == null)
+				throw new EnvironmentException("unknown variable " + ((String)(yystack.valueAt (0))));
+			yyval = new StreeVARIABLE(((String)(yystack.valueAt (0))), localType);
+		}
+		catch (EnvironmentException environmentException) {
+			yyerror ("*** unknown variable: " + ((String)(yystack.valueAt (0))) + " " + environmentException.getMessage());
+			yyval = null;
+		}
+	};
+  break;
+
+
+  case 129: /* assigned_variable: IDENTIFIER '[' args ']'  */
+  if (yyn == 129)
+    /* "/home/fnoury/L3/Compilation/projet-20210420/parser/Parser.y":529  */
+        {
+		yyval = null;
+		yyerror(yystack.locationAt (3), "not yet implemented");
+	};
+  break;
+
+
+  case 130: /* assigned_variable: assigned_variable '.' IDENTIFIER  */
+  if (yyn == 130)
+    /* "/home/fnoury/L3/Compilation/projet-20210420/parser/Parser.y":535  */
+        {
+		yyval = new StreeSLOT(((Stree)(yystack.valueAt (2))), ((String)(yystack.valueAt (0))));
+		yyerror(yystack.locationAt (2), "not yet implemented");
+	};
+  break;
+
+
+  case 131: /* assigned_variable: "this"  */
+  if (yyn == 131)
+    /* "/home/fnoury/L3/Compilation/projet-20210420/parser/Parser.y":541  */
+        {
+		yyval = new StreeTHIS();
+		yyerror(yystack.locationAt (0), "not yet implemented");
+	};
+  break;
+
+
+  case 132: /* method_name: IDENTIFIER  */
+  if (yyn == 132)
+    /* "/home/fnoury/L3/Compilation/projet-20210420/parser/Parser.y":549  */
+        {
+		type = localVarEnvironment.get(((String)(yystack.valueAt (0))));
+		if (type == null)
+			type = varEnvironment.get(((String)(yystack.valueAt (0))));
+		if (type == null)
+			throw new EnvironmentException("unknown variable " + ((String)(yystack.valueAt (0))));
+		yyval = new StreeMETHOD(((String)(yystack.valueAt (0))), type);
+	};
+  break;
+
+
+  case 133: /* method_name: assigned_variable '.' IDENTIFIER  */
+  if (yyn == 133)
+    /* "/home/fnoury/L3/Compilation/projet-20210420/parser/Parser.y":557  */
+                                           { yyval = new StreeSLOT(((Stree)(yystack.valueAt (2))), ((String)(yystack.valueAt (0)))); };
+  break;
+
+
+  case 134: /* args: args ',' expression  */
+  if (yyn == 134)
+    /* "/home/fnoury/L3/Compilation/projet-20210420/parser/Parser.y":561  */
+                            {yyval = new StreeARGS(((Stree)(yystack.valueAt (2))), ((Stree)(yystack.valueAt (0))));};
+  break;
+
+
+  case 135: /* args: expression  */
+  if (yyn == 135)
+    /* "/home/fnoury/L3/Compilation/projet-20210420/parser/Parser.y":562  */
+                     { yyval = yyval = new StreeARGS(((Stree)(yystack.valueAt (0))), null);};
+  break;
+
+
+  case 136: /* const_expression: "null"  */
+  if (yyn == 136)
+    /* "/home/fnoury/L3/Compilation/projet-20210420/parser/Parser.y":566  */
+               {yyval = new StreeNULL(); };
+  break;
+
+
+  case 137: /* const_expression: CONSTANT_INTEGER  */
+  if (yyn == 137)
+    /* "/home/fnoury/L3/Compilation/projet-20210420/parser/Parser.y":567  */
+                           {yyval = new StreeINTEGER(((Integer)(yystack.valueAt (0)))); };
+  break;
+
+
+  case 138: /* const_expression: CONSTANT_FLOAT  */
+  if (yyn == 138)
+    /* "/home/fnoury/L3/Compilation/projet-20210420/parser/Parser.y":568  */
+                         {yyval = new StreeFLOAT(((Float)(yystack.valueAt (0)))); };
+  break;
+
+
+  case 139: /* const_expression: CONSTANT_CHAR  */
+  if (yyn == 139)
+    /* "/home/fnoury/L3/Compilation/projet-20210420/parser/Parser.y":569  */
+                         {yyval = new StreeCHAR(((Integer)(yystack.valueAt (0)))); };
+  break;
+
+
+  case 140: /* const_expression: CONSTANT_STRING  */
+  if (yyn == 140)
+    /* "/home/fnoury/L3/Compilation/projet-20210420/parser/Parser.y":570  */
+                           {yyval = new StreeSTRING(((String)(yystack.valueAt (0)))); };
+  break;
+
+
+  case 141: /* const_expression: '[' const_expression ".." const_expression ']'  */
+  if (yyn == 141)
+    /* "/home/fnoury/L3/Compilation/projet-20210420/parser/Parser.y":571  */
+                                                         {yyval = new StreeRANGE(((Stree)(yystack.valueAt (3))), ((Stree)(yystack.valueAt (1)))); };
+  break;
+
+
+  case 142: /* expression: const_expression  */
+  if (yyn == 142)
+    /* "/home/fnoury/L3/Compilation/projet-20210420/parser/Parser.y":575  */
+                                                                { yyval = ((Stree)(yystack.valueAt (0))); };
+  break;
+
+
+  case 143: /* expression: assigned_variable  */
+  if (yyn == 143)
+    /* "/home/fnoury/L3/Compilation/projet-20210420/parser/Parser.y":576  */
+                                                { yyval = ((Stree)(yystack.valueAt (0))); };
+  break;
+
+
+  case 144: /* expression: method_name '(' args ')'  */
+  if (yyn == 144)
+    /* "/home/fnoury/L3/Compilation/projet-20210420/parser/Parser.y":577  */
+                                        { yyval = new StreeCALL(((Stree)(yystack.valueAt (3))), ((Stree)(yystack.valueAt (1)))); };
+  break;
+
+
+  case 145: /* expression: "new" type_expression_class '(' args_opt ')'  */
+  if (yyn == 145)
+    /* "/home/fnoury/L3/Compilation/projet-20210420/parser/Parser.y":578  */
+                                                                        { yyval = new StreeNEW(((Type)(yystack.valueAt (3))), ((Stree)(yystack.valueAt (1)))); };
+  break;
+
+
+  case 146: /* expression: expression "&&" expression  */
+  if (yyn == 146)
+    /* "/home/fnoury/L3/Compilation/projet-20210420/parser/Parser.y":579  */
+                                                                { yyval = new StreeAND(((Stree)(yystack.valueAt (2))), ((Stree)(yystack.valueAt (0)))); };
+  break;
+
+
+  case 147: /* expression: expression "||" expression  */
+  if (yyn == 147)
+    /* "/home/fnoury/L3/Compilation/projet-20210420/parser/Parser.y":580  */
+                                                                { yyval = new StreeOR(((Stree)(yystack.valueAt (2))), ((Stree)(yystack.valueAt (0)))); };
+  break;
+
+
+  case 148: /* expression: '!' expression  */
+  if (yyn == 148)
+    /* "/home/fnoury/L3/Compilation/projet-20210420/parser/Parser.y":581  */
+                                                                { yyval = new StreeNOT(((Stree)(yystack.valueAt (0)))); };
+  break;
+
+
+  case 149: /* expression: expression '<' expression  */
+  if (yyn == 149)
+    /* "/home/fnoury/L3/Compilation/projet-20210420/parser/Parser.y":582  */
+                                                                { yyval = new StreeLT(((Stree)(yystack.valueAt (2))), ((Stree)(yystack.valueAt (0)))); };
+  break;
+
+
+  case 150: /* expression: expression "<=" expression  */
+  if (yyn == 150)
+    /* "/home/fnoury/L3/Compilation/projet-20210420/parser/Parser.y":583  */
+                                                        { yyval = new StreeLE(((Stree)(yystack.valueAt (2))), ((Stree)(yystack.valueAt (0)))); };
+  break;
+
+
+  case 151: /* expression: expression '>' expression  */
+  if (yyn == 151)
+    /* "/home/fnoury/L3/Compilation/projet-20210420/parser/Parser.y":584  */
+                                                                { yyval = new StreeGT(((Stree)(yystack.valueAt (2))), ((Stree)(yystack.valueAt (0)))); };
+  break;
+
+
+  case 152: /* expression: expression ">=" expression  */
+  if (yyn == 152)
+    /* "/home/fnoury/L3/Compilation/projet-20210420/parser/Parser.y":585  */
+                                                        { yyval = new StreeGE(((Stree)(yystack.valueAt (2))), ((Stree)(yystack.valueAt (0)))); };
+  break;
+
+
+  case 153: /* expression: expression "==" expression  */
+  if (yyn == 153)
+    /* "/home/fnoury/L3/Compilation/projet-20210420/parser/Parser.y":586  */
+                                                        { yyval = new StreeEQ(((Stree)(yystack.valueAt (2))), ((Stree)(yystack.valueAt (0)))); };
+  break;
+
+
+  case 154: /* expression: expression "!=" expression  */
+  if (yyn == 154)
+    /* "/home/fnoury/L3/Compilation/projet-20210420/parser/Parser.y":587  */
+                                                        { yyval = new StreeNE(((Stree)(yystack.valueAt (2))), ((Stree)(yystack.valueAt (0)))); };
+  break;
+
+
+  case 155: /* expression: expression '+' expression  */
+  if (yyn == 155)
+    /* "/home/fnoury/L3/Compilation/projet-20210420/parser/Parser.y":588  */
+                                                        { yyval = new StreePLUS(((Stree)(yystack.valueAt (2))), ((Stree)(yystack.valueAt (0)))); };
+  break;
+
+
+  case 156: /* expression: expression '-' expression  */
+  if (yyn == 156)
+    /* "/home/fnoury/L3/Compilation/projet-20210420/parser/Parser.y":589  */
+                                                            { yyval = new StreeMINUS(((Stree)(yystack.valueAt (2))), ((Stree)(yystack.valueAt (0)))); };
+  break;
+
+
+  case 157: /* expression: '-' expression  */
+  if (yyn == 157)
+    /* "/home/fnoury/L3/Compilation/projet-20210420/parser/Parser.y":590  */
+                                                { yyval = new StreeMINUS(((Stree)(yystack.valueAt (0)))); };
+  break;
+
+
+  case 158: /* expression: expression '*' expression  */
+  if (yyn == 158)
+    /* "/home/fnoury/L3/Compilation/projet-20210420/parser/Parser.y":591  */
+                                                        { yyval = new StreeTIMES(((Stree)(yystack.valueAt (2))), ((Stree)(yystack.valueAt (0)))); };
+  break;
+
+
+  case 159: /* expression: expression '/' expression  */
+  if (yyn == 159)
+    /* "/home/fnoury/L3/Compilation/projet-20210420/parser/Parser.y":592  */
+                                                            { yyval = new StreeDIV(((Stree)(yystack.valueAt (2))), ((Stree)(yystack.valueAt (0)))); };
+  break;
+
+
+  case 160: /* expression: expression "++"  */
+  if (yyn == 160)
+    /* "/home/fnoury/L3/Compilation/projet-20210420/parser/Parser.y":593  */
+                                                        { yyval = new StreeSUCC(((Stree)(yystack.valueAt (1))), StreeSUCC.RIGHT); };
+  break;
+
+
+  case 161: /* expression: expression "--"  */
+  if (yyn == 161)
+    /* "/home/fnoury/L3/Compilation/projet-20210420/parser/Parser.y":594  */
+                                                                { yyval = new StreeDEC(((Stree)(yystack.valueAt (1))), StreeDEC.RIGHT); };
+  break;
+
+
+  case 162: /* expression: "++" expression  */
+  if (yyn == 162)
+    /* "/home/fnoury/L3/Compilation/projet-20210420/parser/Parser.y":595  */
+                                                                { yyval = new StreeSUCC(((Stree)(yystack.valueAt (0))), StreeSUCC.LEFT); };
+  break;
+
+
+  case 163: /* expression: "--" expression  */
+  if (yyn == 163)
+    /* "/home/fnoury/L3/Compilation/projet-20210420/parser/Parser.y":596  */
+                                                        { yyval = new StreeDEC(((Stree)(yystack.valueAt (0))), StreeDEC.LEFT); };
+  break;
+
+
+  case 164: /* expression: expression '&' expression  */
+  if (yyn == 164)
+    /* "/home/fnoury/L3/Compilation/projet-20210420/parser/Parser.y":597  */
+                                                        { yyval = new StreeAND(((Stree)(yystack.valueAt (2))), ((Stree)(yystack.valueAt (0)))); };
+  break;
+
+
+  case 165: /* expression: expression '|' expression  */
+  if (yyn == 165)
+    /* "/home/fnoury/L3/Compilation/projet-20210420/parser/Parser.y":598  */
+                                                        { yyval = new StreeOR(((Stree)(yystack.valueAt (2))), ((Stree)(yystack.valueAt (0)))); };
+  break;
+
+
+  case 166: /* expression: expression "<<" expression  */
+  if (yyn == 166)
+    /* "/home/fnoury/L3/Compilation/projet-20210420/parser/Parser.y":599  */
+                                                { yyval = new StreeLSHIFT(((Stree)(yystack.valueAt (2))), ((Stree)(yystack.valueAt (0)))); };
+  break;
+
+
+  case 167: /* expression: expression ">>" expression  */
+  if (yyn == 167)
+    /* "/home/fnoury/L3/Compilation/projet-20210420/parser/Parser.y":600  */
+                                                { yyval = new StreeRSHIFT(((Stree)(yystack.valueAt (2))), ((Stree)(yystack.valueAt (0)))); };
+  break;
+
+
+  case 168: /* expression: '(' expression ')'  */
+  if (yyn == 168)
+    /* "/home/fnoury/L3/Compilation/projet-20210420/parser/Parser.y":601  */
+                                                {yyval = ((Stree)(yystack.valueAt (1)));};
+  break;
+
+
+  case 169: /* args_opt: %empty  */
+  if (yyn == 169)
+    /* "/home/fnoury/L3/Compilation/projet-20210420/parser/Parser.y":605  */
+               {yyval = null;};
+  break;
+
+
+  case 170: /* args_opt: args  */
+  if (yyn == 170)
+    /* "/home/fnoury/L3/Compilation/projet-20210420/parser/Parser.y":606  */
+               {yyval = ((Stree)(yystack.valueAt (0)));};
   break;
 
 
 
-/* "/home/altyriss/MEGAsync/Informatique/L3/Compilation/MiniProjet/miniprojet/src/fr/ubordeaux/deptinfo/compilation/lea/parser/Parser.java":1812  */
+/* "/home/fnoury/L3/Compilation/projet-20210420/src/fr/ubordeaux/deptinfo/compilation/lea/parser/Parser.java":2102  */
 
         default: break;
       }
@@ -1847,7 +2137,7 @@ public class Parser
    * @return <tt>true</tt> if the parsing succeeds.  Note that this does not
    *          imply that there were no syntax errors.
    */
-  public boolean parse() throws java.io.IOException, EnvironmentException, TypeException
+  public boolean parse() throws java.io.IOException, EnvironmentException, TypeException, StreeException
 
   {
     /* @$.  */
@@ -2221,8 +2511,8 @@ public class Parser
     return yyvalue == yytable_ninf_;
   }
 
-  private static final short yypact_ninf_ = -249;
-  private static final short yytable_ninf_ = -158;
+  private static final short yypact_ninf_ = -214;
+  private static final short yytable_ninf_ = -134;
 
 /* YYPACT[STATE-NUM] -- Index in YYTABLE of the portion describing
    STATE-NUM.  */
@@ -2231,47 +2521,45 @@ public class Parser
   {
     return new short[]
     {
-      17,    27,    60,   -15,  -249,  -249,   -23,    -8,    26,  -249,
-       3,  -249,    31,    85,  -249,   130,  -249,    70,   100,   135,
-     100,    43,   105,    89,   295,  -249,  -249,  -249,   126,   111,
-      70,  -249,  -249,  -249,  -249,   -28,   141,   131,  -249,   108,
-     113,  -249,   -27,   220,   155,  -249,  -249,  -249,  -249,  -249,
-    -249,  -249,  -249,  -249,  -249,  -249,  -249,  -249,  -249,  -249,
-    -249,  -249,  -249,  -249,  -249,  -249,  -249,  -249,  -249,  -249,
-    -249,  -249,  -249,  -249,  -249,  -249,  -249,  -249,   134,   224,
-    -249,  -249,  -249,  -249,   -77,    78,   100,   100,   100,    70,
-     162,   164,   145,    75,   139,     2,  -249,   155,   982,   982,
-     155,   168,   170,   -56,  -249,  -249,   149,   146,   147,  -249,
-    -249,  -249,  -249,  -249,  -249,   172,  -249,   982,   155,   154,
-      58,  -249,  -249,   169,  -249,  -249,   193,   199,   200,   201,
-    -249,   204,  -249,  -249,   152,    63,   189,   190,  -249,  -249,
-     155,   155,   267,  -249,  -249,  -249,  -249,   195,   221,   982,
-     982,   982,   982,   982,  -249,   197,   155,   155,    64,    80,
-     218,   935,   982,  -249,   -45,  -249,   214,   202,   236,   241,
-    -249,    39,   154,   227,    87,    97,   229,   230,   237,  -249,
-    -249,   979,     6,    53,   228,   233,    34,  -249,   242,   243,
-     246,    44,  -249,  -249,   923,  -249,  -249,   250,    65,   254,
-     256,  -249,   221,  -249,   982,  -249,  -249,  -249,   982,  -249,
-    -249,   258,   259,   982,  -249,  -249,    45,   284,     8,    67,
-     257,   -35,    34,    34,    34,    34,   285,    34,    34,    34,
-     265,   261,  -249,   828,    34,    34,    34,   982,    34,  -249,
-    -249,  -249,    34,    34,    34,    34,    34,    34,    34,    34,
-      34,    34,    34,    34,  -249,  -249,   301,    34,   154,   277,
-    -249,   302,  -249,   982,   154,   286,   288,   290,  -249,  -249,
-      -2,    -1,    34,   328,   251,   345,    -7,    -7,   303,   852,
-      -7,   372,    34,  -249,  -249,    34,    34,    34,    34,    34,
-      34,    34,    34,    34,    34,    34,    34,    34,    34,    34,
-      34,    34,   391,   421,   467,   305,   -41,   828,   828,   828,
-     828,   828,   828,   828,   828,   828,   828,   828,   828,   828,
-     306,   104,  -249,  -249,  -249,   308,  -249,  -249,  -249,    34,
-     982,    75,    34,    34,   751,  -249,   979,  -249,    34,  -249,
-     125,   852,   840,   163,   163,   864,   864,   864,   864,   864,
-     864,    69,    69,    25,    25,    25,     1,   163,  -249,  -249,
-     979,  -249,    34,  -249,  -249,   154,   309,   497,   310,   317,
-     516,   638,  -249,   367,   324,   321,  -249,  -249,   828,  -249,
-    -249,   325,    34,    34,   979,    34,   979,  -249,  -249,   668,
-     719,  -249,   543,  -249,    34,    34,   154,   592,   619,  -249,
-     154,   154,  -249,  -249
+    -214,    34,   110,  -214,    80,   -65,   -31,  -214,    -3,  -214,
+     -50,    36,  -214,    64,  -214,  -214,    49,   115,    49,    85,
+      78,    46,    33,  -214,   192,    99,  -214,  -214,   104,    76,
+    -214,  -214,  -214,   126,  -214,    78,  -214,  -214,  -214,  -214,
+       8,    49,    49,    49,  -214,    73,   196,   131,   201,   114,
+    -214,  -214,  -214,   -53,   103,    41,  -214,  -214,    78,   143,
+     144,  -214,    73,    68,   142,    -6,  -214,   937,  -214,   937,
+     131,   155,   158,  -214,  -214,   141,   152,   147,  -214,  -214,
+    -214,  -214,  -214,  -214,    68,  -214,   937,   131,  -214,  -214,
+    -214,   169,  -214,  -214,   181,   182,   189,   198,  -214,   199,
+    -214,  -214,   185,    81,   180,   186,   188,   131,   131,  -214,
+     265,  -214,  -214,  -214,   215,   937,   937,   937,   937,   937,
+    -214,   214,   131,   131,  -214,    90,    91,    68,  -214,  -214,
+      86,  -214,   233,   221,   235,   236,  -214,    87,  -214,  -214,
+     111,   124,   243,   224,   222,   230,  -214,   215,  -214,   937,
+    -214,  -214,  -214,   937,  -214,  -214,   248,   229,   937,  -214,
+    -214,  -214,  -214,  -214,   244,  -214,   230,   232,   937,  -214,
+    -214,   242,   865,  -214,  -214,  -214,  -214,   245,  -214,  -214,
+    -214,  -214,  -214,   911,   247,    54,   249,   250,    23,   253,
+    -214,   254,   255,   256,   -43,  -214,  -214,   852,  -214,  -214,
+     252,    56,   257,  -214,  -214,  -214,  -214,   230,   261,    38,
+     270,    89,   241,   -29,    23,    23,    23,    23,   275,   179,
+      23,    23,    23,   264,   271,  -214,   736,    23,    23,    23,
+      23,   937,    23,  -214,  -214,  -214,    23,    23,    23,    23,
+      23,    23,    23,    23,    23,    23,    23,  -214,  -214,   288,
+      23,  -214,  -214,  -214,  -214,   937,   272,   -57,   266,     1,
+      23,   297,   251,   291,    -9,    -9,   273,   778,    -9,   377,
+      23,  -214,  -214,    23,    23,    23,    23,    23,    23,    23,
+      23,    23,    23,    23,    23,    23,    23,    23,    23,   395,
+     413,   431,   517,     2,   -16,   736,   736,   736,   736,   736,
+     736,   736,   736,   736,   736,   736,   736,   274,   128,   230,
+     282,  -214,  -214,   378,    23,    23,    23,   655,  -214,   911,
+    -214,    23,  -214,   129,   778,   766,    35,    35,   790,   790,
+     790,   790,   790,   790,   148,   148,    13,    13,    -4,    35,
+     287,  -214,  -214,   911,    23,  -214,    23,  -214,  -214,  -214,
+    -214,   535,   571,   553,  -214,   347,   289,   290,  -214,   145,
+    -214,   736,   736,  -214,  -214,   300,   296,   911,   911,  -214,
+      23,   310,   293,   145,  -214,  -214,   303,  -214,  -214,   686,
+     911,  -214,  -214,   911,   911,  -214,  -214,  -214
     };
   }
 
@@ -2283,47 +2571,45 @@ public class Parser
   {
     return new short[]
     {
-       0,     0,     0,     0,     3,     1,     0,     0,     0,     5,
-       2,     8,     0,    12,     6,    16,     7,    48,     0,    14,
-       0,     0,     0,     0,     0,    49,    51,    50,     0,     0,
-      48,    24,    25,    26,    27,    52,    20,    13,    19,    48,
-       0,    17,     0,     0,     0,    75,    76,    77,    78,    79,
-      80,    81,    82,    83,    84,    85,    86,    69,    70,    55,
-      56,    73,    74,    62,    59,    61,    63,    57,    58,    60,
-      64,    65,    66,    67,    68,    72,    71,    87,     0,     0,
-      10,    23,    54,    53,     0,     0,     0,     0,     0,    48,
-       0,     0,     0,     0,     0,     0,   109,     0,     0,     0,
-       0,     0,     0,     0,    18,    15,     0,     0,     0,    11,
-     160,   164,   161,   163,   162,     0,    29,     0,     0,     0,
-       0,    93,    90,     0,    92,    91,     0,     0,     0,     0,
-      94,   102,    28,   100,     0,     0,     0,     0,    21,     9,
-       0,     0,     0,   110,   108,   112,    31,     0,     0,     0,
-       0,     0,     0,     0,    30,    32,     0,     0,     0,     0,
-       0,     0,     0,   107,     0,   106,     0,     0,     0,     0,
-     104,     0,     0,     0,     0,     0,     0,     0,     0,   149,
-     150,     0,     0,     0,     0,     0,     0,   155,     0,     0,
-       0,   152,   125,   113,     0,   116,   118,     0,     0,     0,
-      44,    95,     0,    97,     0,    96,    98,   101,     0,    33,
-      35,     0,    36,     0,    88,   165,   152,     0,     0,     0,
-     152,     0,     0,     0,     0,     0,     0,     0,     0,     0,
-     167,     0,   166,   151,     0,     0,     0,     0,     0,   111,
-     115,   117,     0,     0,     0,     0,     0,     0,     0,     0,
-       0,     0,     0,     0,   132,   133,     0,     0,     0,     0,
-     105,     0,   103,     0,     0,     0,     0,     0,   130,   129,
-     152,     0,     0,     0,     0,     0,   187,   188,     0,   172,
-     181,     0,     0,   185,   186,     0,     0,     0,     0,     0,
+       3,     0,     0,     1,     0,     0,     0,     4,     2,     7,
+       0,    11,     5,    15,     6,    30,     0,    13,     0,     0,
+      53,    19,    12,    18,    53,     0,    16,    30,     0,     0,
+      54,    56,    55,     0,    31,    53,    23,    24,    25,    26,
+      57,     0,     0,     0,    30,    60,     0,     0,     0,     0,
+      22,    59,    58,     0,     0,     0,    17,    14,    53,     0,
+       0,    31,    60,     0,     0,     0,    83,     0,     9,     0,
+       0,     0,     0,    20,    31,     0,     0,     0,    61,   136,
+     140,   137,   139,   138,     0,    28,     0,     0,    32,    67,
+      64,     0,    66,    65,     0,     0,     0,     0,    68,    76,
+      27,    74,     0,     0,     0,     0,     0,     0,     0,    10,
+       0,    84,    82,    30,     0,     0,     0,     0,     0,     0,
+      29,    35,     0,     0,     8,     0,     0,     0,    33,    81,
+       0,    80,     0,     0,     0,     0,    78,     0,    30,    30,
+       0,     0,     0,     0,     0,     0,    69,     0,    71,     0,
+      70,    72,    75,     0,    36,    39,     0,    41,     0,    62,
+     141,    86,    31,    79,     0,    77,     0,     0,     0,    30,
+      30,     0,     0,    34,    73,    31,    31,    47,    42,    45,
+      63,   125,   126,     0,     0,     0,     0,     0,     0,     0,
+     131,     0,     0,     0,   128,   100,    87,     0,    90,   108,
+       0,     0,     0,    37,    40,    30,    30,     0,     0,   128,
+       0,     0,   128,     0,     0,     0,     0,     0,     0,   128,
+       0,     0,     0,   143,     0,   142,   127,     0,     0,     0,
+       0,     0,     0,    85,    89,    91,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,   109,   110,     0,
+       0,    48,    51,    31,    31,     0,     0,   128,     0,     0,
+       0,     0,     0,     0,   162,   163,     0,   148,   157,     0,
+       0,   160,   161,     0,     0,     0,     0,     0,     0,     0,
        0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
-       0,     0,     0,     0,     0,     0,     0,   159,   131,   134,
-     135,   136,   137,   138,   139,   140,   141,   142,   143,   144,
-     154,     0,    45,    47,    99,    40,    37,    39,    89,     0,
-       0,     0,     0,     0,     0,   154,     0,   146,   194,   193,
-       0,   170,   171,   191,   192,   177,   174,   176,   178,   173,
-     175,   179,   180,   182,   183,   184,   190,   189,   147,   148,
-       0,   114,     0,   153,   145,     0,     0,     0,     0,     0,
-       0,     0,   124,   119,   195,     0,   168,   121,   158,    41,
-      43,     0,     0,     0,     0,     0,     0,   169,   122,     0,
-       0,   123,     0,   120,     0,     0,     0,     0,     0,   126,
-       0,     0,   128,   127
+       0,     0,     0,     0,     0,   135,   106,   111,   112,   113,
+     114,   115,   116,   117,   118,   119,   120,   130,     0,     0,
+       0,    43,    46,     0,     0,     0,     0,     0,   130,     0,
+     122,   169,   168,     0,   146,   147,   166,   167,   153,   150,
+     152,   154,   149,   151,   155,   156,   158,   159,   165,   164,
+       0,   123,   124,     0,     0,    88,     0,   129,   121,    31,
+      31,     0,     0,     0,    98,    92,   170,     0,   144,     0,
+      94,   107,   134,    49,    52,     0,     0,     0,     0,   145,
+       0,     0,     0,   102,   103,    95,     0,    96,    93,     0,
+       0,    99,   101,     0,     0,   105,    97,   104
     };
   }
 
@@ -2333,11 +2619,12 @@ public class Parser
   {
     return new short[]
     {
-    -249,  -249,  -249,  -249,  -249,   409,  -249,  -249,  -249,   335,
-      23,   -25,  -249,  -249,  -249,  -249,  -249,  -249,  -249,  -249,
-    -249,  -249,  -249,  -249,  -249,   383,  -249,  -249,  -249,   -95,
-     205,  -249,  -249,   231,   187,   314,  -119,  -249,  -249,  -249,
-    -165,  -249,  -249,  -158,  -155,  -248,   -92,   -36,  -249
+    -214,  -214,  -214,  -214,  -214,   396,  -214,  -214,  -214,   364,
+       0,    53,  -214,  -214,  -214,  -214,   -20,   -61,  -214,  -214,
+    -214,  -214,  -214,  -214,  -214,  -214,  -214,  -214,  -214,  -214,
+    -214,  -214,  -214,   382,  -214,   345,  -214,   -66,   190,  -214,
+    -214,   262,     5,   329,  -143,  -214,  -214,  -214,  -161,    48,
+    -214,  -214,   211,    57,  -171,  -166,  -213,   -54,    17,  -214
     };
   }
 
@@ -2347,11 +2634,12 @@ public class Parser
   {
     return new short[]
     {
-       0,     2,     3,     9,    10,    11,    19,    40,    21,    37,
-      38,    29,    30,    31,    32,    33,    34,   172,   173,   264,
-     265,   365,   366,   258,   259,    35,    85,    78,    92,   132,
-     133,   171,   164,   165,    95,    96,   192,   161,   193,   194,
-     195,   196,   197,   230,   231,   306,   232,   307,   375
+       0,     1,     2,     7,     8,     9,    17,    25,    19,    22,
+      23,    34,    35,    36,    37,    38,    20,    49,    39,   113,
+     145,   138,   166,   139,   167,   169,   207,   170,   208,   205,
+     309,   206,   310,    40,    54,    61,    62,   100,   101,   137,
+     130,   131,    65,    66,   195,   172,   196,   197,   198,   372,
+     373,   374,   199,   200,   223,   224,   294,   225,   295,   357
     };
   }
 
@@ -2363,114 +2651,107 @@ public class Parser
   {
     return new short[]
     {
-     146,   116,   331,   198,   134,    81,   199,   218,   268,   321,
-      82,   272,   287,   288,     6,    90,   217,    99,     1,   100,
-     287,   288,   143,   198,   138,   221,   199,     4,    12,   240,
-       7,    91,     6,     8,   340,   201,   198,    87,    83,   199,
-     283,   284,    84,    41,   287,   288,    -4,    13,   202,   224,
-     225,     8,   362,   209,   166,   167,   168,   169,   170,   363,
-       5,   271,    -4,    14,   106,    -4,   273,   200,   242,   243,
-     244,   245,   246,   247,   248,   249,   250,   251,   252,   253,
-     254,   255,   300,   301,   283,   284,   226,   110,   287,   288,
-     374,   301,   330,   332,   333,   118,    15,   238,   187,   119,
-     273,    22,   219,   269,   216,   111,   112,   113,   114,   261,
-     104,   105,   227,   262,   300,   301,   228,   187,   266,   207,
-     101,    23,    17,   220,    24,    25,    26,    27,   110,    18,
-     229,   187,   208,   115,    42,    28,   102,   270,   237,   322,
-    -156,  -156,   305,   238,   238,   326,   111,   112,   113,   114,
-     233,   118,   297,   298,   299,   147,   118,   118,   300,   301,
-     155,   176,   -22,    25,    26,    27,   256,    20,   325,   372,
-      36,   373,    39,   118,   115,    43,   198,   177,   198,   199,
-     118,   199,   287,   288,   211,    44,   274,   275,   276,   277,
-     118,   279,   280,   281,   212,   377,    79,   362,   302,   303,
-     304,   364,   198,    80,    89,   199,   308,   309,   310,   311,
-     312,   313,   314,   315,   316,   317,   318,   319,   362,   391,
-      86,   393,   376,    93,    87,    94,   198,    98,   198,   199,
-      97,   199,   107,   117,   108,   368,   334,   109,   136,   369,
-     137,   139,   140,   141,   142,   145,   379,   154,   148,   341,
-     342,   343,   344,   345,   346,   347,   348,   349,   350,   351,
-     352,   353,   354,   355,   356,   357,   283,   284,   285,   286,
-     287,   288,   149,   289,   290,   291,   292,   399,   150,   151,
-     152,   402,   403,   153,   120,   156,   157,   135,   160,   162,
-     178,   163,   -34,   367,   203,   204,   370,   371,    45,    46,
-      47,    48,    49,    50,    51,    52,    53,    54,    55,    56,
-      57,    58,    59,    60,    61,    62,   205,    63,    64,    65,
-      66,   206,   210,   213,   222,   214,   378,   158,   159,   223,
-     293,   294,   295,   296,   297,   298,   299,   215,   234,   235,
-     300,   301,   236,   174,   175,   241,   389,   390,   336,   392,
-     257,   -46,   263,   267,   -38,   131,   238,   282,   397,   398,
-     283,   284,   285,   286,   287,   288,   256,   289,   290,   291,
-     292,   320,   323,    67,    68,    69,    70,    71,    72,    73,
-      74,   327,   324,   328,    75,    76,   329,   283,   284,   285,
-     286,   287,   288,    77,   289,   290,   291,   292,   335,   338,
-     361,   386,  -157,   -42,   380,   382,   283,   284,   285,   286,
-     287,   288,   383,   289,   290,   291,   292,   362,   387,    16,
-     388,   103,    88,     0,   293,   294,   295,   296,   297,   298,
-     299,   278,   144,   260,   300,   301,   283,   284,   285,   286,
-     287,   288,   337,   289,   290,   291,   292,     0,     0,     0,
-       0,   293,   294,   295,   296,   297,   298,   299,     0,     0,
-       0,   300,   301,     0,     0,     0,     0,     0,     0,   339,
-     293,   294,   295,   296,   297,   298,   299,     0,     0,     0,
-     300,   301,   283,   284,   285,   286,   287,   288,   358,   289,
-     290,   291,   292,     0,     0,     0,     0,     0,     0,     0,
-     293,   294,   295,   296,   297,   298,   299,     0,     0,     0,
-     300,   301,   283,   284,   285,   286,   287,   288,   359,   289,
-     290,   291,   292,     0,     0,     0,     0,     0,     0,     0,
-       0,   283,   284,   285,   286,   287,   288,     0,   289,   290,
-     291,   292,     0,     0,     0,     0,   293,   294,   295,   296,
-     297,   298,   299,     0,     0,     0,   300,   301,   283,   284,
-     285,   286,   287,   288,   360,   289,   290,   291,   292,     0,
-       0,     0,     0,     0,     0,     0,   293,   294,   295,   296,
-     297,   298,   299,     0,     0,     0,   300,   301,     0,     0,
-       0,     0,     0,     0,   381,   293,   294,   295,   296,   297,
-     298,   299,     0,     0,     0,   300,   301,   283,   284,   285,
-     286,   287,   288,   384,   289,   290,   291,   292,     0,     0,
-       0,     0,   293,   294,   295,   296,   297,   298,   299,     0,
-       0,     0,   300,   301,   283,   284,   285,   286,   287,   288,
-     396,   289,   290,   291,   292,     0,     0,     0,     0,     0,
-       0,     0,     0,   283,   284,   285,   286,   287,   288,     0,
-     289,   290,   291,   292,     0,     0,     0,     0,     0,     0,
-       0,   293,   294,   295,   296,   297,   298,   299,     0,     0,
-       0,   300,   301,   283,   284,   285,   286,   287,   288,   400,
-     289,   290,   291,   292,     0,     0,     0,     0,   293,   294,
-     295,   296,   297,   298,   299,     0,     0,     0,   300,   301,
-       0,     0,     0,     0,     0,     0,   401,   293,   294,   295,
-     296,   297,   298,   299,     0,     0,     0,   300,   301,     0,
-       0,     0,     0,   385,   283,   284,   285,   286,   287,   288,
-       0,   289,   290,   291,   292,     0,     0,   293,   294,   295,
-     296,   297,   298,   299,     0,     0,     0,   300,   301,     0,
-       0,     0,     0,   394,     0,     0,   283,   284,   285,   286,
-     287,   288,     0,   289,   290,   291,   292,     0,   179,     0,
-       0,     0,     0,   180,   181,     0,     0,     0,     0,     0,
-       0,   182,   183,     0,   184,     0,     0,     0,   293,   294,
-     295,   296,   297,   298,   299,     0,     0,     0,   300,   301,
-       0,   185,   186,     0,   395,   187,     0,     0,   188,   189,
-     190,   216,     0,     0,     0,     0,     0,     0,     0,     0,
-     293,   294,   295,   296,   297,   298,   299,     0,     0,     0,
-     300,   301,   145,   283,   284,   285,   286,   287,   288,     0,
-     289,   290,   291,   292,     0,   283,   284,   285,     0,   287,
-     288,     0,   289,   290,   291,   292,     0,   283,   284,     0,
-       0,   287,   288,     0,   289,   290,   291,   292,     0,   283,
-     284,     0,     0,   287,   288,     0,  -158,  -158,  -158,  -158,
-       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
-       0,     0,     0,     0,     0,     0,     0,   293,   294,   295,
-     296,   297,   298,   299,     0,     0,     0,   300,   301,   293,
-     294,   295,   296,   297,   298,   299,     0,     0,     0,   300,
-     301,   293,   294,   295,   296,   297,   298,   299,     0,     0,
-       0,   300,   301,  -158,  -158,   295,   296,   297,   298,   299,
-     179,     0,     0,   300,   301,   180,   181,     0,     0,     0,
-       0,     0,   179,   182,   183,     0,   184,   180,   181,     0,
-       0,     0,     0,     0,     0,   182,   183,     0,   184,     0,
-       0,     0,     0,   185,   186,     0,     0,   187,     0,     0,
-     188,   189,   190,   216,     0,   185,   186,     0,     0,   187,
-       0,     0,   188,   189,   190,   191,   179,     0,   121,     0,
-     122,   180,   181,     0,   145,   239,     0,   123,     0,   182,
-     183,   124,   184,     0,     0,     0,   145,     0,     0,   125,
-       0,   126,   127,     0,     0,     0,     0,     0,     0,   185,
-     186,   128,     0,   187,   129,   130,   188,   189,   190,   216,
-       0,     0,   131,     0,     0,     0,     0,     0,     0,     0,
-       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
-     145
+      77,   201,   162,   102,   236,   344,   202,    45,    12,    85,
+     275,   276,   201,   106,   213,   275,   276,   202,    26,   260,
+     111,   255,   210,   175,    58,    69,   201,     4,   271,   272,
+     110,   202,   275,   276,     3,   231,   234,   308,   216,   217,
+     259,    13,    56,    57,   232,    15,    70,     6,    51,   132,
+     133,   134,   135,   136,   275,   276,  -132,   323,   232,   236,
+     237,   238,   239,   240,   253,   241,   242,   243,   244,   245,
+     246,   247,   248,   144,   261,   103,    52,   218,    79,   316,
+      53,   346,    16,   164,   287,   288,   347,   165,    50,   190,
+     288,    87,   171,   128,    88,   219,    80,    81,    82,    83,
+     345,   173,   177,    18,   261,   220,   287,   288,   356,   221,
+      28,    74,   125,   126,   203,   204,   255,    59,   154,   155,
+     190,    21,   222,    79,    84,    73,   212,   140,   141,    41,
+      42,    29,    60,    10,    30,    31,    32,  -132,    42,   232,
+       4,    80,    81,    82,    83,    33,   201,    71,   201,   178,
+     179,   202,    11,   202,    24,   190,   354,     5,   355,   249,
+       6,   257,    72,   271,   272,   293,   349,   275,   276,    84,
+     146,   152,   201,   370,   -21,    47,    46,   202,    87,   371,
+      27,   121,   360,   147,   153,   251,   252,    87,    87,   313,
+     142,   143,   311,   312,    44,   201,   201,   201,    48,    63,
+     202,   202,   202,    64,    67,   226,   377,   378,    87,   201,
+      68,   156,   201,   201,   202,    75,    76,   202,   202,   385,
+      86,    87,   386,   387,   157,   346,   346,   104,   348,   358,
+     105,   262,   263,   264,   265,   285,   286,   267,   268,   269,
+     107,   287,   288,   109,   289,   290,   291,   292,    30,    31,
+      32,   108,   114,   296,   297,   298,   299,   300,   301,   302,
+     303,   304,   305,   306,   115,   116,   271,   272,   273,   274,
+     275,   276,   117,   277,   278,   279,   280,   317,  -132,   122,
+     232,   118,   119,   120,   124,   123,   127,   129,   363,   364,
+     324,   325,   326,   327,   328,   329,   330,   331,   332,   333,
+     334,   335,   336,   337,   338,   339,   271,   272,   273,   274,
+     275,   276,   -38,   277,   278,   279,   280,   148,   149,   150,
+     151,   158,   159,   181,   160,   161,   168,   -44,   174,   182,
+     176,   351,   352,   353,   281,   282,   283,   284,   285,   286,
+     180,   256,   232,   -50,   287,   288,   211,    99,   214,   215,
+     235,   319,   227,   228,   229,   230,   250,   187,   188,   254,
+     307,   361,   190,   362,   315,   191,   192,   249,   209,   318,
+     270,   314,   321,  -133,   281,   282,   283,   284,   285,   286,
+     350,   344,   359,   368,   287,   288,   346,   379,   380,   381,
+     369,   320,   271,   272,   273,   274,   275,   276,   375,   277,
+     278,   279,   280,   383,    14,    55,    43,    78,   266,   163,
+     271,   272,   273,   274,   275,   276,   112,   277,   278,   279,
+     280,   382,   258,   376,     0,     0,     0,     0,   271,   272,
+     273,   274,   275,   276,     0,   277,   278,   279,   280,     0,
+       0,     0,     0,     0,     0,     0,   271,   272,   273,   274,
+     275,   276,     0,   277,   278,   279,   280,     0,     0,     0,
+     281,   282,   283,   284,   285,   286,     0,     0,     0,     0,
+     287,   288,     0,     0,     0,     0,     0,   322,   281,   282,
+     283,   284,   285,   286,     0,     0,     0,     0,   287,   288,
+       0,     0,     0,     0,     0,   340,   281,   282,   283,   284,
+     285,   286,     0,     0,     0,     0,   287,   288,     0,     0,
+       0,     0,     0,   341,   281,   282,   283,   284,   285,   286,
+       0,     0,     0,     0,   287,   288,     0,     0,     0,     0,
+       0,   342,   271,   272,   273,   274,   275,   276,     0,   277,
+     278,   279,   280,     0,     0,     0,     0,     0,     0,     0,
+     271,   272,   273,   274,   275,   276,     0,   277,   278,   279,
+     280,     0,     0,     0,     0,     0,     0,     0,   271,   272,
+     273,   274,   275,   276,     0,   277,   278,   279,   280,     0,
+       0,     0,     0,     0,     0,     0,   271,   272,   273,   274,
+     275,   276,     0,   277,   278,   279,   280,     0,     0,     0,
+     281,   282,   283,   284,   285,   286,     0,     0,     0,     0,
+     287,   288,     0,     0,     0,     0,     0,   343,   281,   282,
+     283,   284,   285,   286,     0,     0,     0,     0,   287,   288,
+       0,     0,     0,     0,     0,   365,   281,   282,   283,   284,
+     285,   286,     0,     0,     0,     0,   287,   288,     0,     0,
+       0,     0,     0,   367,   281,   282,   283,   284,   285,   286,
+       0,     0,     0,     0,   287,   288,     0,     0,     0,   366,
+     271,   272,   273,   274,   275,   276,     0,   277,   278,   279,
+     280,     0,   181,     0,     0,     0,     0,     0,   182,     0,
+     183,     0,     0,     0,     0,     0,     0,   184,   185,     0,
+     186,   271,   272,   273,   274,   275,   276,     0,   277,   278,
+     279,   280,     0,     0,     0,     0,   187,   188,     0,     0,
+     189,   190,     0,     0,   191,   192,   193,   209,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,   281,   282,
+     283,   284,   285,   286,     0,     0,     0,     0,   287,   288,
+     161,   271,   272,   273,   274,   275,   276,     0,   277,   278,
+     279,   280,     0,     0,   384,     0,     0,     0,     0,   281,
+     282,   283,   284,   285,   286,     0,     0,     0,     0,   287,
+     288,   271,   272,   273,     0,   275,   276,     0,   277,   278,
+     279,   280,     0,   271,   272,     0,     0,   275,   276,     0,
+     277,   278,   279,   280,     0,   271,   272,     0,     0,   275,
+     276,     0,  -134,  -134,  -134,  -134,     0,     0,     0,   281,
+     282,   283,   284,   285,   286,     0,     0,     0,     0,   287,
+     288,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,   281,
+     282,   283,   284,   285,   286,     0,     0,     0,     0,   287,
+     288,   281,   282,   283,   284,   285,   286,     0,     0,     0,
+       0,   287,   288,  -134,  -134,   283,   284,   285,   286,   181,
+       0,     0,     0,   287,   288,   182,     0,   183,     0,     0,
+       0,     0,   181,     0,   184,   185,     0,   186,   182,     0,
+     183,     0,     0,     0,     0,     0,     0,   184,   185,     0,
+     186,     0,     0,   187,   188,     0,     0,   189,   190,     0,
+       0,   191,   192,   193,   209,     0,   187,   188,     0,     0,
+     189,   190,     0,     0,   191,   192,   193,   194,   181,     0,
+       0,     0,     0,     0,   182,     0,   183,   161,   233,     0,
+       0,     0,     0,   184,   185,     0,   186,     0,     0,     0,
+     161,     0,     0,    89,     0,     0,    90,     0,     0,     0,
+       0,     0,   187,   188,    91,     0,   189,   190,    92,     0,
+     191,   192,   193,   209,     0,     0,    93,     0,    94,    95,
+       0,     0,     0,     0,     0,     0,     0,    96,     0,     0,
+      97,    98,     0,     0,     0,     0,   161,     0,     0,    99
     };
   }
 
@@ -2479,114 +2760,107 @@ private static final short[] yycheck_ = yycheck_init();
   {
     return new short[]
     {
-     119,    93,     3,   161,    99,    30,   161,     1,     0,   257,
-      38,    46,    19,    20,    29,    42,   181,    94,     1,    96,
-      19,    20,   117,   181,    80,   183,   181,     0,    51,   194,
-      45,    58,    29,    48,   282,    80,   194,    93,    66,   194,
-      15,    16,    70,    20,    19,    20,    29,    70,    93,    15,
-      16,    48,    93,   172,   149,   150,   151,   152,   153,   100,
-       0,   219,    45,    71,    89,    48,   101,   162,     3,     4,
-       5,     6,     7,     8,     9,    10,    11,    12,    13,    14,
-      15,    16,    89,    90,    15,    16,    52,    53,    19,    20,
-     338,    90,    94,    94,    95,    93,    70,    99,    64,    97,
-     101,    31,    96,    95,    70,    71,    72,    73,    74,   204,
-      87,    88,    78,   208,    89,    90,    82,    64,   213,    80,
-      42,    51,    91,    70,    54,    55,    56,    57,    53,    44,
-      96,    64,    93,    99,    91,    65,    58,    70,    94,   258,
-      96,    96,   237,    99,    99,   264,    71,    72,    73,    74,
-     186,    93,    83,    84,    85,    97,    93,    93,    89,    90,
-      97,    97,    92,    55,    56,    57,   101,    37,   263,   334,
-      70,   336,    37,    93,    99,    70,   334,    97,   336,   334,
-      93,   336,    19,    20,    97,    96,   222,   223,   224,   225,
-      93,   227,   228,   229,    97,   360,    70,    93,   234,   235,
-     236,    97,   360,    92,    91,   360,   242,   243,   244,   245,
-     246,   247,   248,   249,   250,   251,   252,   253,    93,   384,
-      79,   386,    97,     3,    93,    70,   384,     3,   386,   384,
-      96,   386,    70,    94,    70,   330,   272,    92,    70,   331,
-      70,    92,    96,    96,    72,    91,   365,    95,    79,   285,
-     286,   287,   288,   289,   290,   291,   292,   293,   294,   295,
-     296,   297,   298,   299,   300,   301,    15,    16,    17,    18,
-      19,    20,    79,    22,    23,    24,    25,   396,    79,    79,
-      79,   400,   401,    79,    97,    96,    96,   100,    21,    94,
-      72,    70,    95,   329,    80,    93,   332,   333,     3,     4,
-       5,     6,     7,     8,     9,    10,    11,    12,    13,    14,
-      15,    16,    17,    18,    19,    20,    80,    22,    23,    24,
-      25,    80,    95,    94,    96,    95,   362,   140,   141,    96,
-      79,    80,    81,    82,    83,    84,    85,   100,    96,    96,
-      89,    90,    96,   156,   157,    95,   382,   383,    97,   385,
-      96,    95,    94,    69,    95,    70,    99,    96,   394,   395,
-      15,    16,    17,    18,    19,    20,   101,    22,    23,    24,
-      25,    70,    95,    78,    79,    80,    81,    82,    83,    84,
-      85,    95,    80,    95,    89,    90,    96,    15,    16,    17,
-      18,    19,    20,    98,    22,    23,    24,    25,    70,    96,
-      95,    34,    96,    95,    95,    95,    15,    16,    17,    18,
-      19,    20,    95,    22,    23,    24,    25,    93,    97,    10,
-      95,    86,    39,    -1,    79,    80,    81,    82,    83,    84,
-      85,   226,   118,   202,    89,    90,    15,    16,    17,    18,
-      19,    20,    97,    22,    23,    24,    25,    -1,    -1,    -1,
-      -1,    79,    80,    81,    82,    83,    84,    85,    -1,    -1,
-      -1,    89,    90,    -1,    -1,    -1,    -1,    -1,    -1,    97,
-      79,    80,    81,    82,    83,    84,    85,    -1,    -1,    -1,
-      89,    90,    15,    16,    17,    18,    19,    20,    97,    22,
+      61,   172,   145,    69,     3,     3,   172,    27,    73,    63,
+      19,    20,   183,    74,   185,    19,    20,   183,    18,    48,
+      86,    78,   183,   166,    44,    78,   197,    30,    15,    16,
+      84,   197,    19,    20,     0,    78,   197,   250,    15,    16,
+     211,    72,    42,    43,   101,    95,    99,    50,    40,   115,
+     116,   117,   118,   119,    19,    20,    99,   270,   101,     3,
+       4,     5,     6,     7,   207,     9,    10,    11,    12,    13,
+      14,    15,    16,   127,   103,    70,    68,    54,    55,    78,
+      72,    97,    46,   149,    93,    94,   102,   153,    35,    66,
+      94,    97,   158,   113,   100,    72,    73,    74,    75,    76,
+      98,   162,   168,    39,   103,    82,    93,    94,   321,    86,
+      32,    58,   107,   108,   175,   176,    78,    44,   138,   139,
+      66,    72,    99,    55,   101,    84,    72,   122,   123,    83,
+      97,    53,    59,    53,    56,    57,    58,    99,    97,   101,
+      30,    73,    74,    75,    76,    67,   317,    44,   319,   169,
+     170,   317,    72,   319,    39,    66,   317,    47,   319,   103,
+      50,    72,    59,    15,    16,   231,   309,    19,    20,   101,
+      84,    84,   343,    28,    96,    99,    72,   343,    97,    34,
+      95,   100,   343,    97,    97,   205,   206,    97,    97,   255,
+     100,   100,   253,   254,    95,   366,   367,   368,    72,     3,
+     366,   367,   368,    72,     3,   188,   367,   368,    97,   380,
+      96,   100,   383,   384,   380,    72,    72,   383,   384,   380,
+      78,    97,   383,   384,   100,    97,    97,    72,   100,   100,
+      72,   214,   215,   216,   217,    87,    88,   220,   221,   222,
+      99,    93,    94,    96,   227,   228,   229,   230,    56,    57,
+      58,    99,    83,   236,   237,   238,   239,   240,   241,   242,
+     243,   244,   245,   246,    83,    83,    15,    16,    17,    18,
+      19,    20,    83,    22,    23,    24,    25,   260,    99,    99,
+     101,    83,    83,    98,    96,    99,    21,    72,   349,   350,
+     273,   274,   275,   276,   277,   278,   279,   280,   281,   282,
+     283,   284,   285,   286,   287,   288,    15,    16,    17,    18,
+      19,    20,    98,    22,    23,    24,    25,    84,    97,    84,
+      84,    78,    98,    27,   102,    95,    78,    98,    84,    33,
+      98,   314,   315,   316,    83,    84,    85,    86,    87,    88,
+      98,    71,   101,    98,    93,    94,    99,    72,    99,    99,
+      98,   100,    99,    99,    99,    99,    99,    61,    62,    98,
+      72,   344,    66,   346,    98,    69,    70,   103,    72,    72,
+      99,    99,    99,    99,    83,    84,    85,    86,    87,    88,
+      98,     3,    95,    36,    93,    94,    97,   370,    78,    96,
+     100,   100,    15,    16,    17,    18,    19,    20,    98,    22,
+      23,    24,    25,   100,     8,    41,    24,    62,   218,   147,
+      15,    16,    17,    18,    19,    20,    87,    22,    23,    24,
+      25,   373,   211,   366,    -1,    -1,    -1,    -1,    15,    16,
+      17,    18,    19,    20,    -1,    22,    23,    24,    25,    -1,
+      -1,    -1,    -1,    -1,    -1,    -1,    15,    16,    17,    18,
+      19,    20,    -1,    22,    23,    24,    25,    -1,    -1,    -1,
+      83,    84,    85,    86,    87,    88,    -1,    -1,    -1,    -1,
+      93,    94,    -1,    -1,    -1,    -1,    -1,   100,    83,    84,
+      85,    86,    87,    88,    -1,    -1,    -1,    -1,    93,    94,
+      -1,    -1,    -1,    -1,    -1,   100,    83,    84,    85,    86,
+      87,    88,    -1,    -1,    -1,    -1,    93,    94,    -1,    -1,
+      -1,    -1,    -1,   100,    83,    84,    85,    86,    87,    88,
+      -1,    -1,    -1,    -1,    93,    94,    -1,    -1,    -1,    -1,
+      -1,   100,    15,    16,    17,    18,    19,    20,    -1,    22,
       23,    24,    25,    -1,    -1,    -1,    -1,    -1,    -1,    -1,
-      79,    80,    81,    82,    83,    84,    85,    -1,    -1,    -1,
-      89,    90,    15,    16,    17,    18,    19,    20,    97,    22,
-      23,    24,    25,    -1,    -1,    -1,    -1,    -1,    -1,    -1,
-      -1,    15,    16,    17,    18,    19,    20,    -1,    22,    23,
-      24,    25,    -1,    -1,    -1,    -1,    79,    80,    81,    82,
-      83,    84,    85,    -1,    -1,    -1,    89,    90,    15,    16,
-      17,    18,    19,    20,    97,    22,    23,    24,    25,    -1,
-      -1,    -1,    -1,    -1,    -1,    -1,    79,    80,    81,    82,
-      83,    84,    85,    -1,    -1,    -1,    89,    90,    -1,    -1,
-      -1,    -1,    -1,    -1,    97,    79,    80,    81,    82,    83,
-      84,    85,    -1,    -1,    -1,    89,    90,    15,    16,    17,
-      18,    19,    20,    97,    22,    23,    24,    25,    -1,    -1,
-      -1,    -1,    79,    80,    81,    82,    83,    84,    85,    -1,
-      -1,    -1,    89,    90,    15,    16,    17,    18,    19,    20,
-      97,    22,    23,    24,    25,    -1,    -1,    -1,    -1,    -1,
-      -1,    -1,    -1,    15,    16,    17,    18,    19,    20,    -1,
-      22,    23,    24,    25,    -1,    -1,    -1,    -1,    -1,    -1,
-      -1,    79,    80,    81,    82,    83,    84,    85,    -1,    -1,
-      -1,    89,    90,    15,    16,    17,    18,    19,    20,    97,
-      22,    23,    24,    25,    -1,    -1,    -1,    -1,    79,    80,
-      81,    82,    83,    84,    85,    -1,    -1,    -1,    89,    90,
-      -1,    -1,    -1,    -1,    -1,    -1,    97,    79,    80,    81,
-      82,    83,    84,    85,    -1,    -1,    -1,    89,    90,    -1,
-      -1,    -1,    -1,    95,    15,    16,    17,    18,    19,    20,
-      -1,    22,    23,    24,    25,    -1,    -1,    79,    80,    81,
-      82,    83,    84,    85,    -1,    -1,    -1,    89,    90,    -1,
-      -1,    -1,    -1,    95,    -1,    -1,    15,    16,    17,    18,
-      19,    20,    -1,    22,    23,    24,    25,    -1,    27,    -1,
-      -1,    -1,    -1,    32,    33,    -1,    -1,    -1,    -1,    -1,
-      -1,    40,    41,    -1,    43,    -1,    -1,    -1,    79,    80,
-      81,    82,    83,    84,    85,    -1,    -1,    -1,    89,    90,
-      -1,    60,    61,    -1,    95,    64,    -1,    -1,    67,    68,
-      69,    70,    -1,    -1,    -1,    -1,    -1,    -1,    -1,    -1,
-      79,    80,    81,    82,    83,    84,    85,    -1,    -1,    -1,
-      89,    90,    91,    15,    16,    17,    18,    19,    20,    -1,
-      22,    23,    24,    25,    -1,    15,    16,    17,    -1,    19,
-      20,    -1,    22,    23,    24,    25,    -1,    15,    16,    -1,
-      -1,    19,    20,    -1,    22,    23,    24,    25,    -1,    15,
-      16,    -1,    -1,    19,    20,    -1,    22,    23,    24,    25,
-      -1,    -1,    -1,    -1,    -1,    -1,    -1,    -1,    -1,    -1,
-      -1,    -1,    -1,    -1,    -1,    -1,    -1,    79,    80,    81,
-      82,    83,    84,    85,    -1,    -1,    -1,    89,    90,    79,
-      80,    81,    82,    83,    84,    85,    -1,    -1,    -1,    89,
-      90,    79,    80,    81,    82,    83,    84,    85,    -1,    -1,
-      -1,    89,    90,    79,    80,    81,    82,    83,    84,    85,
-      27,    -1,    -1,    89,    90,    32,    33,    -1,    -1,    -1,
-      -1,    -1,    27,    40,    41,    -1,    43,    32,    33,    -1,
-      -1,    -1,    -1,    -1,    -1,    40,    41,    -1,    43,    -1,
-      -1,    -1,    -1,    60,    61,    -1,    -1,    64,    -1,    -1,
-      67,    68,    69,    70,    -1,    60,    61,    -1,    -1,    64,
-      -1,    -1,    67,    68,    69,    70,    27,    -1,    26,    -1,
-      28,    32,    33,    -1,    91,    92,    -1,    35,    -1,    40,
-      41,    39,    43,    -1,    -1,    -1,    91,    -1,    -1,    47,
-      -1,    49,    50,    -1,    -1,    -1,    -1,    -1,    -1,    60,
-      61,    59,    -1,    64,    62,    63,    67,    68,    69,    70,
-      -1,    -1,    70,    -1,    -1,    -1,    -1,    -1,    -1,    -1,
-      -1,    -1,    -1,    -1,    -1,    -1,    -1,    -1,    -1,    -1,
-      91
+      15,    16,    17,    18,    19,    20,    -1,    22,    23,    24,
+      25,    -1,    -1,    -1,    -1,    -1,    -1,    -1,    15,    16,
+      17,    18,    19,    20,    -1,    22,    23,    24,    25,    -1,
+      -1,    -1,    -1,    -1,    -1,    -1,    15,    16,    17,    18,
+      19,    20,    -1,    22,    23,    24,    25,    -1,    -1,    -1,
+      83,    84,    85,    86,    87,    88,    -1,    -1,    -1,    -1,
+      93,    94,    -1,    -1,    -1,    -1,    -1,   100,    83,    84,
+      85,    86,    87,    88,    -1,    -1,    -1,    -1,    93,    94,
+      -1,    -1,    -1,    -1,    -1,   100,    83,    84,    85,    86,
+      87,    88,    -1,    -1,    -1,    -1,    93,    94,    -1,    -1,
+      -1,    -1,    -1,   100,    83,    84,    85,    86,    87,    88,
+      -1,    -1,    -1,    -1,    93,    94,    -1,    -1,    -1,    98,
+      15,    16,    17,    18,    19,    20,    -1,    22,    23,    24,
+      25,    -1,    27,    -1,    -1,    -1,    -1,    -1,    33,    -1,
+      35,    -1,    -1,    -1,    -1,    -1,    -1,    42,    43,    -1,
+      45,    15,    16,    17,    18,    19,    20,    -1,    22,    23,
+      24,    25,    -1,    -1,    -1,    -1,    61,    62,    -1,    -1,
+      65,    66,    -1,    -1,    69,    70,    71,    72,    -1,    -1,
+      -1,    -1,    -1,    -1,    -1,    -1,    -1,    -1,    83,    84,
+      85,    86,    87,    88,    -1,    -1,    -1,    -1,    93,    94,
+      95,    15,    16,    17,    18,    19,    20,    -1,    22,    23,
+      24,    25,    -1,    -1,    78,    -1,    -1,    -1,    -1,    83,
+      84,    85,    86,    87,    88,    -1,    -1,    -1,    -1,    93,
+      94,    15,    16,    17,    -1,    19,    20,    -1,    22,    23,
+      24,    25,    -1,    15,    16,    -1,    -1,    19,    20,    -1,
+      22,    23,    24,    25,    -1,    15,    16,    -1,    -1,    19,
+      20,    -1,    22,    23,    24,    25,    -1,    -1,    -1,    83,
+      84,    85,    86,    87,    88,    -1,    -1,    -1,    -1,    93,
+      94,    -1,    -1,    -1,    -1,    -1,    -1,    -1,    -1,    -1,
+      -1,    -1,    -1,    -1,    -1,    -1,    -1,    -1,    -1,    83,
+      84,    85,    86,    87,    88,    -1,    -1,    -1,    -1,    93,
+      94,    83,    84,    85,    86,    87,    88,    -1,    -1,    -1,
+      -1,    93,    94,    83,    84,    85,    86,    87,    88,    27,
+      -1,    -1,    -1,    93,    94,    33,    -1,    35,    -1,    -1,
+      -1,    -1,    27,    -1,    42,    43,    -1,    45,    33,    -1,
+      35,    -1,    -1,    -1,    -1,    -1,    -1,    42,    43,    -1,
+      45,    -1,    -1,    61,    62,    -1,    -1,    65,    66,    -1,
+      -1,    69,    70,    71,    72,    -1,    61,    62,    -1,    -1,
+      65,    66,    -1,    -1,    69,    70,    71,    72,    27,    -1,
+      -1,    -1,    -1,    -1,    33,    -1,    35,    95,    96,    -1,
+      -1,    -1,    -1,    42,    43,    -1,    45,    -1,    -1,    -1,
+      95,    -1,    -1,    26,    -1,    -1,    29,    -1,    -1,    -1,
+      -1,    -1,    61,    62,    37,    -1,    65,    66,    41,    -1,
+      69,    70,    71,    72,    -1,    -1,    49,    -1,    51,    52,
+      -1,    -1,    -1,    -1,    -1,    -1,    -1,    60,    -1,    -1,
+      63,    64,    -1,    -1,    -1,    -1,    95,    -1,    -1,    72
     };
   }
 
@@ -2597,47 +2871,45 @@ private static final short[] yycheck_ = yycheck_init();
   {
     return new short[]
     {
-       0,     1,   103,   104,     0,     0,    29,    45,    48,   105,
-     106,   107,    51,    70,    71,    70,   107,    91,    44,   108,
-      37,   110,    31,    51,    54,    55,    56,    57,    65,   113,
-     114,   115,   116,   117,   118,   127,    70,   111,   112,    37,
-     109,   112,    91,    70,    96,     3,     4,     5,     6,     7,
-       8,     9,    10,    11,    12,    13,    14,    15,    16,    17,
-      18,    19,    20,    22,    23,    24,    25,    78,    79,    80,
-      81,    82,    83,    84,    85,    89,    90,    98,   129,    70,
-      92,   113,    38,    66,    70,   128,    79,    93,   127,    91,
-      42,    58,   130,     3,    70,   136,   137,    96,     3,    94,
-      96,    42,    58,   111,   112,   112,   113,    70,    70,    92,
-      53,    71,    72,    73,    74,    99,   148,    94,    93,    97,
-     136,    26,    28,    35,    39,    47,    49,    50,    59,    62,
-      63,    70,   131,   132,   131,   136,    70,    70,    80,    92,
-      96,    96,    72,   131,   137,    91,   138,    97,    79,    79,
-      79,    79,    79,    79,    95,    97,    96,    96,   136,   136,
-      21,   139,    94,    70,   134,   135,   131,   131,   131,   131,
-     131,   133,   119,   120,   136,   136,    97,    97,    72,    27,
-      32,    33,    40,    41,    43,    60,    61,    64,    67,    68,
-      69,    70,   138,   140,   141,   142,   143,   144,   145,   146,
-     131,    80,    93,    80,    93,    80,    80,    80,    93,   138,
-      95,    97,    97,    94,    95,   100,    70,   142,     1,    96,
-      70,   145,    96,    96,    15,    16,    52,    78,    82,    96,
-     145,   146,   148,   149,    96,    96,    96,    94,    99,    92,
-     142,    95,     3,     4,     5,     6,     7,     8,     9,    10,
-      11,    12,    13,    14,    15,    16,   101,    96,   125,   126,
-     135,   131,   131,    94,   121,   122,   131,    69,     0,    95,
-      70,   145,    46,   101,   149,   149,   149,   149,   132,   149,
-     149,   149,    96,    15,    16,    17,    18,    19,    20,    22,
-      23,    24,    25,    79,    80,    81,    82,    83,    84,    85,
-      89,    90,   149,   149,   149,   131,   147,   149,   149,   149,
-     149,   149,   149,   149,   149,   149,   149,   149,   149,   149,
-      70,   147,   138,    95,    80,   131,   138,    95,    95,    96,
-      94,     3,    94,    95,   149,    70,    97,    97,    96,    97,
-     147,   149,   149,   149,   149,   149,   149,   149,   149,   149,
-     149,   149,   149,   149,   149,   149,   149,   149,    97,    97,
-      97,    95,    93,   100,    97,   123,   124,   149,   131,   148,
-     149,   149,   142,   142,   147,   150,    97,   142,   149,   138,
-      95,    97,    95,    95,    97,    95,    34,    97,    95,   149,
-     149,   142,   149,   142,    95,    95,    97,   149,   149,   138,
-      97,    97,   138,   138
+       0,   105,   106,     0,    30,    47,    50,   107,   108,   109,
+      53,    72,    73,    72,   109,    95,    46,   110,    39,   112,
+     120,    72,   113,   114,    39,   111,   114,    95,    32,    53,
+      56,    57,    58,    67,   115,   116,   117,   118,   119,   122,
+     137,    83,    97,   137,    95,   120,    72,    99,    72,   121,
+     115,    40,    68,    72,   138,   113,   114,   114,   120,    44,
+      59,   139,   140,     3,    72,   146,   147,     3,    96,    78,
+      99,    44,    59,    84,   115,    72,    72,   121,   139,    55,
+      73,    74,    75,    76,   101,   161,    78,    97,   100,    26,
+      29,    37,    41,    49,    51,    52,    60,    63,    64,    72,
+     141,   142,   141,   146,    72,    72,   121,    99,    99,    96,
+     161,   141,   147,   123,    83,    83,    83,    83,    83,    83,
+      98,   100,    99,    99,    96,   146,   146,    21,   120,    72,
+     144,   145,   141,   141,   141,   141,   141,   143,   125,   127,
+     146,   146,   100,   100,   161,   124,    84,    97,    84,    97,
+      84,    84,    84,    97,   120,   120,   100,   100,    78,    98,
+     102,    95,   148,   145,   141,   141,   126,   128,    78,   129,
+     131,   141,   149,   121,    84,   148,    98,   141,   120,   120,
+      98,    27,    33,    35,    42,    43,    45,    61,    62,    65,
+      66,    69,    70,    71,    72,   148,   150,   151,   152,   156,
+     157,   158,   159,   121,   121,   133,   135,   130,   132,    72,
+     152,    99,    72,   158,    99,    99,    15,    16,    54,    72,
+      82,    86,    99,   158,   159,   161,   162,    99,    99,    99,
+      99,    78,   101,    96,   152,    98,     3,     4,     5,     6,
+       7,     9,    10,    11,    12,    13,    14,    15,    16,   103,
+      99,   120,   120,   148,    98,    78,    71,    72,   156,   158,
+      48,   103,   162,   162,   162,   162,   142,   162,   162,   162,
+      99,    15,    16,    17,    18,    19,    20,    22,    23,    24,
+      25,    83,    84,    85,    86,    87,    88,    93,    94,   162,
+     162,   162,   162,   141,   160,   162,   162,   162,   162,   162,
+     162,   162,   162,   162,   162,   162,   162,    72,   160,   134,
+     136,   121,   121,   141,    99,    98,    78,   162,    72,   100,
+     100,    99,   100,   160,   162,   162,   162,   162,   162,   162,
+     162,   162,   162,   162,   162,   162,   162,   162,   162,   162,
+     100,   100,   100,   100,     3,    98,    97,   102,   100,   148,
+      98,   162,   162,   162,   152,   152,   160,   163,   100,    95,
+     152,   162,   162,   121,   121,   100,    98,   100,    36,   100,
+      28,    34,   153,   154,   155,    98,   157,   152,   152,   162,
+      78,    96,   153,   100,    78,   152,   152,   152
     };
   }
 
@@ -2647,26 +2919,24 @@ private static final short[] yycheck_ = yycheck_init();
   {
     return new short[]
     {
-       0,   102,   103,   103,   104,   104,   105,   106,   106,   107,
-     107,   107,   108,   108,   109,   109,   110,   110,   111,   111,
-     112,   112,   113,   113,   114,   114,   114,   114,   115,   116,
-     117,   118,   119,   118,   120,   118,   121,   118,   122,   118,
-     123,   118,   124,   118,   125,   118,   126,   118,   127,   127,
-     127,   127,   128,   128,   128,   129,   129,   129,   129,   129,
-     129,   129,   129,   129,   129,   129,   129,   129,   129,   129,
-     129,   129,   129,   129,   129,   129,   129,   129,   129,   129,
-     129,   129,   129,   129,   129,   129,   129,   129,   130,   130,
-     131,   131,   131,   131,   131,   131,   131,   131,   131,   131,
-     131,   132,   132,   133,   133,   134,   134,   135,   136,   136,
-     137,   138,   139,   139,   140,   141,   141,   142,   142,   142,
-     142,   142,   142,   142,   142,   142,   143,   143,   143,   143,
-     143,   144,   144,   144,   144,   144,   144,   144,   144,   144,
-     144,   144,   144,   144,   144,   144,   144,   144,   144,   144,
-     144,   144,   145,   145,   145,   145,   146,   146,   147,   147,
-     148,   148,   148,   148,   148,   148,   149,   149,   149,   149,
-     149,   149,   149,   149,   149,   149,   149,   149,   149,   149,
-     149,   149,   149,   149,   149,   149,   149,   149,   149,   149,
-     149,   149,   149,   149,   150,   150
+       0,   104,   105,   106,   106,   107,   108,   108,   109,   109,
+     109,   110,   110,   111,   111,   112,   112,   113,   113,   114,
+     114,   115,   115,   116,   116,   116,   116,   117,   118,   119,
+     120,   121,   123,   124,   122,   125,   126,   122,   127,   128,
+     122,   129,   130,   122,   131,   132,   122,   133,   134,   122,
+     135,   136,   122,   137,   137,   137,   137,   138,   138,   138,
+     139,   139,   140,   140,   141,   141,   141,   141,   141,   141,
+     141,   141,   141,   141,   141,   142,   142,   143,   143,   144,
+     144,   145,   146,   146,   147,   148,   149,   149,   150,   151,
+     151,   152,   152,   152,   152,   152,   152,   152,   152,   152,
+     152,   153,   153,   153,   154,   155,   156,   156,   157,   157,
+     157,   157,   157,   157,   157,   157,   157,   157,   157,   157,
+     157,   157,   157,   157,   157,   157,   157,   157,   158,   158,
+     158,   158,   159,   159,   160,   160,   161,   161,   161,   161,
+     161,   161,   162,   162,   162,   162,   162,   162,   162,   162,
+     162,   162,   162,   162,   162,   162,   162,   162,   162,   162,
+     162,   162,   162,   162,   162,   162,   162,   162,   162,   163,
+     163
     };
   }
 
@@ -2676,26 +2946,24 @@ private static final short[] yycheck_ = yycheck_init();
   {
     return new byte[]
     {
-       0,     2,     2,     2,     0,     2,     2,     2,     1,     7,
-       5,     6,     0,     2,     0,     3,     0,     2,     3,     1,
-       1,     4,     0,     2,     1,     1,     1,     1,     4,     4,
-       5,     5,     0,     7,     0,     7,     0,     9,     0,     9,
-       0,    11,     0,    11,     0,     9,     0,     9,     0,     1,
-       1,     1,     0,     1,     1,     1,     1,     1,     1,     1,
-       1,     1,     1,     1,     1,     1,     1,     1,     1,     1,
-       1,     1,     1,     1,     1,     1,     1,     1,     1,     1,
-       1,     1,     1,     1,     1,     1,     1,     1,     6,     8,
-       1,     1,     1,     1,     1,     4,     4,     4,     4,     6,
-       1,     4,     1,     3,     1,     3,     1,     1,     3,     1,
-       3,     4,     0,     2,     4,     2,     1,     2,     1,     5,
-       7,     5,     7,     7,     5,     1,     9,    11,    11,     3,
-       3,     3,     2,     2,     3,     3,     3,     3,     3,     3,
-       3,     3,     3,     3,     3,     4,     4,     4,     4,     1,
-       1,     2,     1,     4,     3,     1,     1,     3,     3,     1,
-       1,     1,     1,     1,     1,     5,     1,     1,     4,     5,
-       3,     3,     2,     3,     3,     3,     3,     3,     3,     3,
-       3,     2,     3,     3,     3,     2,     2,     2,     2,     3,
-       3,     3,     3,     3,     0,     1
+       0,     2,     2,     0,     2,     2,     2,     1,     9,     7,
+       8,     0,     2,     0,     3,     0,     2,     3,     1,     1,
+       4,     0,     2,     1,     1,     1,     1,     4,     4,     5,
+       0,     0,     0,     0,     9,     0,     0,    10,     0,     0,
+      10,     0,     0,    12,     0,     0,    12,     0,     0,    14,
+       0,     0,    14,     0,     1,     1,     1,     0,     1,     1,
+       0,     2,     6,     8,     1,     1,     1,     1,     1,     4,
+       4,     4,     4,     6,     1,     4,     1,     3,     1,     3,
+       1,     1,     3,     1,     3,     4,     0,     2,     4,     2,
+       1,     2,     5,     7,     5,     7,     7,     9,     5,     7,
+       1,     2,     1,     1,     4,     3,     3,     5,     1,     2,
+       2,     3,     3,     3,     3,     3,     3,     3,     3,     3,
+       3,     4,     4,     4,     4,     1,     1,     2,     1,     4,
+       3,     1,     1,     3,     3,     1,     1,     1,     1,     1,
+       1,     5,     1,     1,     4,     5,     3,     3,     2,     3,
+       3,     3,     3,     3,     3,     3,     3,     2,     3,     3,
+       2,     2,     2,     2,     3,     3,     3,     3,     3,     0,
+       1
     };
   }
 
@@ -2707,26 +2975,24 @@ private static final short[] yycheck_ = yycheck_init();
   {
     return new short[]
     {
-       0,   147,   147,   149,   153,   154,   158,   162,   163,   167,
-     168,   169,   173,   174,   178,   179,   183,   184,   188,   189,
-     193,   194,   198,   199,   203,   204,   205,   206,   210,   217,
-     224,   231,   233,   232,   238,   237,   243,   242,   248,   247,
-     253,   252,   258,   257,   263,   262,   268,   267,   275,   276,
-     277,   278,   282,   283,   284,   288,   289,   290,   291,   292,
-     293,   294,   295,   296,   297,   298,   299,   300,   301,   302,
-     303,   304,   305,   306,   307,   308,   309,   310,   311,   312,
-     313,   314,   315,   316,   317,   318,   319,   320,   324,   325,
-     329,   330,   331,   332,   333,   334,   335,   336,   337,   338,
-     339,   343,   344,   348,   349,   353,   354,   358,   362,   363,
-     367,   375,   379,   380,   384,   388,   389,   393,   394,   395,
-     396,   397,   398,   399,   400,   401,   405,   414,   423,   434,
-     435,   439,   440,   441,   442,   443,   444,   445,   446,   447,
-     448,   449,   450,   451,   452,   453,   454,   455,   456,   457,
-     458,   459,   463,   475,   476,   477,   481,   491,   495,   496,
-     500,   501,   502,   503,   504,   505,   509,   510,   511,   512,
-     513,   514,   515,   516,   517,   518,   519,   520,   521,   522,
-     523,   524,   525,   526,   527,   528,   529,   530,   531,   532,
-     533,   534,   535,   536,   540,   541
+       0,   151,   151,   156,   157,   161,   165,   166,   170,   171,
+     172,   176,   177,   181,   182,   186,   187,   191,   192,   196,
+     197,   201,   202,   216,   217,   218,   219,   223,   230,   236,
+     244,   249,   255,   259,   254,   274,   278,   273,   293,   297,
+     292,   304,   308,   303,   323,   327,   322,   334,   338,   333,
+     353,   357,   352,   364,   365,   366,   367,   371,   372,   373,
+     377,   378,   387,   388,   392,   393,   394,   395,   396,   397,
+     398,   399,   400,   401,   402,   406,   407,   411,   412,   416,
+     417,   421,   425,   426,   430,   437,   441,   442,   446,   450,
+     451,   455,   456,   457,   458,   459,   460,   461,   462,   463,
+     464,   468,   469,   470,   474,   478,   482,   483,   487,   488,
+     489,   490,   491,   492,   493,   494,   495,   496,   497,   498,
+     499,   500,   501,   502,   503,   504,   505,   506,   512,   528,
+     534,   540,   548,   557,   561,   562,   566,   567,   568,   569,
+     570,   571,   575,   576,   577,   578,   579,   580,   581,   582,
+     583,   584,   585,   586,   587,   588,   589,   590,   591,   592,
+     593,   594,   595,   596,   597,   598,   599,   600,   601,   605,
+     606
     };
   }
 
@@ -2756,7 +3022,7 @@ private static final short[] yycheck_ = yycheck_init();
   private static final SymbolKind yytranslate_(int t)
   {
     // Last valid token kind.
-    int code_max = 336;
+    int code_max = 338;
     if (t <= 0)
       return SymbolKind.S_YYEOF;
     else if (t <= code_max)
@@ -2772,16 +3038,16 @@ private static final short[] yycheck_ = yycheck_init();
        0,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
-       2,     2,     2,    78,     2,     2,     2,    85,    90,     2,
-      96,    97,    83,    81,    93,    82,   101,    84,     2,     2,
-       2,     2,     2,     2,     2,     2,     2,     2,    94,    95,
-      79,     2,    80,     2,     2,     2,     2,     2,     2,     2,
+       2,     2,     2,    82,     2,     2,     2,    89,    94,     2,
+      99,   100,    87,    85,    97,    86,   103,    88,     2,     2,
+       2,     2,     2,     2,     2,     2,     2,     2,    78,    98,
+      83,     2,    84,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
-       2,    99,     2,   100,     2,     2,     2,     2,     2,     2,
+       2,   101,     2,   102,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
-       2,     2,     2,    91,    89,    92,     2,     2,     2,     2,
+       2,     2,     2,    95,    93,    96,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
@@ -2802,27 +3068,28 @@ private static final short[] yycheck_ = yycheck_init();
       45,    46,    47,    48,    49,    50,    51,    52,    53,    54,
       55,    56,    57,    58,    59,    60,    61,    62,    63,    64,
       65,    66,    67,    68,    69,    70,    71,    72,    73,    74,
-      75,    76,    77,    86,    87,    88,    98
+      75,    76,    77,    79,    80,    81,    90,    91,    92
     };
   }
 
 
-  private static final int YYLAST_ = 1070;
+  private static final int YYLAST_ = 1009;
   private static final int YYEMPTY_ = -2;
-  private static final int YYFINAL_ = 5;
-  private static final int YYNTOKENS_ = 102;
+  private static final int YYFINAL_ = 3;
+  private static final int YYNTOKENS_ = 104;
 
 /* Unqualified %code blocks.  */
-/* "/home/altyriss/MEGAsync/Informatique/L3/Compilation/MiniProjet/miniprojet/parser/Parser.y":28  */
+/* "/home/fnoury/L3/Compilation/projet-20210420/parser/Parser.y":23  */
 
-	private Environment<Type> typeEnvironment = new MapEnvironment<Type>("types", true);
-	private Environment<Type> varEnvironment = new MapEnvironment<Type>("var", true);
-	private Environment<Type> localVarEnvironment = new MapEnvironment<Type>("local", true);
-	private Environment<Type> constEnvironment = new MapEnvironment<Type>("const", true);
+	private Environment<Type> typeEnvironment = new MapEnvironment<Type>("TYPES", true);
+	private Environment<Type> varEnvironment = new MapEnvironment<Type>("VARIABLES", true);
+	private Environment<Type> interfaceEnvironment = new MapEnvironment<Type>("INTERFACE", true);
+	private Environment<Type> classEnvironment = new MapEnvironment<Type>("CLASSE", true);
+	private StackEnvironment<Type> localVarEnvironment = new StackEnvironment<Type>("STACK", true);
+	private Type type;
 
-/* "/home/altyriss/MEGAsync/Informatique/L3/Compilation/MiniProjet/miniprojet/src/fr/ubordeaux/deptinfo/compilation/lea/parser/Parser.java":2824  */
+/* "/home/fnoury/L3/Compilation/projet-20210420/src/fr/ubordeaux/deptinfo/compilation/lea/parser/Parser.java":3092  */
 
 }
-/* "/home/altyriss/MEGAsync/Informatique/L3/Compilation/MiniProjet/miniprojet/parser/Parser.y":544  */
-
+/* "/home/fnoury/L3/Compilation/projet-20210420/parser/Parser.y":610  */
 

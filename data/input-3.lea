@@ -1,0 +1,14 @@
+class main {
+
+	private function succ(n: integer): integer {
+		return n+1;
+	}
+
+	main(args: list<string>) {
+		i: integer;
+		while (i <= 100) {
+			i := succ(i);
+		}
+	}
+ 
+}

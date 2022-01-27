@@ -17,10 +17,12 @@ package fr.ubordeaux.deptinfo.compilation.lea.type;
 
 public interface Type {
 
-	TType getTType();
-	void assertEqual(Type t) throws TypeException;
+	Tag getTag();
 	int getSize();
 	int getOffset();
 	Type getLeft();
 	Type getRight();
+	String getName();
+	boolean assertEqual(Type t);
+	boolean assertBoolean();
 }

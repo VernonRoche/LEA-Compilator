@@ -1,0 +1,8 @@
+*** begin compilation
+*** Push a new environment
+*** Put m => map<integer,integer> into STACK(0) environment
+*** Put fib => (n:integer) -> integer into STACK(0) environment
+*** Push a new environment
+*** Put n => integer into STACK(1) environment
+*** Get n from STACK(1) environment <= integer
+*** end compilation

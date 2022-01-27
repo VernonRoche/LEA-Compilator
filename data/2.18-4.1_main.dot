@@ -1,0 +1,29 @@
+digraph Stree {
+Stm_4 [shape="ellipse", label="SEQ"];
+Stm_2 [shape="ellipse", label="SEQ"];
+Stm_0 [shape="ellipse", label="MOVE"];
+Exp_1 [shape="ellipse", label="MEM"];
+Exp_0 [shape="ellipse", label="NAME: m"];
+Exp_1 -> Exp_0;
+Exp_2 [shape="ellipse", label="36"];
+Stm_0 -> Exp_1;
+Stm_0 -> Exp_2;
+Stm_1 [shape="ellipse", label="MOVE"];
+Exp_4 [shape="ellipse", label="MEM"];
+Exp_3 [shape="ellipse", label="NAME: s"];
+Exp_4 -> Exp_3;
+Exp_5 [shape="ellipse", label="NAME: STR_0"];
+Stm_1 -> Exp_4;
+Stm_1 -> Exp_5;
+Stm_2 -> Stm_0;
+Stm_2 -> Stm_1;
+Stm_3 [shape="ellipse", label="MOVE"];
+Exp_8 [shape="ellipse", label="MEM"];
+Exp_7 [shape="ellipse", label="NAME: j"];
+Exp_8 -> Exp_7;
+Exp_6 [shape="ellipse", label="1"];
+Stm_3 -> Exp_8;
+Stm_3 -> Exp_6;
+Stm_4 -> Stm_2;
+Stm_4 -> Stm_3;
+}
